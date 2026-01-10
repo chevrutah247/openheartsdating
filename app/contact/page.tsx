@@ -97,7 +97,7 @@ export default function ContactPage() {
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
               <p>
                 <strong>Email:</strong> Please use the contact form below or email us directly 
-                at <a href="mailto:info@openheartsdating.com">info@openheartsdating.com</a>
+                at <a href="mailto:openheartsdatingcom@gmail.com">openheartsdatingcom@gmail.com</a>
               </p>
               <p>
                 <strong>Website:</strong> <a href="https://openheartsdating.com">openheartsdating.com</a>
@@ -112,7 +112,7 @@ export default function ContactPage() {
               <h3 style={{ marginBottom: '1.5rem' }}>Contact Form</h3>
               <p style={{ marginBottom: '1.5rem' }}>
                 <em>Note: Contact form functionality will be implemented in a future phase. 
-                For now, please email us directly at info@openheartsdating.com or use the 
+                For now, please email us directly at openheartsdatingcom@gmail.com or use the 
                 contact methods above.</em>
               </p>
               <p>
