@@ -5,9 +5,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://openheartsdating.com'),
   title: {
     default: 'Open Hearts Dating — Inclusive Dating Platform for People with Disabilities',
-    template: '%s | Open Hearts Dating'
+    template: '%s | Open Hearts Dating',
   },
-  description: 'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities. Join our accessible dating community and find meaningful relationships.',
+  description:
+    'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities. Join our accessible dating community and find meaningful relationships.',
   keywords: [
     'inclusive dating platform',
     'dating for people with disabilities',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     'disability dating community',
     'accessible dating',
     'inclusive dating',
-    'disability dating site'
+    'disability dating site',
   ],
   authors: [{ name: 'Open Hearts Dating' }],
   creator: 'Open Hearts Dating',
@@ -32,7 +33,8 @@ export const metadata: Metadata = {
     url: 'https://openheartsdating.com',
     siteName: 'Open Hearts Dating',
     title: 'Open Hearts Dating — Inclusive Dating Platform for People with Disabilities',
-    description: 'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities. Join our accessible dating community and find meaningful relationships.',
+    description:
+      'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities.',
     images: [
       {
         url: '/og-image.jpg',
@@ -45,7 +47,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Open Hearts Dating — Inclusive Dating Platform for People with Disabilities',
-    description: 'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities.',
+    description:
+      'Open Hearts Dating is a nonprofit inclusive dating platform connecting people with disabilities.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -71,11 +74,47 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {/* Header */}
+        <header className="header">
+          <div className="header-content">
+            <div className="logo">Open Hearts Dating</div>
+            <nav aria-label="Main navigation">
+              <ul className="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dating">Dating</a></li>
+                <li><a href="/mission">Mission</a></li>
+                <li><a href="/trust">Trust & Safety</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        {/* Main content */}
+        <main>{children}</main>
+
+        {/* Footer */}
+        <footer className="footer">
+          <div className="footer-content">
+            <nav aria-label="Footer navigation">
+              <ul className="footer-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dating">Dating</a></li>
+                <li><a href="/mission">Mission</a></li>
+                <li><a href="/trust">Trust & Safety</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+            <p>
+              © {new Date().getFullYear()} Open Hearts Dating.  
+              A nonprofit initiative for inclusive and ethical dating.
+            </p>
+          </div>
+        </footer>
+      </body>
     </html>
   )
 }
-
-
-
-
