@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Get in Touch with Open Hearts Dating',
-  description: 'Contact Open Hearts Dating to learn more, get involved, ask questions, or provide feedback. We\'d love to hear from you and welcome your input as we build our accessible dating platform.',
+  title: 'Contact Us — Open Hearts Dating',
+  description:
+    'Contact Open Hearts Dating with questions, feedback, partnership ideas, or safety concerns. We believe in transparency, trust, and open communication.',
   openGraph: {
-    title: 'Contact Us — Get in Touch with Open Hearts Dating',
-    description: 'Contact Open Hearts Dating to learn more, get involved, ask questions, or provide feedback.',
+    title: 'Contact Open Hearts Dating',
+    description:
+      'Get in touch with Open Hearts Dating. We welcome questions, feedback, partnerships, and community support.',
   },
 }
 
@@ -15,6 +17,7 @@ export default function ContactPage() {
       <a href="#main-content" className="skip-to-main">
         Skip to main content
       </a>
+
       <header className="header" role="banner">
         <div className="header-content">
           <div className="logo">Open Hearts Dating</div>
@@ -31,117 +34,143 @@ export default function ContactPage() {
       </header>
 
       <main id="main-content" className="main" role="main">
+        {/* HERO */}
         <section className="hero">
           <div className="container">
-            <h1>Contact Us</h1>
+            <h1>Contact Open Hearts Dating</h1>
             <p>
-              We'd love to hear from you! Whether you have questions, want to get involved, 
-              provide feedback, or simply learn more about Open Hearts Dating, please don't 
-              hesitate to reach out.
+              Open Hearts Dating is built on trust, transparency, and respect.
+              If you have questions, concerns, feedback, or ideas — we want to hear from you.
             </p>
           </div>
         </section>
 
+        {/* WHY CONTACT */}
         <section className="content-section">
           <div className="container">
-            <h2>Get in Touch</h2>
+            <h2>Why Reach Out?</h2>
             <p>
-              At Open Hearts Dating, we value open communication and community input. Your 
-              feedback, questions, and ideas help shape our platform and ensure we're meeting 
-              the needs of the disability dating community.
+              We are creating a safe, ethical, and inclusive dating platform for people with disabilities.
+              Unlike many existing dating platforms, we are intentionally avoiding manipulative mechanics,
+              hidden fees, fake interactions, and pressure-based monetization.
             </p>
-            
+
+            <p>
+              Your voice matters. Honest feedback — including criticism — helps us build something better.
+            </p>
+
             <div style={{ maxWidth: '800px', margin: '2rem auto' }}>
-              <h3>General Inquiries</h3>
+              <h3>General Questions</h3>
               <p>
-                For general questions, information requests, or to learn more about Open Hearts 
-                Dating, please reach out through the contact methods below. We aim to respond 
-                to all inquiries within 2-3 business days.
+                Have a question about our mission, how the platform works, or what’s coming next?
+                We’re happy to explain openly and clearly.
               </p>
 
-              <h3>Volunteer Opportunities</h3>
+              <h3>Trust & Safety Concerns</h3>
               <p>
-                Interested in volunteering? We're always looking for dedicated individuals to 
-                help with development, community outreach, content creation, and more. Please 
-                let us know about your skills, interests, and availability.
+                If you are worried about scams, fake profiles, misuse of personal data, or unethical behavior
+                on dating platforms in general — we take these concerns seriously.
+              </p>
+              <p>
+                Open Hearts Dating is designed with safety-first principles and human moderation in mind.
+                If you want to discuss safety ideas or raise concerns, please contact us.
               </p>
 
-              <h3>Partnership Inquiries</h3>
+              <h3>Volunteers & Contributors</h3>
               <p>
-                If you represent an organization, business, or community group interested in 
-                partnering with Open Hearts Dating, we'd love to explore collaboration 
-                opportunities. Please reach out to discuss how we can work together.
+                We welcome volunteers, advisors, developers, designers, accessibility experts,
+                and community advocates who want to help build something meaningful.
               </p>
 
-              <h3>Media and Press</h3>
+              <h3>Partnerships & Organizations</h3>
               <p>
-                For media inquiries, interview requests, or press-related questions, please 
-                contact us with details about your request and deadline. We're happy to share 
-                our story and mission with interested media outlets.
+                If you represent a nonprofit, disability organization, community group,
+                or ethical business — we’re open to thoughtful partnerships.
               </p>
 
-              <h3>Feedback and Suggestions</h3>
+              <h3>Investors & Supporters</h3>
               <p>
-                Your feedback is invaluable to us. If you have suggestions for our platform, 
-                ideas for features, or concerns you'd like to share, please don't hesitate to 
-                reach out. We're committed to building a platform that truly serves our 
-                community, and your input helps us do that.
+                Open Hearts Dating is at an early stage. If you’re interested in supporting
+                a transparent, values-driven platform focused on long-term impact rather than quick profit,
+                we welcome the conversation.
               </p>
             </div>
           </div>
         </section>
 
+        {/* CONTACT INFO */}
         <section className="content-section content-section-alt">
           <div className="container">
             <h2>Contact Information</h2>
+
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
               <p>
-                <strong>Email:</strong> Please use the contact form below or email us directly 
-                at <a href="mailto:openheartsdatingcom@gmail.com">openheartsdatingcom@gmail.com</a>
+                <strong>Email:</strong>{' '}
+                <a href="mailto:openheartsdatingcom@gmail.com">
+                  openheartsdatingcom@gmail.com
+                </a>
               </p>
+
               <p>
-                <strong>Website:</strong> <a href="https://openheartsdating.com">openheartsdating.com</a>
+                <strong>Website:</strong>{' '}
+                <a href="https://openheartsdating.com">
+                  https://openheartsdating.com
+                </a>
               </p>
+
               <p>
-                <strong>Response Time:</strong> We aim to respond to all inquiries within 2-3 
-                business days. For urgent matters, please indicate this in your message.
+                <strong>Response Time:</strong> We aim to respond within 2–3 business days.
+                Thoughtful replies matter more to us than automated messages.
               </p>
             </div>
 
-            <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '2rem', backgroundColor: 'var(--color-background)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
-              <h3 style={{ marginBottom: '1.5rem' }}>Contact Form</h3>
-              <p style={{ marginBottom: '1.5rem' }}>
-                <em>Note: Contact form functionality will be implemented in a future phase. 
-                For now, please email us directly at openheartsdatingcom@gmail.com or use the 
-                contact methods above.</em>
+            <div
+              style={{
+                maxWidth: '800px',
+                margin: '2rem auto',
+                padding: '2rem',
+                backgroundColor: 'var(--color-background)',
+                borderRadius: '8px',
+                border: '1px solid var(--color-border)',
+              }}
+            >
+              <h3>Contact Form (Coming Soon)</h3>
+              <p>
+                <em>
+                  We are intentionally launching step by step.
+                  A secure contact form will be added once moderation and privacy safeguards are fully ready.
+                </em>
               </p>
               <p>
-                In the meantime, you can reach out to us via email with:
+                For now, please email us directly. When writing, feel free to include:
               </p>
               <ul style={{ lineHeight: '1.8' }}>
-                <li>Your name and contact information</li>
-                <li>The nature of your inquiry</li>
-                <li>Any relevant details or questions</li>
-                <li>How you'd like us to respond</li>
+                <li>Your name (or preferred alias)</li>
+                <li>The reason you’re reaching out</li>
+                <li>Any relevant background or context</li>
+                <li>Whether you’d like a reply</li>
               </ul>
             </div>
           </div>
         </section>
 
+        {/* CLOSING */}
         <section className="content-section">
           <div className="container">
-            <h2>Stay Connected</h2>
+            <h2>Our Commitment</h2>
             <p>
-              While we're in the early stages of development, we're working on building our 
-              online presence and community. Social media links and newsletter signup will be 
-              available soon. For now, please check back regularly or contact us to be added 
-              to our update list.
+              We believe dating platforms should respect human dignity,
+              emotional vulnerability, and accessibility.
+              We are building Open Hearts Dating slowly and responsibly — and publicly.
             </p>
             <p>
-              We're excited to build this community with you and look forward to hearing from you!
+              Thank you for being part of this conversation.
             </p>
+
             <div style={{ marginTop: '2rem' }}>
-              <a href="/support" className="button">Learn How to Support Us</a>
+              <a href="/mission" className="button">
+                Read Our Mission
+              </a>
             </div>
           </div>
         </section>
@@ -159,16 +188,11 @@ export default function ContactPage() {
             </ul>
           </nav>
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} Open Hearts Dating. All rights reserved. 
-            A nonprofit organization dedicated to inclusive dating.
+            &copy; {new Date().getFullYear()} Open Hearts Dating. All rights reserved.
+            A nonprofit initiative focused on ethical, inclusive dating.
           </p>
         </div>
       </footer>
     </>
   )
 }
-
-
-
-
-
