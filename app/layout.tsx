@@ -62,3 +62,107 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'nZ-Ls-Vfq0yn4m6KtG-tHJ9wEu04lDKZafqqSSN-FBU',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  // Структурированные данные для Google
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Open Hearts Dating',
+    description: 'Nonprofit accessible dating platform for people with disabilities',
+    url: 'https://openheartsdating.com',
+    logo: 'https://openheartsdating.com/logo.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      url: 'https://openheartsdating.com/contact',
+    },
+  }
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Open Hearts Dating',
+    url: 'https://openheartsdating.com',
+    description: 'Accessible and inclusive dating platform for people with disabilities',
+    inLanguage: 'en-US',
+  }
+
+  return (
+    <html lang="en">
+      <head>
+        {/* Структурированные данные для SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+      </head>
+      <body>
+        {/* Skip link for accessibility */}
+        <a href="#main-content" className="skip-to-main">
+          Skip to main content
+        </a>
+
+        {/* Global Header */}
+        <header className="header" role="banner">
+          <div className="header-content">
+            <div className="logo">
+              <a href="/">Open Hearts Dating</a>
+            </div>
+            <nav aria-label="Main navigation">
+              <ul className="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dating">Dating</a></li>
+                <li><a href="/mission">Mission</a></li>
+                <li><a href="/trust">Trust & Safety</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        {/* Main content */}
+        <main id="main-content" role="main">
+          {children}
+        </main>
+
+        {/* Global Footer */}
+        <footer className="footer" role="contentinfo">
+          <div className="footer-content">
+            <nav aria-label="Footer navigation">
+              <ul className="footer-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/dating">Dating</a></li>
+                <li><a href="/mission">Mission</a></li>
+                <li><a href="/trust">Trust & Safety</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+            <p>
+              © {new Date().getFullYear()} Open Hearts Dating.  
+              A nonprofit initiative for inclusive and ethical dating.
+            </p>
+          </div>
+        </footer>
+      </body>
+    </html>
+  )
+}
