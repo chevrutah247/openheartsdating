@@ -102,4 +102,33 @@ export default function HomePage() {
           <p>
             As a nonprofit dating platform, we rely on the support of volunteers, donors, and 
             community members who share our vision. If you're interested in getting involved, 
-            whether throug
+            whether through volunteering, donating, or simply spreading the word, we'd love to 
+            hear from you.
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <a href="/support" className="button">Support Our Mission</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="content-section content-section-alt">
+        <div className="container">
+          <h2>Join the Disability Dating Community</h2>
+          <p>
+            Whether you're looking for love, friendship, or simply want to be part of a 
+            supportive community, Open Hearts Dating welcomes you. Our disability dating 
+            community is growing, and we're excited to have you join us on this journey.
+          </p>
+          <p>
+            Stay updated on our progress and be among the first to know when our full platform 
+            launches. Together, we can create a more inclusive world where everyone has the 
+            opportunity to find meaningful connections.
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <a href="/contact" className="button">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
