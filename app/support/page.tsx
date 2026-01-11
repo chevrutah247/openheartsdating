@@ -200,8 +200,37 @@ export default function SupportPage() {
               </div>
             </div>
 
+            {/* DONATE SECTION */}
+            <div style={{ 
+              marginTop: '3rem', 
+              padding: '2.5rem', 
+              background: 'rgba(233, 30, 99, 0.05)', 
+              borderRadius: '12px',
+              textAlign: 'center',
+              border: '2px solid rgba(233, 30, 99, 0.2)'
+            }}>
+              <h3 style={{ color: '#e91e63', marginTop: 0, fontSize: '1.5rem' }}>💝 Support Through Donation</h3>
+              <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+                Every contribution helps us build a more accessible and trustworthy dating platform. 
+                Your support goes directly toward development, accessibility testing, and community building.
+              </p>
+              <a 
+                href="https://www.paypal.com/ncp/payment/LY67CR4F29BKN" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="button"
+                style={{ fontSize: '1.1rem', padding: '1rem 2.5rem', display: 'inline-block' }}
+              >
+                💳 Donate via PayPal
+              </a>
+              <p style={{ fontSize: '0.9rem', marginTop: '1.5rem', color: '#666' }}>
+                🔒 Secure payment through PayPal. Tax-deductible receipts available. 
+                100% of donations fund our nonprofit mission.
+              </p>
+            </div>
+
             <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-              <a href="/contact" className="button">Get Involved</a>
+              <a href="/contact" className="button button-secondary">Get Involved in Other Ways</a>
             </div>
           </div>
         </div>
