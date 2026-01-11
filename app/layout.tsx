@@ -75,10 +75,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* Header */}
-        <header className="header">
+        {/* Skip link for accessibility */}
+        <a href="#main-content" className="skip-to-main">
+          Skip to main content
+        </a>
+
+        {/* Global Header */}
+        <header className="header" role="banner">
           <div className="header-content">
-            <div className="logo">Open Hearts Dating</div>
+            <div className="logo">
+              <a href="/">Open Hearts Dating</a>
+            </div>
+
             <nav aria-label="Main navigation">
               <ul className="nav">
                 <li><a href="/">Home</a></li>
@@ -93,10 +101,12 @@ export default function RootLayout({
         </header>
 
         {/* Main content */}
-        <main>{children}</main>
+        <main id="main-content" role="main">
+          {children}
+        </main>
 
-        {/* Footer */}
-        <footer className="footer">
+        {/* Global Footer */}
+        <footer className="footer" role="contentinfo">
           <div className="footer-content">
             <nav aria-label="Footer navigation">
               <ul className="footer-nav">
@@ -108,6 +118,7 @@ export default function RootLayout({
                 <li><a href="/contact">Contact</a></li>
               </ul>
             </nav>
+
             <p>
               © {new Date().getFullYear()} Open Hearts Dating.  
               A nonprofit initiative for inclusive and ethical dating.
