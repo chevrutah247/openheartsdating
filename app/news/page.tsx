@@ -9,6 +9,34 @@ export const metadata: Metadata = {
 // Здесь будут храниться новости (пока в коде, потом можно перенести в CMS)
 const newsItems = [
   {
+    id: 3,
+    date: '2025-01-11',
+    title: 'News Section Now Live - Stay Connected with Our Community',
+    excerpt: 'We have launched our dedicated news section to keep you updated on platform improvements, success stories, and community events.',
+    content: `
+      <p>We're thrilled to announce the launch of our dedicated news section! This new addition to Open Hearts Dating is your central hub for staying informed about everything happening in our community.</p>
+      
+      <h3>What You'll Find Here</h3>
+      <p>Our news section will regularly feature:</p>
+      <ul>
+        <li><strong>Platform Updates:</strong> Learn about new features and improvements as we continuously enhance your experience</li>
+        <li><strong>Success Stories:</strong> Be inspired by real connections made through our platform</li>
+        <li><strong>Community Events:</strong> Stay informed about virtual meetups, webinars, and gatherings</li>
+        <li><strong>Dating Resources:</strong> Access helpful tips, guides, and advice for meaningful connections</li>
+        <li><strong>Important Announcements:</strong> Be the first to know about significant developments and milestones</li>
+      </ul>
+      
+      <h3>Why This Matters</h3>
+      <p>Transparency and communication are core values at Open Hearts Dating. This news section demonstrates our commitment to keeping you informed about how we're growing and improving. We believe an engaged, well-informed community is a stronger community.</p>
+      
+      <h3>Stay Updated</h3>
+      <p>Check back regularly for new posts, or bookmark this page to never miss an update. We're committed to posting fresh content multiple times per month, ensuring you're always in the loop about what's happening at Open Hearts Dating.</p>
+      
+      <p>Thank you for being part of our journey toward creating a more inclusive, accessible dating experience for everyone!</p>
+    `,
+    category: 'Platform',
+  },
+  {
     id: 1,
     date: '2025-01-11',
     title: 'Welcome to Open Hearts Dating News',
