@@ -12,7 +12,7 @@ const newsItems = [
     id: 5,
     date: '2025-01-13',
     title: 'Early Access Is Open! Join Us in Building This Together',
-    excerpt: 'Today we're opening our Early Access Program. Be among the first to join, help shape the platform, and become part of something special.',
+    excerpt: 'Today we are opening our Early Access Program. Be among the first to join, help shape the platform, and become part of something special.',
     content: `
       <p>We have exciting news: <strong>Early Access is now open!</strong></p>
       
