@@ -239,95 +239,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EARLY ACCESS FORM - NEW! */}
-      <section className="content-section content-section-alt">
-        <div className="container">
-          <div style={{ 
-            maxWidth: '700px', 
-            margin: '0 auto',
-            padding: '3rem 2rem',
-            background: 'white',
-            borderRadius: '16px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-            textAlign: 'center'
-          }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-              🎉 Join Early Access
-            </h2>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem', opacity: '0.9' }}>
-              Be among the first to join when we launch. Get updates on our progress 
-              and exclusive early access to the platform.
-            </p>
-
-            {/* Simple Email Form - ВЫ ЗАМЕНИТЕ ЭТО НА MAILERLITE EMBED CODE */}
-            <form style={{ marginBottom: '1.5rem' }}>
-              <div style={{ 
-                display: 'flex', 
-                gap: '1rem', 
-                flexDirection: 'column',
-                maxWidth: '500px',
-                margin: '0 auto'
-              }}>
-                <input 
-                  type="email" 
-                  placeholder="Your email address"
-                  required
-                  style={{
-                    padding: '1rem 1.5rem',
-                    fontSize: '1.05rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px',
-                    width: '100%'
-                  }}
-                />
-                <button 
-                  type="submit" 
-                  className="button"
-                  style={{ 
-                    width: '100%',
-                    fontSize: '1.1rem',
-                    padding: '1rem'
-                  }}
-                >
-                  Count Me In! 💙
-                </button>
-              </div>
-            </form>
-
-            <p style={{ fontSize: '0.9rem', opacity: '0.7', marginBottom: '1.5rem' }}>
-              No spam, ever. Unsubscribe anytime.
-            </p>
-
-            <div style={{
-              padding: '1.5rem',
-              background: 'rgba(102, 126, 234, 0.1)',
-              borderRadius: '8px',
-              marginTop: '2rem'
-            }}>
-              <p style={{ fontSize: '0.95rem', lineHeight: '1.7', margin: 0 }}>
-                <strong>🏆 First 100 people get Founder status!</strong><br/>
-                Special badge, priority features, and eternal gratitude 😊
-              </p>
-            </div>
-
-            <a 
-              href="/join" 
-              style={{ 
-                display: 'inline-block',
-                marginTop: '1.5rem',
-                color: '#667eea',
-                textDecoration: 'underline',
-                fontSize: '0.95rem'
-              }}
-            >
-              Want more involvement? See all Early Access options →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* JOIN THE JOURNEY */}
-      <section id="journey" className="content-section">
+      <section id="journey" className="content-section content-section-alt">
         <div className="container">
           <h2>Be Part of the Story</h2>
           <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
@@ -353,7 +266,7 @@ export default function HomePage() {
                 Be among the first to join when we launch. Get updates on our progress and 
                 a chance to beta test.
               </p>
-              <a href="/join" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
+              <a href="/contact" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
                 Sign Up for Updates
               </a>
             </div>
@@ -411,7 +324,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="content-section content-section-alt">
+      <section className="content-section">
         <div className="container" style={{ textAlign: 'center' }}>
           <h2>Ready to Begin?</h2>
           <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
@@ -422,7 +335,7 @@ export default function HomePage() {
             Where vulnerability is okay. Where love is possible.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
-            <a href="/join" className="button">Yes, I'm Ready</a>
+            <a href="/contact" className="button">Yes, I'm Ready</a>
             <a href="/mission" className="button button-secondary">I Have Questions</a>
           </div>
         </div>
