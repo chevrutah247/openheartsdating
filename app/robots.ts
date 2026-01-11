@@ -6,9 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/api/', '/admin/'], // блокируем служебные папки если будут
       },
     ],
     sitemap: 'https://openheartsdating.com/sitemap.xml',
   }
 }
-

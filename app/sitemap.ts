@@ -1,27 +1,44 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://openheartsdating.com'
+  
   return [
     {
-      url: 'https://openheartsdating.com',
+      url: baseUrl,
       lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
     {
-      url: 'https://openheartsdating.com/mission',
+      url: `${baseUrl}/dating`,
       lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
-      url: 'https://openheartsdating.com/dating',
+      url: `${baseUrl}/mission`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
-      url: 'https://openheartsdating.com/contact',
+      url: `${baseUrl}/trust`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
-      url: 'https://openheartsdating.com/support',
+      url: `${baseUrl}/support`,
       lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ]
 }
-
