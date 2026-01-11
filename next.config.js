@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true, // 🔑 ОБЯЗАТЕЛЬНО
-  },
+  reactStrictMode: true,
 
   eslint: {
     ignoreDuringBuilds: true,
