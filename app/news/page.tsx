@@ -9,6 +9,55 @@ export const metadata: Metadata = {
 // Здесь будут храниться новости (пока в коде, потом можно перенести в CMS)
 const newsItems = [
   {
+    id: 4,
+    date: '2025-01-12',
+    title: 'We Rewrote Our Story—Because It Was Always About You',
+    excerpt: 'We listened to your feedback and completely transformed our website. Less business talk, more heart. Because this was never about money—it was always about people.',
+    content: `
+      <p>If you visited our site yesterday, you might notice something different today. Everything has changed. And we want to tell you why.</p>
+      
+      <h3>We Heard You</h3>
+      <p>Some of you reached out and said, honestly: "Your site sounds like you're trying to attract investors, not people looking for love."</p>
+      
+      <p>You were right. And it hurt to hear—but in a good way. The kind of hurt that makes you realize you've lost sight of what matters.</p>
+      
+      <h3>What Changed</h3>
+      <p>We went back to basics. We asked ourselves: <em>Why are we really doing this?</em></p>
+      
+      <p>Not for the "$8.4 billion market gap." Not to "disrupt the industry." Not to impress investors with metrics and projections.</p>
+      
+      <p>We're doing this because our friend Alex got ghosted after mentioning his wheelchair. Because Maria couldn't use dating apps with her screen reader. Because 1.3 billion people deserve to feel those butterflies when someone special messages them.</p>
+      
+      <p>So we rewrote everything. Every page. Every word. Here's what's different:</p>
+      
+      <ul>
+        <li><strong>Home page:</strong> Instead of "trust crisis" and "market opportunities," we talk about YOU deserving love. Because you do.</li>
+        <li><strong>Mission page:</strong> Instead of competitive advantages, we share why we started—real stories from real people who felt invisible.</li>
+        <li><strong>Dating page:</strong> Instead of technical specs, we painted a picture of how it will FEEL to use our platform. Like coming home.</li>
+      </ul>
+      
+      <h3>The Honest Truth</h3>
+      <p>We're still building. We don't have a magic launch date. We're not even fully funded yet.</p>
+      
+      <p>But we're being honest about that now. Because you deserve honesty more than you deserve marketing hype.</p>
+      
+      <p>This platform is being built <strong>with you</strong>, not just <em>for you</em>. Your voice matters. Your experience matters. Your feedback literally changed our entire website in 24 hours—that's how much you matter.</p>
+      
+      <h3>What This Means Going Forward</h3>
+      <p>We promise to keep this human. Keep this real. When we make mistakes, we'll own them. When we need help, we'll ask for it. When we don't know something, we'll say so.</p>
+      
+      <p>This isn't a startup trying to get rich. This is a community trying to help people find love. There's a difference, and we're going to honor that difference every single day.</p>
+      
+      <h3>Thank You</h3>
+      <p>To everyone who gave us feedback—thank you. You made us better. You reminded us why we're here.</p>
+      
+      <p>To everyone reading this—welcome. This is your community. Help us build it right.</p>
+      
+      <p style="margin-top: 2rem; font-style: italic;">With love and humility,<br/>The Open Hearts Dating Team</p>
+    `,
+    category: 'Announcement',
+  },
+  {
     id: 3,
     date: '2025-01-11',
     title: 'News Section Now Live - Stay Connected with Our Community',

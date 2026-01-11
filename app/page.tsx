@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Open Hearts Dating — Rebuilding Trust in Online Dating',
-  description: 'A nonprofit dating platform addressing the $8.4B accessibility gap. No bots, no manipulation, no barriers—just real connections for people with disabilities.',
+  title: 'Open Hearts Dating — Building Love Without Barriers',
+  description: 'We are building an inclusive, accessible dating platform for people with disabilities. Join us in creating a space where everyone can find meaningful connections.',
   openGraph: {
-    title: 'Open Hearts Dating — Rebuilding Trust in Online Dating',
-   description: 'Addressing the industry crisis: 79% of users report swipe fatigue, scams plague major platforms. We are building the ethical alternative.',
+    title: 'Open Hearts Dating — Building Love Without Barriers',
+    description: 'A nonprofit dating platform built by and for people with disabilities. Currently in development - be part of the journey.',
   },
 }
 
@@ -32,191 +32,311 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* HERO - Problem Statement */}
+      {/* HERO - Warm & Honest */}
       <section className="hero">
         <div className="container">
-          <h1>The Dating App Industry Has a Trust Problem. We're Fixing It.</h1>
-          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto 2rem' }}>
-            79% of Gen Z and Millennials report "swipe fatigue." Scammers plague major platforms. 
-            1.4M users left dating apps in the UK alone (2023-2024). Meanwhile, <strong>1.3 billion 
-            people with disabilities</strong> face additional barriers in an already broken system.
+          <h1>You Deserve Love. We're Building the Place Where It Can Happen.</h1>
+          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto 2rem', lineHeight: '1.6' }}>
+            Hi! We're Open Hearts Dating—a small team who believes everyone with a disability 
+            deserves to find connection without barriers, without judgment, without feeling invisible.
+          </p>
+          <p style={{ fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 2rem', opacity: '0.9' }}>
+            <strong>We're still building our platform</strong>, but we already know one thing: 
+            we want to build it WITH you, not just FOR you.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#solution" className="button">See Our Solution</a>
-            <a href="/contact" className="button button-secondary">Contact for Investment</a>
+            <a href="#journey" className="button">Join Our Journey</a>
+            <a href="#story" className="button button-secondary">Why We Started</a>
           </div>
         </div>
       </section>
 
-      {/* THE PROBLEM */}
-      <section className="content-section content-section-alt">
+      {/* WHY WE STARTED */}
+      <section id="story" className="content-section content-section-alt">
         <div className="container">
-          <h2>The Industry Crisis</h2>
-          <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '2rem' }}>
-            Current dating platforms prioritize profit over people. The result? A trust collapse.
-          </p>
-          
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-            gap: '2rem',
-            marginTop: '2rem' 
-          }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e91e63' }}>79-80%</div>
-              <p><strong>Swipe Fatigue</strong><br/>Users exhausted by endless swiping and ghosting</p>
+          <h2>Why We're Here</h2>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              Our friend Alex once said: <em>"I'm tired of explaining my disability on the first date. 
+              I just want someone who already knows and doesn't care."</em>
+            </p>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              Maria couldn't use popular dating apps with her screen reader. 
+              The buttons didn't work. The navigation was impossible. She gave up trying.
+            </p>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              Dmitry got matches, but after mentioning his wheelchair, people would ghost him. 
+              Every. Single. Time.
+            </p>
+            
+            <div style={{ 
+              marginTop: '2rem', 
+              padding: '2rem', 
+              background: 'rgba(102, 126, 234, 0.1)', 
+              borderRadius: '12px',
+              borderLeft: '4px solid #667eea'
+            }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
+                <strong>We saw the problem. And we decided to fix it.</strong>
+                <br/><br/>
+                Not because we saw a "market opportunity." Because our friends deserve better. 
+                Because YOU deserve better. Because 1.3 billion people with disabilities around 
+                the world shouldn't feel invisible when searching for love.
+              </p>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e91e63' }}>75%+</div>
-              <p><strong>Scammer Complaints</strong><br/>Fake profiles, bots, and financial scams dominate</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#e91e63' }}>1.4M</div>
-              <p><strong>Users Left Apps</strong><br/>UK market alone (2023-2024)</p>
-            </div>
-          </div>
-
-          <div style={{ 
-            marginTop: '3rem', 
-            padding: '2rem', 
-            background: 'rgba(233, 30, 99, 0.1)', 
-            borderRadius: '12px',
-            borderLeft: '4px solid #e91e63'
-          }}>
-            <h3 style={{ marginTop: 0 }}>What Users Actually Say:</h3>
-            <ul style={{ lineHeight: '1.8' }}>
-              <li>"Tinder has turned into a company that just takes money without delivering" (2026 review)</li>
-              <li>"Nothing but scammers... they make no effort to fix the issue" (Bumble, Dec 2025)</li>
-              <li>"Apps are turning people into commodities, not community members"</li>
-              <li>"Pay-to-win manipulation and hidden fees everywhere"</li>
-            </ul>
           </div>
         </div>
       </section>
 
-      {/* OUR SOLUTION */}
-      <section id="solution" className="content-section">
+      {/* WHAT WE'RE BUILDING */}
+      <section className="content-section">
         <div className="container">
-          <h2>Open Hearts Dating: The Trust-First Alternative</h2>
-          <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '3rem' }}>
-            We're building a dating platform on principles the industry has abandoned: 
-            <strong> transparency, safety, and human dignity.</strong>
+          <h2>What We're Building</h2>
+          <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
+            A dating platform that treats you like a human being, not a statistic. 
+            Where accessibility isn't an afterthought—it's the foundation.
           </p>
 
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#e91e63' }}>🚫 No Bots, No Manipulation</h3>
-              <p>
-                Every profile represents a real person. No AI-generated personas, no paid chat operators, 
-                no engagement manipulation. Human moderation, not algorithms designed to keep you swiping.
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>💙 A Place Where You Can Be Yourself</h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                Your disability isn't a secret you hide until the "right moment." It's part of your story. 
+                Here, everyone already knows—and they're here anyway. Because they see YOU, not your diagnosis.
               </p>
             </div>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#e91e63' }}>💎 Transparent Monetization</h3>
-              <p>
-                No pay-per-message traps. No hidden fees. No artificial scarcity to force upgrades. 
-                As a nonprofit, our only goal is connection—not extracting maximum revenue per user.
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>♿ Actually Accessible, From Day One</h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                Screen readers? They work perfectly. Keyboard navigation? Built in from the start. 
+                We're not "adding accessibility later"—we're building with it from the very first line of code. 
+                Because you shouldn't have to fight with technology just to find someone special.
               </p>
             </div>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#e91e63' }}>♿ Accessibility by Design</h3>
-              <p>
-                WCAG 2.1 AA compliant from day one. Screen reader compatible, keyboard navigation, 
-                customizable interfaces. Built WITH people with disabilities, not just FOR them.
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>🛡️ Safe and Protected</h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We know people with disabilities face higher rates of online abuse. That's not okay. 
+                We're building strong verification, active human moderation, and clear reporting tools. 
+                Your safety isn't a feature—it's our promise.
               </p>
             </div>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#e91e63' }}>🛡️ Safety First, Always</h3>
-              <p>
-                Robust verification systems. Active moderation that protects users, not profits. 
-                Clear reporting mechanisms. Background check integration (like Match's Garbo partnership).
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>💰 Free. Because Love Shouldn't Cost Money.</h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We're a nonprofit. We're not here to extract money from lonely people. 
+                All core features will be free. Forever. No hidden fees, no pay-to-win, no manipulation.
               </p>
             </div>
 
             <div>
-              <h3 style={{ color: '#e91e63' }}>🤝 Community Over Commodification</h3>
-              <p>
-                Slow dating. Quality over quantity. Belonging over endless swiping. 
-                Users aren't metrics—they're people deserving respect and dignity.
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>🤝 Built WITH You</h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We're not building in a vacuum. We want to hear from YOU. What do you need? 
+                What frustrated you on other platforms? What would make this feel like home?
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MARKET OPPORTUNITY */}
+      {/* HONEST ABOUT WHERE WE ARE */}
       <section className="content-section content-section-alt">
         <div className="container">
-          <h2>The Market Opportunity</h2>
-          
+          <h2>Let's Be Honest: We're Not Ready Yet</h2>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              We could pretend everything's ready and rush to launch. But that wouldn't be honest—and 
+              you deserve honesty.
+            </p>
+            
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+              gap: '2rem',
+              marginTop: '2rem',
+              marginBottom: '2rem'
+            }}>
+              <div>
+                <h4 style={{ color: '#22c55e', marginBottom: '0.5rem' }}>✅ What We Have</h4>
+                <ul style={{ lineHeight: '1.8', paddingLeft: '1.5rem' }}>
+                  <li>Clear vision and mission</li>
+                  <li>Design and planning done</li>
+                  <li>This website to share our journey</li>
+                  <li>Commitment to doing it right</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style={{ color: '#667eea', marginBottom: '0.5rem' }}>🔄 What We're Building</h4>
+                <ul style={{ lineHeight: '1.8', paddingLeft: '1.5rem' }}>
+                  <li>The actual platform</li>
+                  <li>Accessibility features</li>
+                  <li>Safety systems</li>
+                  <li>Testing with real users</li>
+                </ul>
+              </div>
+            </div>
+
+            <div style={{ 
+              marginTop: '2rem', 
+              padding: '2rem', 
+              background: 'rgba(102, 126, 234, 0.1)', 
+              borderRadius: '12px',
+              textAlign: 'center'
+            }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
+                <strong>Our Timeline (Best Guess):</strong><br/>
+                🔄 Beta Testing: Spring 2025<br/>
+                🎉 Public Launch: Summer 2025
+              </p>
+              <p style={{ fontSize: '0.95rem', marginTop: '1rem', opacity: '0.8' }}>
+                (These dates might change—we're not rushing. You deserve quality.)
+              </p>
+            </div>
+
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginTop: '2rem' }}>
+              This will take time. But it's worth it. Because you're worth it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* YOU'RE NOT ALONE */}
+      <section className="content-section">
+        <div className="container">
+          <h2>You're Not Alone</h2>
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#667eea', marginBottom: '1rem' }}>
+              1.3 Billion
+            </div>
+            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              That's how many people around the world live with a disability.
+            </p>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+              It's not just a number. It's:
+            </p>
+            <div style={{ textAlign: 'left', maxWidth: '600px', margin: '0 auto' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+                💙 Elena, who dreams of someone who'll hold her hand on hard days
+              </p>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+                💙 Marcus, who wants to share his love of music with someone special
+              </p>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+                💙 Sophie, who believes somewhere out there is someone who loves her laugh
+              </p>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+                💙 And you. With your dreams, fears, and hope that love is possible
+              </p>
+            </div>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginTop: '2rem', fontWeight: '500' }}>
+              Each of these 1.3 billion people has a beating heart. Including yours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* JOIN THE JOURNEY */}
+      <section id="journey" className="content-section content-section-alt">
+        <div className="container">
+          <h2>Be Part of the Story</h2>
+          <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
+            We're not just building a platform. We're creating a movement of people who believe 
+            everyone deserves love—no exceptions.
+          </p>
+
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
             gap: '2rem',
-            marginTop: '2rem' 
+            marginTop: '2rem',
+            marginBottom: '3rem'
           }}>
-            <div>
-              <h3 style={{ color: '#e91e63' }}>1.3 Billion</h3>
-              <p>People with disabilities worldwide (WHO)</p>
+            <div style={{ 
+              padding: '2rem', 
+              background: 'white', 
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+            }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>📧 Get Early Access</h3>
+              <p style={{ lineHeight: '1.7' }}>
+                Be among the first to join when we launch. Get updates on our progress and 
+                a chance to beta test.
+              </p>
+              <a href="/contact" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
+                Sign Up for Updates
+              </a>
             </div>
-            <div>
-              <h3 style={{ color: '#e91e63' }}>$8.4 Billion</h3>
-              <p>Accessible dating market gap (underserved segment)</p>
+
+            <div style={{ 
+              padding: '2rem', 
+              background: 'white', 
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+            }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>💬 Share Your Story</h3>
+              <p style={{ lineHeight: '1.7' }}>
+                Tell us about your experiences with dating platforms. What worked? What didn't? 
+                Your input shapes what we build.
+              </p>
+              <a href="/contact" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
+                Share Feedback
+              </a>
             </div>
-            <div>
-              <h3 style={{ color: '#e91e63' }}>53.3 Million</h3>
-              <p>Projected US online dating users by 2025 (Statista)</p>
+
+            <div style={{ 
+              padding: '2rem', 
+              background: 'white', 
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+            }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>📢 Spread the Word</h3>
+              <p style={{ lineHeight: '1.7' }}>
+                Know someone who'd benefit from this? Share our mission. The more people know, 
+                the stronger our community becomes.
+              </p>
+              <a href="/mission" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
+                Learn More
+              </a>
             </div>
           </div>
 
-          <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-            <p style={{ fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto' }}>
-              The "Great Deceleration" of 2024-2025 signals a market inflection point. 
-              Users are abandoning toxic platforms and seeking <strong>trust-first alternatives</strong>. 
-              Open Hearts Dating addresses both the accessibility gap AND the industry-wide trust crisis.
+          <div style={{ 
+            maxWidth: '700px', 
+            margin: '3rem auto 0',
+            padding: '2rem',
+            background: 'rgba(102, 126, 234, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center'
+          }}>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
+              <strong>Your love story starts here. Not when we launch—right now.</strong>
+              <br/><br/>
+              By joining us today, you become part of something bigger: a community that believes 
+              disability doesn't define your worth, and that everyone deserves to feel those butterflies 
+              when their phone buzzes with a message from someone special.
             </p>
           </div>
         </div>
       </section>
 
-      {/* OUR PRINCIPLES */}
+      {/* FINAL CTA */}
       <section className="content-section">
-        <div className="container">
-          <h2>Our Founding Principles</h2>
-          <div style={{ maxWidth: '800px', margin: '2rem auto', lineHeight: '1.8' }}>
-            <p style={{ fontSize: '1.1rem' }}>
-              <strong>1. Nonprofit Structure</strong> — Mission over margins. Every decision prioritizes user wellbeing.
-            </p>
-            <p style={{ fontSize: '1.1rem' }}>
-              <strong>2. Radical Transparency</strong> — Open about challenges, monetization, and development roadmap.
-            </p>
-            <p style={{ fontSize: '1.1rem' }}>
-              <strong>3. Community Co-Creation</strong> — Built WITH our users, especially those with lived disability experience.
-            </p>
-            <p style={{ fontSize: '1.1rem' }}>
-              <strong>4. No Dark Patterns</strong> — No psychological manipulation, artificial scarcity, or deceptive practices.
-            </p>
-            <p style={{ fontSize: '1.1rem' }}>
-              <strong>5. Safety = Table Stakes</strong> — Human moderation, verification, and user protection are non-negotiable.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="content-section content-section-alt">
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Join Us in Rebuilding Trust</h2>
-          <p style={{ fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
-            We're seeking mission-aligned investors, advisors, and partners who believe 
-            dating platforms can—and should—put people before profits.
+          <h2>Ready to Begin?</h2>
+          <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
+            We won't promise love at first sight. We won't promise a "perfect match" in 5 minutes.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/contact" className="button">Get in Touch</a>
-            <a href="/trust" className="button button-secondary">Read Our Trust & Safety Approach</a>
+          <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
+            But we promise a place where you'll be seen as YOU. Where your story matters. 
+            Where vulnerability is okay. Where love is possible.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+            <a href="/contact" className="button">Yes, I'm Ready</a>
+            <a href="/mission" className="button button-secondary">I Have Questions</a>
           </div>
         </div>
       </section>
