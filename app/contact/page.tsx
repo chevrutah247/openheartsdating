@@ -83,8 +83,8 @@ export default function ContactPage() {
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <p>
               <strong>Email:</strong>{' '}
-              <a href="mailto:openheartsdatingcom@gmail.com">
-                openheartsdatingcom@gmail.com
+              <a href="mailto:contact@openheartsdating.com">
+                contact@openheartsdating.com
               </a>
             </p>
 
