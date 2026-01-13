@@ -161,6 +161,7 @@ export default function RootLayout({
                 <li><a href="/mission">Mission</a></li>
                 <li><a href="/trust">Trust & Safety</a></li>
                 <li><a href="/news">News</a></li>
+                <li><a href="/volunteer">Volunteer</a></li>
                 <li><a href="/support">Support</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li>
