@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://openheartsdating.com/</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Dating (Timeline) -->
+  <url>
+    <loc>https://openheartsdating.com/dating</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Mission -->
+  <url>
+    <loc>https://openheartsdating.com/mission</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- News -->
+  <url>
+    <loc>https://openheartsdating.com/news</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Volunteer -->
+  <url>
+    <loc>https://openheartsdating.com/volunteer</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Join (Early Access) -->
+  <url>
+    <loc>https://openheartsdating.com/join</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Trust & Safety -->
+  <url>
+    <loc>https://openheartsdating.com/trust</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Support -->
+  <url>
+    <loc>https://openheartsdating.com/support</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Contact -->
+  <url>
+    <loc>https://openheartsdating.com/contact</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from 'next/image'
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -20,6 +21,25 @@ export default function MissionPage() {
           <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '1.5rem auto 0', opacity: '0.9' }}>
             Everyone deserves to feel that. <strong>Including you.</strong>
           </p>
+
+          {/* Mission Hero Image */}
+          <div style={{ 
+            position: 'relative',
+            width: '100%',
+            maxWidth: '900px',
+            height: '400px',
+            margin: '2rem auto',
+            borderRadius: '12px',
+            overflow: 'hidden'
+          }}>
+            <Image
+              src="/images/mission-community.jpg"
+              alt="Large diverse community group with various disabilities gathered together outdoors"
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -98,63 +118,45 @@ export default function MissionPage() {
           
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#667eea' }}>1.3 Billion</div>
-              <p style={{ fontSize: '1.2rem', marginTop: '1rem' }}>
-                people worldwide live with a disability
+              <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#667eea', marginBottom: '1rem' }}>
+                1.3 Billion
+              </div>
+              <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
+                That's how many people worldwide live with a disability.
               </p>
             </div>
 
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
-              That's more than the entire population of the United States, Russia, and Germany combined.
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              Let that sink in. 1.3 BILLION people. That's:
             </p>
 
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
-              But here's what that number really means:
+            <ul style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              <li>16% of the global population</li>
+              <li>More than the population of Europe and North America combined</li>
+              <li>In the US alone: 61 million adults (about 1 in 4)</li>
+            </ul>
+
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              And most dating platforms? They're either:
             </p>
+
+            <ul style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              <li>Completely inaccessible (screen readers don't work, keyboard navigation broken)</li>
+              <li>Technically accessible but culturally hostile</li>
+              <li>Built for able-bodied people with disability as an afterthought</li>
+              <li>Focused on fetishization rather than genuine connection</li>
+            </ul>
 
             <div style={{ 
               padding: '2rem', 
-              background: 'rgba(102, 126, 234, 0.05)', 
+              background: 'rgba(102, 126, 234, 0.1)', 
               borderRadius: '12px',
-              marginBottom: '2rem'
+              marginTop: '2rem'
             }}>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.9', marginBottom: '1rem' }}>
-                💙 1.3 billion people who want to hold someone's hand<br/>
-                💙 1.3 billion people who dream about their first kiss<br/>
-                💙 1.3 billion people who hope someone will text "thinking of you"<br/>
-                💙 1.3 billion people with beating hearts and full of love to give
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0, fontWeight: '500' }}>
+                That's not a niche market. That's not a minority. 
+                That's 1.3 billion people who deserve better.
               </p>
-            </div>
-
-            <div style={{ marginTop: '3rem' }}>
-              <h3 style={{ color: '#667eea' }}>But Current Dating Platforms Fail Them</h3>
-              
-              <div style={{ marginTop: '2rem' }}>
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ color: '#667eea', fontSize: '1.2rem' }}>They're Not Accessible</h4>
-                  <p style={{ lineHeight: '1.8' }}>
-                    Try using Tinder with a screen reader. Try swiping with limited mobility. 
-                    Try reading tiny text with low vision. Most people with disabilities simply 
-                    CAN'T use mainstream dating apps—even if they want to.
-                  </p>
-                </div>
-
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ color: '#667eea', fontSize: '1.2rem' }}>They're Unsafe</h4>
-                  <p style={{ lineHeight: '1.8' }}>
-                    People with disabilities face higher rates of online harassment and abuse. 
-                    Yet platforms do the bare minimum to protect them. Profit matters more than safety.
-                  </p>
-                </div>
-
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ color: '#667eea', fontSize: '1.2rem' }}>They're Designed to Manipulate</h4>
-                  <p style={{ lineHeight: '1.8' }}>
-                    Endless swiping. Pay-to-win features. Fake likes to keep you hooked. 
-                    These platforms make money by keeping you lonely—not by helping you find love.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -162,59 +164,78 @@ export default function MissionPage() {
 
       <section className="content-section content-section-alt">
         <div className="container">
-          <h2>Our Solution: Build Something Different</h2>
+          <h2>What Makes Us Different</h2>
           
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '3rem', textAlign: 'center' }}>
-              We're not trying to "disrupt" the dating industry. 
-              We're trying to rebuild it with care, dignity, and accessibility at the core.
-            </p>
-
-            <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea' }}>🏗️ Built Accessible From Day One</h3>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                Not "we'll add accessibility later." Not "good enough for most people." 
-                Every feature, every button, every page—built to work perfectly with screen readers, 
-                keyboard navigation, and assistive technologies. Because you shouldn't have to fight 
-                your tools to find love.
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+                🏗️ Built BY People Who Get It
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We're not a tech company that saw a "market opportunity." Our team includes people 
+                with disabilities, family members of people with disabilities, and allies who deeply 
+                understand this community.
               </p>
             </div>
 
-            <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea' }}>💰 Nonprofit = No Ulterior Motives</h3>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                We're not here to maximize profit. We're here to maximize connections. 
-                That means no pay-per-message traps, no artificial scarcity, no psychological 
-                manipulation. Core features are free. Forever. Because finding love shouldn't 
-                require a credit card.
+            <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+                ♿ Accessibility Isn't a Feature—It's the Foundation
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                Every line of code is written with accessibility in mind. Every feature is tested with 
+                screen readers, keyboard navigation, and real assistive technologies. We're not "adding 
+                accessibility later"—we're building it in from day one.
+              </p>
+
+              {/* Assistive Tech Image */}
+              <div style={{ 
+                position: 'relative',
+                width: '100%',
+                maxWidth: '700px',
+                height: '350px',
+                margin: '1.5rem auto',
+                borderRadius: '12px',
+                overflow: 'hidden'
+              }}>
+                <Image
+                  src="/images/assistive-keyboard.jpg"
+                  alt="Person using assistive keyboard technology with specialized input devices"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+                💰 Nonprofit = No Hidden Motives
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We're a nonprofit. We're not trying to maximize profits or satisfy investors. 
+                We're here to solve a real problem for real people. Core features will always be free. 
+                Optional premium features help sustain the platform—but you'll never need them to find love.
               </p>
             </div>
 
-            <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea' }}>🛡️ Your Safety Is Our Promise</h3>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                Real human moderators, not just algorithms. Verification systems that work. 
-                Clear reporting tools. Zero tolerance for harassment, scams, or ableist behavior. 
-                We know people with disabilities are more vulnerable online—so we're building 
-                protection into every layer.
+            <div style={{ marginBottom: '3rem' }}>
+              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+                🛡️ Safety Is Non-Negotiable
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                People with disabilities face higher rates of abuse. We know this. That's why we're 
+                building strong verification, active human moderation, and clear reporting systems 
+                from the start. Your safety isn't an afterthought—it's foundational.
               </p>
             </div>
 
-            <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea' }}>🤝 Built WITH You, Not Just FOR You</h3>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                We're not "experts" deciding what you need. We're listening to people with 
-                disabilities, learning from their experiences, and co-creating this platform together. 
-                Your voice shapes what we build. Always.
-              </p>
-            </div>
-
-            <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea' }}>💕 Designed for Real Connections</h3>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                No mindless swiping. Detailed profiles where you can share your real story. 
-                Matching based on values and interests, not just photos. Tools for meaningful 
-                conversations, not quick hookups. We're building for people who want something real.
+            <div>
+              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+                🤝 Community-Driven Development
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We're building this WITH you, not just FOR you. Your feedback shapes our features. 
+                Your experiences inform our decisions. This is YOUR platform—we're just building it.
               </p>
             </div>
           </div>
@@ -223,87 +244,71 @@ export default function MissionPage() {
 
       <section className="content-section">
         <div className="container">
-          <h2>What We Believe</h2>
+          <h2>How We're Building This</h2>
           
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2rem', fontStyle: 'italic' }}>
-              These aren't just values we put on a website. These are the principles we use 
-              to make every decision, every day.
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              We're taking a different approach. No venture capital. No rushing to launch. 
+              Just sustainable, thoughtful growth funded by people who believe in the mission.
             </p>
 
             <div style={{ 
-              display: 'grid', 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
               gap: '2rem',
-              marginTop: '3rem'
+              marginBottom: '2rem'
             }}>
               <div style={{ 
-                padding: '1.5rem', 
+                padding: '1.5rem',
                 background: 'white',
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginTop: 0 }}>💙 Everyone Deserves Love</h3>
-                <p style={{ lineHeight: '1.8', margin: 0 }}>
-                  Not "despite" their disability. Not as a charitable act. Simply because they're human. 
-                  Your worth isn't defined by your body or mind—it's inherent.
-                </p>
-              </div>
-              
-              <div style={{ 
-                padding: '1.5rem', 
-                background: 'white',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginTop: 0 }}>♿ Accessibility Is a Right, Not a Feature</h3>
-                <p style={{ lineHeight: '1.8', margin: 0 }}>
-                  You shouldn't have to beg for websites to work. You shouldn't have to struggle 
-                  with tools that exclude you. Accessibility isn't something we "add"—it's the foundation 
-                  of everything we build.
-                </p>
-              </div>
-              
-              <div style={{ 
-                padding: '1.5rem', 
-                background: 'white',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginTop: 0 }}>🤝 We're All in This Together</h3>
-                <p style={{ lineHeight: '1.8', margin: 0 }}>
-                  This isn't "us" building for "them." We're a community. Your stories, your feedback, 
-                  your lived experience—that's what makes this platform real. We're co-creating something 
-                  that belongs to all of us.
-                </p>
-              </div>
-              
-              <div style={{ 
-                padding: '1.5rem', 
-                background: 'white',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginTop: 0 }}>🌱 We're Playing the Long Game</h3>
-                <p style={{ lineHeight: '1.8', margin: 0 }}>
-                  We're not trying to get rich quick or sell to the highest bidder. We're building 
-                  something that will still be here in 10, 20, 50 years. Because love doesn't have 
-                  an expiration date—and neither should platforms that facilitate it.
+                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📝</div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Grant Writing</h3>
+                <p style={{ fontSize: '1rem', lineHeight: '1.7', opacity: '0.9' }}>
+                  Securing nonprofit grants from foundations that support disability initiatives
                 </p>
               </div>
 
               <div style={{ 
-                padding: '1.5rem', 
+                padding: '1.5rem',
                 background: 'white',
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginTop: 0 }}>💎 Honesty Over Hype</h3>
-                <p style={{ lineHeight: '1.8', margin: 0 }}>
-                  We won't promise you a perfect match in 5 minutes. We won't claim to "fix" loneliness 
-                  with an algorithm. Dating is hard. Finding the right person takes time. We'll be honest 
-                  about that—and support you through the journey.
+                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💙</div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Community Donations</h3>
+                <p style={{ fontSize: '1rem', lineHeight: '1.7', opacity: '0.9' }}>
+                  Direct support from people who believe in our mission
                 </p>
               </div>
+
+              <div style={{ 
+                padding: '1.5rem',
+                background: 'white',
+                borderRadius: '12px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              }}>
+                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🤝</div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Strategic Partners</h3>
+                <p style={{ fontSize: '1rem', lineHeight: '1.7', opacity: '0.9' }}>
+                  Organizations aligned with our mission of accessibility and inclusion
+                </p>
+              </div>
+            </div>
+
+            <div style={{ 
+              padding: '2rem',
+              background: 'rgba(102, 126, 234, 0.1)',
+              borderRadius: '12px',
+              marginTop: '2rem'
+            }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
+                <strong>Want to help?</strong> We're looking for experienced grant writers, 
+                fundraising professionals, and community partners who can help us grow sustainably. 
+                <Link href="/volunteer" style={{ color: '#667eea', fontWeight: '600' }}> Join our team →</Link>
+              </p>
             </div>
           </div>
         </div>
@@ -311,108 +316,88 @@ export default function MissionPage() {
 
       <section className="content-section content-section-alt">
         <div className="container">
-          <h2>Where We're Going</h2>
+          <h2>Our Values</h2>
           
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '3rem' }}>
-              We're honest about where we are: we're still building. But here's where we're headed.
-            </p>
-
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ 
-              padding: '2rem', 
-              background: 'white',
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              marginBottom: '2rem'
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '2rem'
             }}>
-              <h3 style={{ color: '#667eea', marginTop: 0 }}>Short Term: Get It Right</h3>
-              <p style={{ lineHeight: '1.8' }}>
-                We're not rushing to launch. We're taking the time to build something that actually 
-                works—especially for people with disabilities. That means:
-              </p>
-              <ul style={{ lineHeight: '1.8' }}>
-                <li>Extensive accessibility testing with real users</li>
-                <li>Building safety features that actually protect people</li>
-                <li>Creating a community culture of respect and inclusion</li>
-                <li>Learning from early adopters and making improvements</li>
-              </ul>
-            </div>
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  Accessibility First
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  Not as an add-on, but as the foundation of everything we build
+                </p>
+              </div>
 
-            <div style={{ 
-              padding: '2rem', 
-              background: 'white',
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              marginBottom: '2rem'
-            }}>
-              <h3 style={{ color: '#667eea', marginTop: 0 }}>Medium Term: Grow the Community</h3>
-              <p style={{ lineHeight: '1.8' }}>
-                Once we've proven that our approach works, we want to grow—carefully and thoughtfully. 
-                Our goal isn't to be the biggest platform. It's to be the BEST platform for people 
-                with disabilities. That means:
-              </p>
-              <ul style={{ lineHeight: '1.8' }}>
-                <li>Expanding to more countries and languages</li>
-                <li>Partnering with disability advocacy organizations</li>
-                <li>Adding features our community actually wants</li>
-                <li>Staying true to our nonprofit mission as we scale</li>
-              </ul>
-            </div>
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  Radical Transparency
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  Honest about our progress, our challenges, and our timeline
+                </p>
+              </div>
 
-            <div style={{ 
-              padding: '2rem', 
-              background: 'white',
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <h3 style={{ color: '#667eea', marginTop: 0 }}>Long Term: Change the Industry</h3>
-              <p style={{ lineHeight: '1.8' }}>
-                Our biggest dream? To force the entire dating industry to do better. When we prove 
-                that accessibility works, that nonprofit models can succeed, that putting people first 
-                is both possible and sustainable—other platforms will have to follow. That means:
-              </p>
-              <ul style={{ lineHeight: '1.8' }}>
-                <li>Setting new standards for accessibility in online dating</li>
-                <li>Showing that ethical platforms can thrive</li>
-                <li>Inspiring others to build with inclusion at the core</li>
-                <li>Making the internet a more accessible place, period</li>
-              </ul>
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  Community Ownership
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  Built WITH the disability community, shaped BY your voices
+                </p>
+              </div>
+
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  Safety Above All
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  Protecting our community is more important than growth or features
+                </p>
+              </div>
+
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  No Exploitation
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  We won't profit from loneliness or manipulate people into paying
+                </p>
+              </div>
+
+              <div>
+                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                  Human Dignity
+                </h3>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  Every person deserves respect, connection, and the chance at love
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section className="content-section">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Be Part of Something Bigger</h2>
-          <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
-            This isn't just about a dating platform. It's about building a world where everyone—
-            regardless of ability—has the chance to experience love, connection, and belonging.
-          </p>
-          <p style={{ fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
-            You can be part of this movement. Whether you're someone looking for love, 
-            someone who wants to help us build, or someone who simply believes everyone 
-            deserves dignity and respect.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
-            <Link href="/contact" className="button">Join Our Journey</Link>
-            <Link href="/news" className="button button-secondary">Follow Our Progress</Link>
-          </div>
-          
-          <div style={{ 
-            maxWidth: '600px', 
-            margin: '3rem auto 0',
-            padding: '2rem',
-            background: 'rgba(102, 126, 234, 0.1)',
-            borderRadius: '12px'
-          }}>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontStyle: 'italic' }}>
-              "Love is not a finite resource. There's enough for everyone. 
-              We just need to remove the barriers that keep people from finding it."
+        <div className="container">
+          <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '1.5rem' }}>Join Us in Building This</h2>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              This mission is bigger than us. It's about creating something that serves 
+              1.3 billion people who deserve better. Will you be part of it?
             </p>
-            <p style={{ marginTop: '1rem', fontSize: '0.95rem', opacity: '0.8' }}>
-              — The Open Hearts Dating Team
-            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/join" className="button" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                Join Early Access 💙
+              </Link>
+              <Link href="/volunteer" className="button button-secondary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                Volunteer With Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>
