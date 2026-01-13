@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import Testimonials from './components/Testimonials'
 
 export const metadata: Metadata = {
   title: 'Open Hearts Dating — Building Love Without Barriers',
@@ -44,6 +46,26 @@ export default function HomePage() {
             <strong>We're still building our platform</strong>, but we already know one thing: 
             we want to build it WITH you, not just FOR you.
           </p>
+
+          {/* Hero Image */}
+          <div style={{ 
+            position: 'relative',
+            width: '100%',
+            maxWidth: '900px',
+            height: '400px',
+            margin: '2rem auto',
+            borderRadius: '12px',
+            overflow: 'hidden'
+          }}>
+            <Image
+              src="/images/hero-couples.jpg"
+              alt="Diverse couples with disabilities in loving embrace outdoors in golden hour"
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </div>
+
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="#journey" className="button">Join Our Journey</a>
             <a href="#story" className="button button-secondary">Why We Started</a>
@@ -125,10 +147,11 @@ export default function HomePage() {
             </div>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>💰 Free. Because Love Shouldn't Cost Money.</h3>
+              <h3 style={{ color: '#667eea', fontSize: '1.5rem' }}>💰 Core Features Free</h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
                 We're a nonprofit. We're not here to extract money from lonely people. 
-                All core features will be free. Forever. No hidden fees, no pay-to-win, no manipulation.
+                Core features are free. Optional premium features help sustain the platform, 
+                but you'll never need them to find love.
               </p>
             </div>
 
@@ -149,54 +172,20 @@ export default function HomePage() {
           <h2>Let's Be Honest: We're Not Ready Yet</h2>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              We could pretend everything's ready and rush to launch. But that wouldn't be honest—and 
-              you deserve honesty.
+              We could pretend we're closer than we are. But that's not our style.
             </p>
-            
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-              gap: '2rem',
-              marginTop: '2rem',
-              marginBottom: '2rem'
-            }}>
-              <div>
-                <h4 style={{ color: '#22c55e', marginBottom: '0.5rem' }}>✅ What We Have</h4>
-                <ul style={{ lineHeight: '1.8', paddingLeft: '1.5rem' }}>
-                  <li>Clear vision and mission</li>
-                  <li>Design and planning done</li>
-                  <li>This website to share our journey</li>
-                  <li>Commitment to doing it right</li>
-                </ul>
-              </div>
-              <div>
-                <h4 style={{ color: '#667eea', marginBottom: '0.5rem' }}>🔄 What We're Building</h4>
-                <ul style={{ lineHeight: '1.8', paddingLeft: '1.5rem' }}>
-                  <li>The actual platform</li>
-                  <li>Accessibility features</li>
-                  <li>Safety systems</li>
-                  <li>Testing with real users</li>
-                </ul>
-              </div>
-            </div>
-
-            <div style={{ 
-              marginTop: '2rem', 
-              padding: '2rem', 
-              background: 'rgba(102, 126, 234, 0.1)', 
-              borderRadius: '12px',
-              textAlign: 'center'
-            }}>
-              <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
-                <strong>Our Timeline (Best Guess):</strong><br/>
-                🔄 Beta Testing: Spring 2025<br/>
-                🎉 Public Launch: Summer 2025
-              </p>
-              <p style={{ fontSize: '0.95rem', marginTop: '1rem', opacity: '0.8' }}>
-                (These dates might change—we're not rushing. You deserve quality.)
-              </p>
-            </div>
-
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              The truth? We're in the early stages. We're:
+            </p>
+            <ul style={{ fontSize: '1.1rem', lineHeight: '1.9', marginBottom: '1.5rem' }}>
+              <li>Designing the platform with accessibility experts</li>
+              <li>Building the core infrastructure</li>
+              <li>Testing with real people who need this to work</li>
+              <li>Making sure every feature is safe and accessible before we add it</li>
+            </ul>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              We expect to launch beta testing in <strong>Spring 2026</strong> and open to everyone by <strong>Summer 2026</strong>.
+            </p>
             <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginTop: '2rem' }}>
               This will take time. But it's worth it. Because you're worth it.
             </p>
@@ -239,8 +228,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EARLY ACCESS FORM - NEW! */}
-      <section className="content-section content-section-alt">
+      {/* EARLY ACCESS FORM */}
+      <section id="journey" className="content-section content-section-alt">
         <div className="container">
           <div style={{ 
             maxWidth: '700px', 
@@ -278,105 +267,17 @@ export default function HomePage() {
               </p>
             </div>
 
-            <a 
-              href="/join" 
-              style={{ 
-                display: 'inline-block',
-                marginTop: '1.5rem',
-                color: '#667eea',
-                textDecoration: 'underline',
-                fontSize: '0.95rem'
-              }}
-            >
-              Want more involvement? See all Early Access options →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* JOIN THE JOURNEY */}
-      <section id="journey" className="content-section">
-        <div className="container">
-          <h2>Be Part of the Story</h2>
-          <p style={{ textAlign: 'center', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
-            We're not just building a platform. We're creating a movement of people who believe 
-            everyone deserves love—no exceptions.
-          </p>
-
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-            gap: '2rem',
-            marginTop: '2rem',
-            marginBottom: '3rem'
-          }}>
-            <div style={{ 
-              padding: '2rem', 
-              background: 'white', 
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>📧 Get Early Access</h3>
-              <p style={{ lineHeight: '1.7' }}>
-                Be among the first to join when we launch. Get updates on our progress and 
-                a chance to beta test.
-              </p>
-              <a href="/join" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
-                Sign Up for Updates
+            <p style={{ fontSize: '1rem', marginTop: '2rem' }}>
+              Want more involvement? <a href="/join" style={{ color: '#667eea', fontWeight: '600' }}>
+                Explore all participation levels →
               </a>
-            </div>
-
-            <div style={{ 
-              padding: '2rem', 
-              background: 'white', 
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>💬 Share Your Story</h3>
-              <p style={{ lineHeight: '1.7' }}>
-                Tell us about your experiences with dating platforms. What worked? What didn't? 
-                Your input shapes what we build.
-              </p>
-              <a href="/contact" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
-                Share Feedback
-              </a>
-            </div>
-
-            <div style={{ 
-              padding: '2rem', 
-              background: 'white', 
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.3rem' }}>📢 Spread the Word</h3>
-              <p style={{ lineHeight: '1.7' }}>
-                Know someone who'd benefit from this? Share our mission. The more people know, 
-                the stronger our community becomes.
-              </p>
-              <a href="/mission" className="button" style={{ marginTop: '1rem', display: 'inline-block' }}>
-                Learn More
-              </a>
-            </div>
-          </div>
-
-          <div style={{ 
-            maxWidth: '700px', 
-            margin: '3rem auto 0',
-            padding: '2rem',
-            background: 'rgba(102, 126, 234, 0.1)',
-            borderRadius: '12px',
-            textAlign: 'center'
-          }}>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
-              <strong>Your love story starts here. Not when we launch—right now.</strong>
-              <br/><br/>
-              By joining us today, you become part of something bigger: a community that believes 
-              disability doesn't define your worth, and that everyone deserves to feel those butterflies 
-              when their phone buzzes with a message from someone special.
             </p>
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
       {/* SUPPORT OUR MISSION */}
       <section className="content-section">
@@ -397,6 +298,24 @@ export default function HomePage() {
               We're a nonprofit building Open Hearts Dating for people, not profit. 
               Every donation helps us create a truly accessible platform where everyone can find love.
             </p>
+
+            {/* Support Image */}
+            <div style={{ 
+              position: 'relative',
+              width: '100%',
+              maxWidth: '600px',
+              height: '300px',
+              margin: '2rem auto',
+              borderRadius: '12px',
+              overflow: 'hidden'
+            }}>
+              <Image
+                src="/images/support-hands.jpg"
+                alt="Hands coming together in circle, unity and support"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             
             <div style={{ 
               display: 'grid', 
@@ -455,18 +374,21 @@ export default function HomePage() {
 
       {/* FINAL CTA */}
       <section className="content-section content-section-alt">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Ready to Begin?</h2>
-          <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
-            We won't promise love at first sight. We won't promise a "perfect match" in 5 minutes.
-          </p>
-          <p style={{ fontSize: '1.15rem', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
-            But we promise a place where you'll be seen as YOU. Where your story matters. 
-            Where vulnerability is okay. Where love is possible.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
-            <a href="/join" className="button">Yes, I'm Ready</a>
-            <a href="/mission" className="button button-secondary">I Have Questions</a>
+        <div className="container">
+          <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+            <h2>Ready to Begin?</h2>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              Join our Early Access program. Be part of building something meaningful. 
+              Help us create the dating platform the disability community deserves.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/join" className="button" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                Yes, I'm Ready 💙
+              </a>
+              <a href="/mission" className="button button-secondary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                I Have Questions
+              </a>
+            </div>
           </div>
         </div>
       </section>
