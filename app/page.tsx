@@ -259,40 +259,8 @@ export default function HomePage() {
               and exclusive early access to the platform.
             </p>
 
-            {/* Simple Email Form - ВЫ ЗАМЕНИТЕ ЭТО НА MAILERLITE EMBED CODE */}
-            <form style={{ marginBottom: '1.5rem' }}>
-              <div style={{ 
-                display: 'flex', 
-                gap: '1rem', 
-                flexDirection: 'column',
-                maxWidth: '500px',
-                margin: '0 auto'
-              }}>
-                <input 
-                  type="email" 
-                  placeholder="Your email address"
-                  required
-                  style={{
-                    padding: '1rem 1.5rem',
-                    fontSize: '1.05rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px',
-                    width: '100%'
-                  }}
-                />
-                <button 
-                  type="submit" 
-                  className="button"
-                  style={{ 
-                    width: '100%',
-                    fontSize: '1.1rem',
-                    padding: '1rem'
-                  }}
-                >
-                  Count Me In! 💙
-                </button>
-              </div>
-            </form>
+            {/* Mailerlite Newsletter Form */}
+            <div className="ml-embedded" data-form="XyQWBM" suppressHydrationWarning></div>
 
             <p style={{ fontSize: '0.9rem', opacity: '0.7', marginBottom: '1.5rem' }}>
               No spam, ever. Unsubscribe anytime.
@@ -405,6 +373,81 @@ export default function HomePage() {
               By joining us today, you become part of something bigger: a community that believes 
               disability doesn't define your worth, and that everyone deserves to feel those butterflies 
               when their phone buzzes with a message from someone special.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SUPPORT OUR MISSION */}
+      <section className="content-section">
+        <div className="container">
+          <div style={{ 
+            maxWidth: '800px', 
+            margin: '0 auto',
+            textAlign: 'center',
+            padding: '3rem 2rem',
+            background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
+            borderRadius: '16px',
+            border: '2px solid rgba(102, 126, 234, 0.2)'
+          }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+              💙 Help Us Build This
+            </h2>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '2rem', opacity: '0.9' }}>
+              We're a nonprofit building Open Hearts Dating for people, not profit. 
+              Every donation helps us create a truly accessible platform where everyone can find love.
+            </p>
+            
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem',
+              textAlign: 'left'
+            }}>
+              <div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎯</div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Our Goal</h3>
+                <p style={{ fontSize: '0.95rem', opacity: '0.8' }}>
+                  Fund development, accessibility testing, and safe launch
+                </p>
+              </div>
+              
+              <div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>💰</div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>100% Nonprofit</h3>
+                <p style={{ fontSize: '0.95rem', opacity: '0.8' }}>
+                  Every dollar goes directly to building the platform
+                </p>
+              </div>
+              
+              <div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🏆</div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Donor Recognition</h3>
+                <p style={{ fontSize: '0.95rem', opacity: '0.8' }}>
+                  Special thanks on our Supporters page
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://gofund.me/2ce8664b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button"
+              style={{
+                display: 'inline-block',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                fontSize: '1.2rem',
+                padding: '1rem 2.5rem',
+                marginBottom: '1rem'
+              }}
+            >
+              💙 Support Us on GoFundMe
+            </a>
+            
+            <p style={{ fontSize: '0.9rem', opacity: '0.7', marginTop: '1rem' }}>
+              Can't donate? Share our mission with someone who can! 🙏
             </p>
           </div>
         </div>

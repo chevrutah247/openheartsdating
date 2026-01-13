@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import ShareButtons from '../components/ShareButtons'
 
 export const metadata: Metadata = {
   title: 'Join Early Access — Be Among the First',
@@ -212,51 +213,8 @@ export default function JoinPage() {
                 Stay informed with bi-weekly updates
               </p>
               
-              {/* Mailerlite Embedded Form будет здесь */}
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="email-newsletter" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Email Address *
-                </label>
-                <input 
-                  type="email" 
-                  id="email-newsletter"
-                  placeholder="your@email.com"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="name-newsletter" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  First Name (optional)
-                </label>
-                <input 
-                  type="text" 
-                  id="name-newsletter"
-                  placeholder="Your name"
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="button"
-                style={{ width: '100%', fontSize: '1.1rem' }}
-              >
-                Keep Me Updated
-              </button>
+              {/* Mailerlite Form */}
+              <div className="ml-embedded" data-form="XyQWBM" suppressHydrationWarning></div>
 
               <p style={{ fontSize: '0.85rem', textAlign: 'center', marginTop: '1rem', opacity: '0.7' }}>
                 No spam, ever. Unsubscribe anytime. We respect your inbox.
@@ -277,95 +235,8 @@ export default function JoinPage() {
                 Help us test and improve the platform
               </p>
               
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="email-beta" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Email Address *
-                </label>
-                <input 
-                  type="email" 
-                  id="email-beta"
-                  placeholder="your@email.com"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="name-beta" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  First Name *
-                </label>
-                <input 
-                  type="text" 
-                  id="name-beta"
-                  placeholder="Your name"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="disability-beta" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Type of Disability (optional, helps us test better)
-                </label>
-                <select 
-                  id="disability-beta"
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                >
-                  <option value="">Prefer not to say</option>
-                  <option value="visual">Visual/Blind/Low Vision</option>
-                  <option value="hearing">Deaf/Hard of Hearing</option>
-                  <option value="motor">Motor/Physical</option>
-                  <option value="cognitive">Cognitive/Learning</option>
-                  <option value="chronic">Chronic Illness/Pain</option>
-                  <option value="mental">Mental Health</option>
-                  <option value="multiple">Multiple</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="assistive-beta" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Assistive Technologies You Use (optional)
-                </label>
-                <input 
-                  type="text" 
-                  id="assistive-beta"
-                  placeholder="e.g., JAWS, NVDA, VoiceOver, Dragon..."
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="button"
-                style={{ width: '100%', fontSize: '1.1rem' }}
-              >
-                Join Beta Testing
-              </button>
+              {/* Mailerlite Form */}
+              <div className="ml-embedded" data-form="qmB8BX" suppressHydrationWarning></div>
 
               <p style={{ fontSize: '0.85rem', textAlign: 'center', marginTop: '1rem', opacity: '0.7' }}>
                 We'll contact you when beta testing begins (Spring 2025)
@@ -384,93 +255,17 @@ export default function JoinPage() {
                 Join the inner circle and help build the movement
               </p>
               
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="email-community" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Email Address *
-                </label>
-                <input 
-                  type="email" 
-                  id="email-community"
-                  placeholder="your@email.com"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="name-community" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Full Name *
-                </label>
-                <input 
-                  type="text" 
-                  id="name-community"
-                  placeholder="Your full name"
-                  required
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="why-community" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Why do you want to help build this community? *
-                </label>
-                <textarea 
-                  id="why-community"
-                  placeholder="Tell us your story..."
-                  required
-                  rows={4}
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px',
-                    fontFamily: 'inherit'
-                  }}
-                />
-              </div>
-
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label htmlFor="skills-community" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  Skills You Can Contribute (optional)
-                </label>
-                <input 
-                  type="text" 
-                  id="skills-community"
-                  placeholder="e.g., community moderation, content creation, accessibility testing..."
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    fontSize: '1rem',
-                    border: '2px solid #e5e7eb',
-                    borderRadius: '8px'
-                  }}
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="button"
-                style={{ width: '100%', fontSize: '1.1rem' }}
-              >
-                Join as Community Builder
-              </button>
+              {/* Mailerlite Form */}
+              <div className="ml-embedded" data-form="O7SPip" suppressHydrationWarning></div>
 
               <p style={{ fontSize: '0.85rem', textAlign: 'center', marginTop: '1rem', opacity: '0.7' }}>
                 We'll review applications and invite you to our community channels
               </p>
+            </div>
+
+            {/* Share Buttons */}
+            <div style={{ marginTop: '3rem' }}>
+              <ShareButtons />
             </div>
 
           </div>

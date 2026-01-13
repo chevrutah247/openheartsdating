@@ -115,6 +115,19 @@ export default function RootLayout({
           }}
         />
 
+        {/* MailerLite Universal Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+              .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+              n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+              (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+              ml('account', '2031376');
+            `,
+          }}
+        />
+
         {/* Структурированные данные для SEO */}
         <script
           type="application/ld+json"
@@ -150,6 +163,24 @@ export default function RootLayout({
                 <li><a href="/news">News</a></li>
                 <li><a href="/support">Support</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li>
+                  <a 
+                    href="https://gofund.me/2ce8664b" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{
+                      background: '#22c55e',
+                      color: 'white',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '6px',
+                      fontWeight: '600',
+                      display: 'inline-block',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    💙 Donate
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
