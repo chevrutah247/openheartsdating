@@ -1,26 +1,4 @@
 import Link from 'next/link'
-
-  <time style={{ color: '#666', fontSize: '0.9rem' }}>
-    January 18, 2026
-  </time>
-  
-  <h2 style={{ 
-    fontSize: '1.5rem', 
-    marginTop: '0.5rem',
-    marginBottom: '0.5rem',
-    color: '#333'
-  }}>
-    🎉 Major Update: Profile Editing & UI Improvements Are Live!
-  </h2>
-  
-  <p style={{ color: '#666', margin: 0 }}>
-    We're excited to announce profile editing, photo uploads, and a completely 
-    refreshed user interface. Read about all the improvements →
-  </p>
-</Link>
-
-
-
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -31,21 +9,13 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
   const news = [
-{
+    {
       id: 10,
       date: 'January 18, 2026',
       title: '🎉 Major Update: Profile Editing & UI Improvements Are Live!',
-      excerpt: "We're excited to announce profile editing, photo uploads, and a completely refreshed user interface.",
-      slug: 'profile-editing-launch'  // ← это создаст ссылку на отдельную страницу
+      excerpt: "We're excited to announce profile editing, photo uploads, and a completely refreshed user interface. Read about all the improvements →",
+      slug: 'profile-editing-launch'
     },
-    // дальше идут старые новости...
-    {
-      id: 9,
-      date: 'January 18, 2026',
-      title: 'Platform MVP Is Live! 🚀',
-      // ...
-    },
-
     {
       id: 9,
       date: 'January 18, 2026',
@@ -430,51 +400,93 @@ export default function NewsPage() {
       <section className="content-section">
         <div className="container">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            {news.map((article) => (
-              <article 
-                key={article.id}
-                style={{ 
-                  marginBottom: '4rem',
-                  paddingBottom: '3rem',
-                  borderBottom: article.id !== 1 ? '1px solid #e5e7eb' : 'none'
-                }}
-              >
-                <div style={{ 
-                  position: 'relative',
-                  width: '100%',
-                  height: '400px',
-                  marginBottom: '2rem',
-                  borderRadius: '12px',
-                  overflow: 'hidden'
-                }}>
-                  <Image
-                    src={article.image}
-                    alt={article.imageAlt}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    priority={article.id === 9}
-                  />
-                </div>
+            {news.map((article) => {
+              // Если есть slug - это ссылка на отдельную страницу
+              if (article.slug) {
+                return (
+                  <Link
+                    key={article.id}
+                    href={`/news/${article.slug}`}
+                    style={{
+                      display: 'block',
+                      padding: '2rem',
+                      background: 'white',
+                      borderRadius: '12px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                      textDecoration: 'none',
+                      marginBottom: '2rem',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <time style={{ color: '#667eea', fontSize: '0.9rem', fontWeight: '600' }}>
+                      {article.date}
+                    </time>
+                    
+                    <h2 style={{ 
+                      fontSize: '1.5rem', 
+                      marginTop: '0.5rem',
+                      marginBottom: '0.5rem',
+                      color: '#333'
+                    }}>
+                      {article.title}
+                    </h2>
+                    
+                    <p style={{ color: '#666', margin: 0, lineHeight: '1.6' }}>
+                      {article.excerpt}
+                    </p>
+                  </Link>
+                )
+              }
 
-                <div style={{ fontSize: '0.95rem', color: '#667eea', marginBottom: '0.5rem', fontWeight: '600' }}>
-                  {article.date}
-                </div>
-                
-                <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-                  {article.title}
-                </h2>
-                
-                <p style={{ fontSize: '1.15rem', color: '#6b7280', marginBottom: '1.5rem' }}>
-                  {article.excerpt}
-                </p>
+              // Обычная новость - показываем здесь
+              return (
+                <article 
+                  key={article.id}
+                  style={{ 
+                    marginBottom: '4rem',
+                    paddingBottom: '3rem',
+                    borderBottom: article.id !== 1 ? '1px solid #e5e7eb' : 'none'
+                  }}
+                >
+                  {article.image && (
+                    <div style={{ 
+                      position: 'relative',
+                      width: '100%',
+                      height: '400px',
+                      marginBottom: '2rem',
+                      borderRadius: '12px',
+                      overflow: 'hidden'
+                    }}>
+                      <Image
+                        src={article.image}
+                        alt={article.imageAlt || ''}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        priority={article.id === 9}
+                      />
+                    </div>
+                  )}
 
-                {(article.id === 9 || article.id === 8 || article.id === 7) && (
-                  <div style={{ marginTop: '2rem', color: '#333', lineHeight: '1.8' }}>
-                    {getFullContent(article.id)}
+                  <div style={{ fontSize: '0.95rem', color: '#667eea', marginBottom: '0.5rem', fontWeight: '600' }}>
+                    {article.date}
                   </div>
-                )}
-              </article>
-            ))}
+                  
+                  <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+                    {article.title}
+                  </h2>
+                  
+                  <p style={{ fontSize: '1.15rem', color: '#6b7280', marginBottom: '1.5rem' }}>
+                    {article.excerpt}
+                  </p>
+
+                  {(article.id === 9 || article.id === 8 || article.id === 7) && (
+                    <div style={{ marginTop: '2rem', color: '#333', lineHeight: '1.8' }}>
+                      {getFullContent(article.id)}
+                    </div>
+                  )}
+                </article>
+              )
+            })}
           </div>
 
           {/* CTA Section */}
