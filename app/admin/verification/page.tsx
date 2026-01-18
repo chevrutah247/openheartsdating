@@ -23,6 +23,7 @@ export default function AdminVerificationPage() {
   const [rejectionReason, setRejectionReason] = useState('')
   const [processing, setProcessing] = useState(false)
   const [filter, setFilter] = useState<'pending' | 'approved' | 'rejected' | 'all'>('pending')
+  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null)
 
   useEffect(() => {
     checkAdminAccess()
@@ -33,6 +34,11 @@ export default function AdminVerificationPage() {
       loadRequests()
     }
   }, [isAdmin])
+
+  const showNotification = (type: 'success' | 'error', message: string) => {
+    setNotification({ type, message })
+    setTimeout(() => setNotification(null), 5000)
+  }
 
   const checkAdminAccess = async () => {
     const { data: { user } } = await supabase.auth.getUser()
@@ -80,15 +86,42 @@ export default function AdminVerificationPage() {
     }
   }
 
-  // Фильтруем для отображения
   const filteredRequests = filter === 'all' 
     ? allRequests 
     : allRequests.filter(r => r.status === filter)
 
-  // Счётчики из ВСЕХ документов
   const pendingCount = allRequests.filter(r => r.status === 'pending').length
   const approvedCount = allRequests.filter(r => r.status === 'approved').length
   const rejectedCount = allRequests.filter(r => r.status === 'rejected').length
+
+  const getUserEmail = async (userId: string): Promise<string | null> => {
+    const { data } = await supabase
+      .from('profiles')
+      .select('email')
+      .eq('id', userId)
+      .single()
+    
+    return data?.email || null
+  }
+
+  const sendVerificationEmail = async (email: string, type: 'approved' | 'rejected', reason?: string) => {
+    try {
+      const response = await fetch('/api/send-verification-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to: email, type, reason })
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to send email')
+      }
+      
+      return true
+    } catch (error) {
+      console.error('Email error:', error)
+      return false
+    }
+  }
 
   const handleApprove = async (request: VerificationRequest) => {
     setProcessing(true)
@@ -112,11 +145,25 @@ export default function AdminVerificationPage() {
         })
         .eq('id', request.user_id)
 
+      // Send email notification
+      const email = await getUserEmail(request.user_id)
+      if (email) {
+        const emailSent = await sendVerificationEmail(email, 'approved')
+        if (emailSent) {
+          showNotification('success', 'Approved and email sent!')
+        } else {
+          showNotification('success', 'Approved (email failed to send)')
+        }
+      } else {
+        showNotification('success', 'Approved (no email on file)')
+      }
+
       loadRequests()
       setSelectedRequest(null)
 
     } catch (error) {
       console.error('Error approving:', error)
+      showNotification('error', 'Error approving verification')
     }
 
     setProcessing(false)
@@ -151,12 +198,26 @@ export default function AdminVerificationPage() {
         })
         .eq('id', request.user_id)
 
+      // Send email notification
+      const email = await getUserEmail(request.user_id)
+      if (email) {
+        const emailSent = await sendVerificationEmail(email, 'rejected', rejectionReason)
+        if (emailSent) {
+          showNotification('success', 'Rejected and email sent!')
+        } else {
+          showNotification('success', 'Rejected (email failed to send)')
+        }
+      } else {
+        showNotification('success', 'Rejected (no email on file)')
+      }
+
       loadRequests()
       setSelectedRequest(null)
       setRejectionReason('')
 
     } catch (error) {
       console.error('Error rejecting:', error)
+      showNotification('error', 'Error rejecting verification')
     }
 
     setProcessing(false)
@@ -196,6 +257,24 @@ export default function AdminVerificationPage() {
 
   return (
     <section style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
+      {/* Notification */}
+      {notification && (
+        <div style={{
+          position: 'fixed',
+          top: '1rem',
+          right: '1rem',
+          padding: '1rem 1.5rem',
+          background: notification.type === 'success' ? '#d4edda' : '#f8d7da',
+          color: notification.type === 'success' ? '#155724' : '#721c24',
+          borderRadius: '8px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          zIndex: 1000,
+          fontWeight: 500
+        }}>
+          {notification.message}
+        </div>
+      )}
+
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -442,7 +521,7 @@ export default function AdminVerificationPage() {
                     opacity: processing ? 0.6 : 1
                   }}
                 >
-                  Approve Verification
+                  {processing ? 'Processing...' : 'Approve Verification'}
                 </button>
 
                 <div style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
@@ -478,7 +557,7 @@ export default function AdminVerificationPage() {
                     opacity: (processing || !rejectionReason.trim()) ? 0.6 : 1
                   }}
                 >
-                  Reject Verification
+                  {processing ? 'Processing...' : 'Reject Verification'}
                 </button>
               </div>
             )}
