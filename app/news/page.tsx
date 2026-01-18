@@ -1,16 +1,5 @@
-// В начало, перед старыми новостями:
-<Link 
-  href="/news/profile-editing-launch"
-  style={{
-    display: 'block',
-    padding: '2rem',
-    background: 'white',
-    borderRadius: '12px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    textDecoration: 'none',
-    marginBottom: '2rem'
-  }}
->
+import Link from 'next/link'
+
   <time style={{ color: '#666', fontSize: '0.9rem' }}>
     January 18, 2026
   </time>
@@ -42,6 +31,21 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
   const news = [
+{
+      id: 10,
+      date: 'January 18, 2026',
+      title: '🎉 Major Update: Profile Editing & UI Improvements Are Live!',
+      excerpt: "We're excited to announce profile editing, photo uploads, and a completely refreshed user interface.",
+      slug: 'profile-editing-launch'  // ← это создаст ссылку на отдельную страницу
+    },
+    // дальше идут старые новости...
+    {
+      id: 9,
+      date: 'January 18, 2026',
+      title: 'Platform MVP Is Live! 🚀',
+      // ...
+    },
+
     {
       id: 9,
       date: 'January 18, 2026',
