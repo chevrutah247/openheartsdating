@@ -1,130 +1,256 @@
-import { NextRequest, NextResponse } from 'next/server'
+'use client'
 
-const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
+import { useRouter } from 'next/navigation'
 
-export async function POST(request: NextRequest) {
-  try {
-    const { subject, title, excerpt, link } = await request.json()
+export default function AdminNewsletterPage() {
+  const router = useRouter()
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [sending, setSending] = useState(false)
+  const [result, setResult] = useState<{type: 'success' | 'error', message: string} | null>(null)
+  
+  const [subject, setSubject] = useState('')
+  const [title, setTitle] = useState('')
+  const [excerpt, setExcerpt] = useState('')
+  const [link, setLink] = useState('https://openheartsdating.com/news')
 
-    if (!subject || !title) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  useEffect(() => {
+    checkAdminAccess()
+  }, [])
+
+  const checkAdminAccess = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    
+    if (!user) {
+      router.push('/login')
+      return
     }
 
-    // Create campaign in MailerLite
-    const campaignResponse = await fetch('https://connect.mailerlite.com/api/campaigns', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${MAILERLITE_API_KEY}`
-      },
-      body: JSON.stringify({
-        name: `News: ${title}`,
-        type: 'regular',
-        emails: [{
-          subject: subject,
-          from_name: 'Open Hearts Dating',
-          from: 'hello@openheartsdating.com',
-          content: generateEmailHTML(title, excerpt, link)
-        }]
-      })
-    })
+    const { data: adminData } = await supabase
+      .from('admin_users')
+      .select('*')
+      .eq('id', user.id)
+      .eq('is_active', true)
+      .single()
 
-    if (!campaignResponse.ok) {
-      const error = await campaignResponse.json()
-      console.error('MailerLite campaign error:', error)
-      return NextResponse.json({ error: 'Failed to create campaign' }, { status: 500 })
+    if (adminData) {
+      setIsAdmin(true)
     }
 
-    const campaign = await campaignResponse.json()
-
-    // Schedule campaign to send immediately to all subscribers
-    const sendResponse = await fetch(`https://connect.mailerlite.com/api/campaigns/${campaign.data.id}/schedule`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${MAILERLITE_API_KEY}`
-      },
-      body: JSON.stringify({
-        delivery: 'instant'
-      })
-    })
-
-    if (!sendResponse.ok) {
-      const error = await sendResponse.json()
-      console.error('MailerLite send error:', error)
-      return NextResponse.json({ error: 'Failed to send campaign' }, { status: 500 })
-    }
-
-    return NextResponse.json({ success: true, campaignId: campaign.data.id })
-
-  } catch (error: any) {
-    console.error('Newsletter send error:', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    setLoading(false)
   }
-}
 
-function generateEmailHTML(title: string, excerpt: string, link: string): string {
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px 0;">
-    <tr>
-      <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-          
-          <!-- Header -->
-          <tr>
-            <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Open Hearts Dating</h1>
-              <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0; font-size: 14px;">News & Updates</p>
-            </td>
-          </tr>
-          
-          <!-- Content -->
-          <tr>
-            <td style="padding: 40px 30px;">
-              <h2 style="color: #333; margin: 0 0 20px; font-size: 28px; line-height: 1.3;">
-                ${title}
-              </h2>
-              
-              <p style="color: #666; font-size: 16px; line-height: 1.6; margin: 0 0 30px;">
-                ${excerpt}
-              </p>
-              
-              <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
-                <tr>
-                  <td style="background: #667eea; border-radius: 8px;">
-                    <a href="${link}" style="display: inline-block; padding: 15px 30px; color: #ffffff; text-decoration: none; font-weight: bold; font-size: 16px;">
-                      Read Full Article →
-                    </a>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          
-          <!-- Footer -->
-          <tr>
-            <td style="background-color: #f9fafb; padding: 30px; text-align: center; border-top: 1px solid #eee;">
-              <p style="color: #666; font-size: 14px; margin: 0 0 10px;">
-                With love from the Open Hearts Dating Team ❤️
-              </p>
-              <p style="color: #999; font-size: 12px; margin: 0;">
-                <a href="https://openheartsdating.com" style="color: #667eea;">Visit our website</a>
-              </p>
-            </td>
-          </tr>
-          
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
-  `
+  const handleSend = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!subject || !title || !excerpt) {
+      setResult({ type: 'error', message: 'Please fill in all fields' })
+      return
+    }
+
+    setSending(true)
+    setResult(null)
+
+    try {
+      const response = await fetch('/api/send-newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, title, excerpt, link })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send newsletter')
+      }
+
+      setResult({ type: 'success', message: 'Newsletter sent successfully to all subscribers!' })
+      setSubject('')
+      setTitle('')
+      setExcerpt('')
+      setLink('https://openheartsdating.com/news')
+
+    } catch (error: any) {
+      setResult({ type: 'error', message: error.message })
+    }
+
+    setSending(false)
+  }
+
+  if (loading) {
+    return <div style={{ padding: '4rem', textAlign: 'center' }}>Loading...</div>
+  }
+
+  if (!isAdmin) {
+    return (
+      <div style={{ padding: '4rem', textAlign: 'center' }}>
+        <h1 style={{ color: '#dc3545' }}>Access Denied</h1>
+        <p>You do not have admin permissions.</p>
+        <a href="/dashboard" style={{ color: '#667eea' }}>Back to Dashboard</a>
+      </div>
+    )
+  }
+
+  return (
+    <section style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+      <h1 style={{ marginBottom: '0.5rem' }}>Send Newsletter</h1>
+      <p style={{ color: '#666', marginBottom: '2rem' }}>
+        Send news updates to all newsletter subscribers
+      </p>
+
+      {result && (
+        <div style={{
+          padding: '1rem',
+          marginBottom: '1.5rem',
+          background: result.type === 'success' ? '#d4edda' : '#f8d7da',
+          color: result.type === 'success' ? '#155724' : '#721c24',
+          borderRadius: '8px',
+          border: `1px solid ${result.type === 'success' ? '#c3e6cb' : '#f5c6cb'}`
+        }}>
+          {result.message}
+        </div>
+      )}
+
+      <form onSubmit={handleSend}>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+            Email Subject *
+          </label>
+          <input
+            type="text"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            placeholder="e.g., New Feature: Identity Verification is Live!"
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              fontSize: '1rem'
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: '1.5rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+            News Title *
+          </label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="e.g., Identity Verification System Launched"
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              fontSize: '1rem'
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: '1.5rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+            Short Description *
+          </label>
+          <textarea
+            value={excerpt}
+            onChange={(e) => setExcerpt(e.target.value)}
+            placeholder="Brief description of the news (2-3 sentences)"
+            rows={4}
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              fontSize: '1rem',
+              resize: 'vertical'
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+            Link to Article
+          </label>
+          <input
+            type="url"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+            placeholder="https://openheartsdating.com/news"
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              border: '1px solid #ddd',
+              borderRadius: '6px',
+              fontSize: '1rem'
+            }}
+          />
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          background: '#f9f9f9',
+          borderRadius: '8px',
+          marginBottom: '2rem'
+        }}>
+          <h3 style={{ marginBottom: '1rem', color: '#667eea' }}>Preview</h3>
+          <div style={{
+            padding: '1.5rem',
+            background: 'white',
+            borderRadius: '8px',
+            border: '1px solid #eee'
+          }}>
+            <p style={{ color: '#999', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Subject: {subject || '(enter subject)'}
+            </p>
+            <h4 style={{ marginBottom: '0.5rem' }}>{title || '(enter title)'}</h4>
+            <p style={{ color: '#666', marginBottom: '1rem' }}>
+              {excerpt || '(enter description)'}
+            </p>
+            <span style={{
+              display: 'inline-block',
+              padding: '0.5rem 1rem',
+              background: '#667eea',
+              color: 'white',
+              borderRadius: '6px',
+              fontSize: '0.9rem'
+            }}>
+              Read Full Article
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          disabled={sending}
+          style={{
+            width: '100%',
+            padding: '1rem',
+            background: sending ? '#ccc' : '#667eea',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            cursor: sending ? 'not-allowed' : 'pointer'
+          }}
+        >
+          {sending ? 'Sending...' : 'Send to All Subscribers'}
+        </button>
+      </form>
+
+      <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+        <a href="/admin/verification" style={{ color: '#667eea', marginRight: '1rem' }}>
+          Verification Queue
+        </a>
+        <a href="/dashboard" style={{ color: '#667eea' }}>
+          Dashboard
+        </a>
+      </div>
+    </section>
+  )
 }
