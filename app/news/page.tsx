@@ -12,10 +12,10 @@ export default function NewsPage() {
       id: 8,
       date: 'January 17, 2026',
       title: 'Identity Verification System Launched 🔐',
-      excerpt: 'Your safety is our priority. We've launched a comprehensive identity verification system to ensure every connection is genuine.',
+      excerpt: "Your safety is our priority. We've launched a comprehensive identity verification system to ensure every connection is genuine.",
       image: '/images/verification-launch.jpg',
       imageAlt: 'Shield icon representing security and trust in online dating',
-      content: `Today marks a major milestone for Open Hearts Dating: we're launching our identity verification system to make our platform safer for everyone.`
+      content: "Today marks a major milestone for Open Hearts Dating: we're launching our identity verification system to make our platform safer for everyone."
     },
     {
       id: 7,
@@ -24,7 +24,7 @@ export default function NewsPage() {
       excerpt: 'Your journey to meaningful connection starts now. Create your profile and let others see the real you.',
       image: '/images/profile-creation-live.jpg',
       imageAlt: 'Person creating their dating profile on laptop',
-      content: `We're thrilled to announce: Profile creation is now live! After months of development and careful consideration of accessibility needs, you can now create your complete dating profile on Open Hearts Dating.`
+      content: "We're thrilled to announce: Profile creation is now live! After months of development and careful consideration of accessibility needs, you can now create your complete dating profile on Open Hearts Dating."
     },
     {
       id: 6,
@@ -82,7 +82,7 @@ export default function NewsPage() {
         return (
           <div>
             <p style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '1.5rem' }}>
-              Today marks a major milestone for Open Hearts Dating: we're launching our identity verification system to make our platform safer for everyone.
+              Today marks a major milestone for Open Hearts Dating: we are launching our identity verification system to make our platform safer for everyone.
             </p>
 
             <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
@@ -100,7 +100,7 @@ export default function NewsPage() {
 
             <div style={{ marginBottom: '1.5rem' }}>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>✅ Trust At First Sight</h4>
-              <p>Verified profiles display a badge so you know immediately that the person you're talking to is real. No more wondering if someone is who they claim to be.</p>
+              <p>Verified profiles display a badge so you know immediately that the person you are talking to is real. No more wondering if someone is who they claim to be.</p>
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>
@@ -113,7 +113,7 @@ export default function NewsPage() {
             </h3>
 
             <ol style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '1.8' }}>
-              <li><strong>Upload your ID</strong> — Passport, driver's license, or national ID card</li>
+              <li><strong>Upload your ID</strong> — Passport, driver license, or national ID card</li>
               <li><strong>Quick review</strong> — Our team verifies within 24-72 hours</li>
               <li><strong>Get verified</strong> — Receive your verification badge</li>
               <li><strong>Connect safely</strong> — Start meeting real, verified people</li>
@@ -126,7 +126,7 @@ export default function NewsPage() {
             <ul style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '1.8' }}>
               <li>🪪 National ID Card</li>
               <li>🛂 Passport</li>
-              <li>🚗 Driver's License</li>
+              <li>🚗 Driver License</li>
               <li>📄 Other Government-Issued ID</li>
             </ul>
 
@@ -135,7 +135,7 @@ export default function NewsPage() {
             </h3>
 
             <p style={{ marginBottom: '1.5rem' }}>
-              We understand that sharing personal documents requires trust. Here's our promise to you:
+              We understand that sharing personal documents requires trust. Here is our promise to you:
             </p>
 
             <ul style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '1.8' }}>
@@ -146,7 +146,7 @@ export default function NewsPage() {
             </ul>
 
             <p style={{ fontSize: '1.15rem', fontStyle: 'italic', padding: '1.5rem', background: '#f0f4ff', borderRadius: '8px', marginTop: '2rem' }}>
-              "Verification is not about restriction. It's about protecting real people who deserve real connections."
+              Verification is not about restriction. It is about protecting real people who deserve real connections.
             </p>
 
             <div style={{ marginTop: '2rem', textAlign: 'center' }}>
@@ -169,17 +169,17 @@ export default function NewsPage() {
 
             <div style={{ marginBottom: '1.5rem' }}>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>✨ Tell Your Story</h4>
-              <p>Share who you are through a personalized profile. Include your interests, what makes you unique, and what you're looking for in a connection.</p>
+              <p>Share who you are through a personalized profile. Include your interests, what makes you unique, and what you are looking for in a connection.</p>
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>📍 Show Your Location</h4>
-              <p>Let others know where you're based. Whether you're looking for someone nearby or open to long-distance connections, you're in control.</p>
+              <p>Let others know where you are based. Whether you are looking for someone nearby or open to long-distance connections, you are in control.</p>
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>♿ Optional Disability Information</h4>
-              <p>Share details about your disability type if you're comfortable. This helps us provide better accessibility features and can help you connect with others who understand your experiences.</p>
+              <p>Share details about your disability type if you are comfortable. This helps us provide better accessibility features and can help you connect with others who understand your experiences.</p>
             </div>
 
             <div style={{ marginBottom: '2rem' }}>
@@ -203,11 +203,11 @@ export default function NewsPage() {
             </ul>
 
             <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
-              What's Coming Next:
+              What is Coming Next:
             </h3>
 
             <p style={{ marginBottom: '1rem' }}>
-              This is just the beginning! In the coming weeks, we'll be adding:
+              This is just the beginning! In the coming weeks, we will be adding:
             </p>
 
             <ul style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '1.8' }}>
@@ -223,13 +223,13 @@ export default function NewsPage() {
 
             <ol style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '1.8' }}>
               <li>Log in to your account</li>
-              <li>Click "Create Profile" on your dashboard</li>
+              <li>Click Create Profile on your dashboard</li>
               <li>Fill out your information (takes 5 minutes)</li>
               <li>Start connecting with others!</li>
             </ol>
 
             <p style={{ fontSize: '1.15rem', fontStyle: 'italic', padding: '1.5rem', background: '#f0f4ff', borderRadius: '8px', marginTop: '2rem' }}>
-              We can't wait to see the amazing community you build together. Every profile created brings us one step closer to a world where everyone can find love without barriers.
+              We cannot wait to see the amazing community you build together. Every profile created brings us one step closer to a world where everyone can find love without barriers.
             </p>
 
             <div style={{ marginTop: '2rem', textAlign: 'center' }}>
