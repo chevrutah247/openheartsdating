@@ -53,22 +53,20 @@ export default function ProfileEditingLaunchNews() {
 
       {/* Feature Image */}
       <div style={{
+        position: 'relative',
         width: '100%',
         height: '400px',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        borderRadius: '16px',
         marginBottom: '3rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontSize: '4rem'
+        borderRadius: '16px',
+        overflow: 'hidden'
       }}>
-        {/* Placeholder — replace with actual image */}
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '6rem', marginBottom: '1rem' }}>✨</div>
-          <p style={{ fontSize: '1.5rem', margin: 0 }}>Profile Editing Is Here!</p>
-        </div>
+        <Image
+          src="/images/news/profile-editing-launch.jpg"
+          alt="Illustration of people customizing their dating profiles with joy and excitement"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
       </div>
 
       {/* Content */}
