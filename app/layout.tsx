@@ -2,10 +2,11 @@ import './globals.css'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
+import StructuredData from './components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'Open Hearts Dating',
-  description: 'Accessible dating platform for people with disabilities',
+  title: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
+  description: 'The first accessible dating platform built for people with disabilities. Find love without barriers. Verified, safe, and 100% accessible. Join our nonprofit community today.',
 }
 
 export default function RootLayout({
@@ -15,6 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <StructuredData />
+      </head>
       <body>
         <Navigation />
 
