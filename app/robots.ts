@@ -6,7 +6,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/'], // блокируем служебные папки если будут
+        disallow: [
+          '/dashboard',
+          '/dashboard/*',
+          '/admin',
+          '/admin/*',
+          '/messages',
+          '/messages/*',
+          '/profile/edit',
+          '/api/*',
+          '/_next/*',
+        ],
       },
     ],
     sitemap: 'https://openheartsdating.com/sitemap.xml',
