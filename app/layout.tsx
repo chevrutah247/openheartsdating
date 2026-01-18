@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Navigation from './components/Navigation'
 
 export const metadata: Metadata = {
   title: 'Open Hearts Dating',
@@ -15,27 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="navbar">
-          <div className="container">
-            <Link href="/" className="logo">
-              Open Hearts Dating
-            </Link>
-            <div className="nav-links">
-              <Link href="/">Home</Link>
-              <Link href="/dating">Dating</Link>
-              <Link href="/mission">Mission</Link>
-              <Link href="/trust">Trust & Safety</Link>
-              <Link href="/news">News</Link>
-              <Link href="/newsletter">Newsletter</Link>
-              <Link href="/volunteer">Volunteer</Link>
-              <Link href="/support">Support</Link>
-              <Link href="/contact">Contact</Link>
-              <Link href="https://gofund.me/77c6e9a3" className="button" target="_blank" rel="noopener noreferrer">
-                💙 Donate
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Navigation />
 
         {children}
 
@@ -64,10 +45,10 @@ export default function RootLayout({
               <div>
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Platform</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <Link href="/dating" style={{ color: '#9ca3af', textDecoration: 'none' }}>Dating</Link>
-                  <Link href="/mission" style={{ color: '#9ca3af', textDecoration: 'none' }}>Mission</Link>
-                  <Link href="/trust" style={{ color: '#9ca3af', textDecoration: 'none' }}>Trust & Safety</Link>
-                  <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
+                  <Link href="/platform-preview/dating" style={{ color: '#9ca3af', textDecoration: 'none' }}>Browse Profiles</Link>
+                  <Link href="/platform-preview/matches" style={{ color: '#9ca3af', textDecoration: 'none' }}>Matches</Link>
+                  <Link href="/messages" style={{ color: '#9ca3af', textDecoration: 'none' }}>Messages</Link>
+                  <Link href="/dashboard" style={{ color: '#9ca3af', textDecoration: 'none' }}>Dashboard</Link>
                 </div>
               </div>
 
@@ -76,7 +57,7 @@ export default function RootLayout({
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Community</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/news" style={{ color: '#9ca3af', textDecoration: 'none' }}>News</Link>
-                  <Link href="/newsletter" style={{ color: '#9ca3af', textDecoration: 'none' }}>Newsletter</Link>
+                  <Link href="/mission" style={{ color: '#9ca3af', textDecoration: 'none' }}>Mission</Link>
                   <Link href="/volunteer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Volunteer</Link>
                   <Link href="/support" style={{ color: '#9ca3af', textDecoration: 'none' }}>Support</Link>
                 </div>
@@ -88,7 +69,8 @@ export default function RootLayout({
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none' }}>Contact</Link>
                   <a href="https://gofund.me/77c6e9a3" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</a>
-                  <Link href="/join" style={{ color: '#9ca3af', textDecoration: 'none' }}>Join Waitlist</Link>
+                  <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
+                  <Link href="/login" style={{ color: '#9ca3af', textDecoration: 'none' }}>Login</Link>
                 </div>
               </div>
             </div>

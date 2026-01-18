@@ -300,3 +300,111 @@ button {
     font-size: 1.125rem;
   }
 }
+/* ================================
+   NAVIGATION STYLES - ADD TO globals.css
+   ================================ */
+
+/* Desktop navigation */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 0.5rem;
+  padding-left: 1rem;
+  border-left: 1px solid #e5e7eb;
+}
+
+.nav-login {
+  color: #667eea !important;
+  font-weight: 500;
+}
+
+.button-small {
+  padding: 0.4rem 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #333;
+}
+
+/* Mobile navigation */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: white;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav a,
+.mobile-nav button {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.mobile-nav a:hover {
+  background: #f3f4f6;
+}
+
+.mobile-nav-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0.5rem 0;
+}
+
+.mobile-logout-btn {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .mobile-nav {
+    display: flex;
+  }
+}
+
+/* Navbar adjustments for logged in state */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
