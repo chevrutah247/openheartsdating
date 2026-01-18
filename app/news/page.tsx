@@ -1,3 +1,37 @@
+// В начало, перед старыми новостями:
+<Link 
+  href="/news/profile-editing-launch"
+  style={{
+    display: 'block',
+    padding: '2rem',
+    background: 'white',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    textDecoration: 'none',
+    marginBottom: '2rem'
+  }}
+>
+  <time style={{ color: '#666', fontSize: '0.9rem' }}>
+    January 18, 2026
+  </time>
+  
+  <h2 style={{ 
+    fontSize: '1.5rem', 
+    marginTop: '0.5rem',
+    marginBottom: '0.5rem',
+    color: '#333'
+  }}>
+    🎉 Major Update: Profile Editing & UI Improvements Are Live!
+  </h2>
+  
+  <p style={{ color: '#666', margin: 0 }}>
+    We're excited to announce profile editing, photo uploads, and a completely 
+    refreshed user interface. Read about all the improvements →
+  </p>
+</Link>
+
+
+
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
