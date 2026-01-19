@@ -34,7 +34,6 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* HERO - Warm & Honest */}
       <section className="hero">
         <div className="container">
           <h1>You Deserve Love. We're Building the Place Where It Can Happen.</h1>
@@ -47,7 +46,6 @@ export default function HomePage() {
             we want to build it WITH you, not just FOR you.
           </p>
 
-          {/* Hero Image */}
           <div style={{ 
             position: 'relative',
             width: '100%',
@@ -73,7 +71,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EXPLORE OUR COMMUNITY - NEW SECTION */}
       <section className="content-section">
         <div className="container">
           <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -97,7 +94,6 @@ export default function HomePage() {
             maxWidth: '1200px',
             margin: '0 auto'
           }}>
-            {/* Dating Card */}
             <a href="/dating" style={{
               padding: '2rem',
               background: 'white',
@@ -126,7 +122,6 @@ export default function HomePage() {
               </div>
             </a>
 
-            {/* Forum Card */}
             <a href="/forum" style={{
               padding: '2rem',
               background: 'white',
@@ -156,7 +151,6 @@ export default function HomePage() {
               </div>
             </a>
 
-            {/* Jobs Card */}
             <a href="/jobs" style={{
               padding: '2rem',
               background: 'white',
@@ -186,7 +180,6 @@ export default function HomePage() {
               </div>
             </a>
 
-            {/* Messages Card */}
             <a href="/messages" style={{
               padding: '2rem',
               background: 'white',
@@ -216,7 +209,6 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* Hover effect CSS */}
           <style jsx>{`
             .community-card:hover {
               transform: translateY(-8px);
@@ -226,7 +218,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY WE STARTED */}
       <section id="story" className="content-section content-section-alt">
         <div className="container">
           <h2>Why We're Here</h2>
@@ -261,7 +252,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT WE'RE BUILDING */}
       <section id="journey" className="content-section">
         <div className="container">
           <h2>What We're Building</h2>
@@ -320,7 +310,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
       <section className="content-section content-section-alt">
         <div className="container">
           <h2>What People Are Saying</h2>
@@ -328,7 +317,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
       <section className="content-section">
         <div className="container">
           <div style={{ 
