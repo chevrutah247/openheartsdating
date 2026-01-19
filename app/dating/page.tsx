@@ -1,200 +1,321 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { createClient } from '@/utils/supabase/client'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-export const metadata: Metadata = {
-  title: 'When We Launch — Development Timeline',
-  description: 'Follow our journey from development to launch. Beta testing Spring 2026, public launch Summer 2026.',
+interface Profile {
+  id: string
+  display_name: string
+  bio: string
+  location: string
+  gender: string
+  photo_url: string | null
+  age: number | null
+  disability_type: string | null
 }
 
 export default function DatingPage() {
+  const router = useRouter()
+  const supabase = createClient()
+  
+  const [profiles, setProfiles] = useState<Profile[]>([])
+  const [loading, setLoading] = useState(true)
+  const [currentUser, setCurrentUser] = useState<any>(null)
+
+  useEffect(() => {
+    loadProfiles()
+  }, [])
+
+  async function loadProfiles() {
+    try {
+      // Получить текущего пользователя
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        router.push('/login')
+        return
+      }
+
+      // Получить профиль текущего пользователя
+      const { data: userProfile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single()
+
+      if (!userProfile) {
+        router.push('/profile/create')
+        return
+      }
+
+      setCurrentUser(userProfile)
+
+      // ТРАДИЦИОННЫЕ ЦЕННОСТИ: показывать только противоположный пол
+      // Male → показываем Female
+      // Female → показываем Male
+      const oppositeGender = userProfile.gender === 'male' ? 'female' : 'male'
+
+      // Получить профили противоположного пола
+      const { data: oppositeProfiles, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('gender', oppositeGender) // Только противоположный пол!
+        .eq('looking_for', userProfile.gender) // Они тоже ищут наш пол
+        .neq('id', user.id) // Не показывать себя
+        .order('created_at', { ascending: false })
+        .limit(50)
+
+      if (error) throw error
+
+      setProfiles(oppositeProfiles || [])
+    } catch (error) {
+      console.error('Error loading profiles:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleLike(profileId: string) {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+
+      // Добавить лайк
+      const { error } = await supabase
+        .from('likes')
+        .insert({
+          liker_id: user.id,
+          liked_id: profileId
+        })
+
+      if (error) throw error
+
+      // Проверить взаимный лайк
+      const { data: mutualLike } = await supabase
+        .from('likes')
+        .select('*')
+        .eq('liker_id', profileId)
+        .eq('liked_id', user.id)
+        .single()
+
+      if (mutualLike) {
+        // Это матч! Создать чат
+        alert('🎉 It\'s a match!')
+        // TODO: Создать чат и перенаправить на messages
+      }
+
+      // Убрать профиль из списка
+      setProfiles(prev => prev.filter(p => p.id !== profileId))
+    } catch (error) {
+      console.error('Error liking profile:', error)
+    }
+  }
+
+  async function handleSkip(profileId: string) {
+    // Просто убрать из списка (можно добавить в БД table "skipped")
+    setProfiles(prev => prev.filter(p => p.id !== profileId))
+  }
+
+  if (loading) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
+        <p>Loading profiles...</p>
+      </div>
+    )
+  }
+
   return (
-    <>
-      <section className="hero">
-        <div className="container">
-          <h1>When We Launch</h1>
-          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto' }}>
-            We're building Open Hearts Dating step by step. Here's exactly where we are 
-            and when you can expect to join us.
+    <div style={{ minHeight: '100vh', padding: '2rem 1rem', background: '#f9fafb' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <h1 style={{ marginBottom: '1rem' }}>Find Your Match</h1>
+          <p style={{ fontSize: '1.1rem', color: '#666' }}>
+            {currentUser?.gender === 'male' 
+              ? '👨 Showing women who are looking for men' 
+              : '👩 Showing men who are looking for women'}
           </p>
         </div>
-      </section>
 
-      <section className="content-section">
-        <div className="container">
-          {/* Timeline Image */}
+        {/* Profiles Grid */}
+        {profiles.length > 0 ? (
           <div style={{ 
-            position: 'relative',
-            width: '100%',
-            maxWidth: '800px',
-            height: '400px',
-            margin: '0 auto 3rem',
-            borderRadius: '12px',
-            overflow: 'hidden'
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
           }}>
-            <Image
-              src="/images/couple-walking.jpg"
-              alt="Couple walking together, one in wheelchair and one with white cane, holding hands"
-              fill
-              style={{ objectFit: 'cover' }}
-              priority
-            />
+            {profiles.map((profile) => (
+              <div 
+                key={profile.id}
+                style={{
+                  background: 'white',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {/* Photo */}
+                <div style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '300px',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  overflow: 'hidden'
+                }}>
+                  {profile.photo_url ? (
+                    <Image
+                      src={profile.photo_url}
+                      alt={profile.display_name}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '5rem',
+                      color: 'white'
+                    }}>
+                      {profile.gender === 'male' ? '👨' : '👩'}
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div style={{ padding: '1.5rem' }}>
+                  <h3 style={{ 
+                    fontSize: '1.5rem', 
+                    marginBottom: '0.5rem',
+                    color: '#333'
+                  }}>
+                    {profile.display_name}
+                    {profile.age && `, ${profile.age}`}
+                  </h3>
+
+                  {profile.location && (
+                    <p style={{ 
+                      color: '#666', 
+                      marginBottom: '1rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      📍 {profile.location}
+                    </p>
+                  )}
+
+                  {profile.bio && (
+                    <p style={{ 
+                      color: '#666', 
+                      marginBottom: '1rem',
+                      lineHeight: '1.6'
+                    }}>
+                      {profile.bio.length > 150 
+                        ? profile.bio.substring(0, 150) + '...' 
+                        : profile.bio}
+                    </p>
+                  )}
+
+                  {profile.disability_type && (
+                    <p style={{
+                      padding: '0.5rem 1rem',
+                      background: '#f0f4ff',
+                      borderRadius: '8px',
+                      fontSize: '0.9rem',
+                      color: '#667eea',
+                      marginBottom: '1rem'
+                    }}>
+                      ♿ {profile.disability_type}
+                    </p>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div style={{ 
+                    display: 'flex', 
+                    gap: '1rem',
+                    marginTop: '1.5rem'
+                  }}>
+                    <button
+                      onClick={() => handleSkip(profile.id)}
+                      style={{
+                        flex: 1,
+                        padding: '0.75rem',
+                        background: 'white',
+                        color: '#666',
+                        border: '2px solid #e5e7eb',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      Skip
+                    </button>
+                    <button
+                      onClick={() => handleLike(profile.id)}
+                      style={{
+                        flex: 1,
+                        padding: '0.75rem',
+                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      💙 Like
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            
-            {/* Current Phase */}
-            <div style={{ 
-              padding: '2.5rem',
-              background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
-              borderRadius: '12px',
-              marginBottom: '2rem',
-              border: '2px solid #667eea'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ fontSize: '2.5rem' }}>🔄</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
-                  Right Now (Winter 2025/2026)
-                </h2>
-              </div>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
-                Building the foundation. Testing accessibility with real users. Gathering feedback. Making sure 
-                EVERYTHING works before we open the doors.
-              </p>
-              <div style={{ fontSize: '1rem', opacity: '0.9' }}>
-                <p style={{ marginBottom: '0.5rem' }}><strong>What we're doing:</strong></p>
-                <ul style={{ lineHeight: '1.8' }}>
-                  <li>Designing core features with accessibility first</li>
-                  <li>Building matching algorithm</li>
-                  <li>Testing with screen readers and assistive tech</li>
-                  <li>Creating safety and moderation systems</li>
-                  <li>Growing Early Access community</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Spring 2026 */}
-            <div style={{ 
-              padding: '2.5rem',
-              background: 'white',
-              borderRadius: '12px',
-              marginBottom: '2rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ fontSize: '2.5rem' }}>🔧</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
-                  Spring 2026
-                </h2>
-              </div>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
-                Beta testing with a small group. Fixing bugs. Improving accessibility based on real feedback. Ensuring 
-                safety systems work. Want to be a beta tester? <a href="/join" style={{ color: '#667eea', fontWeight: '600' }}>Let us know</a>.
-              </p>
-              <div style={{ fontSize: '1rem', opacity: '0.9' }}>
-                <p style={{ marginBottom: '0.5rem' }}><strong>What happens:</strong></p>
-                <ul style={{ lineHeight: '1.8' }}>
-                  <li>Invite beta testers from Early Access community</li>
-                  <li>Real-world testing of all features</li>
-                  <li>Gather feedback and iterate quickly</li>
-                  <li>Test safety features with real scenarios</li>
-                  <li>Ensure accessibility works for everyone</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Summer 2026 */}
-            <div style={{ 
-              padding: '2.5rem',
-              background: 'white',
-              borderRadius: '12px',
-              marginBottom: '2rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ fontSize: '2.5rem' }}>🎉</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
-                  Summer 2026
-                </h2>
-              </div>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
-                Public launch! Opening registration to everyone. Your chance to finally have a dating platform that 
-                actually works for you.
-              </p>
-              <div style={{ fontSize: '1rem', opacity: '0.9' }}>
-                <p style={{ marginBottom: '0.5rem' }}><strong>What you'll get:</strong></p>
-                <ul style={{ lineHeight: '1.8' }}>
-                  <li>Fully accessible platform tested by real users</li>
-                  <li>Safe, moderated environment</li>
-                  <li>Core features free forever</li>
-                  <li>Community built WITH people with disabilities</li>
-                  <li>Platform that actually works for everyone</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Why This Timeline */}
-      <section className="content-section content-section-alt">
-        <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Why This Timeline?</h2>
-            
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              We know you're waiting. We know you want this NOW. Trust us—we do too.
-            </p>
-
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              But here's the thing: we'd rather take the time to build something that actually works than rush out 
-              something broken. You've dealt with enough platforms that don't work for you.
-            </p>
-
-            <div style={{ 
-              padding: '2rem',
-              background: 'rgba(102, 126, 234, 0.1)',
-              borderRadius: '12px',
-              marginTop: '2rem',
-              borderLeft: '4px solid #667eea'
-            }}>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                <strong>Our promise:</strong> We'll be honest about our progress. We'll tell you when things take longer than expected. 
-                We'll share both victories and challenges. And we'll build this RIGHT, even if it takes time.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stay Updated */}
-      <section className="content-section">
-        <div className="container">
-          <div style={{ 
-            maxWidth: '700px', 
-            margin: '0 auto',
-            padding: '3rem 2rem',
+        ) : (
+          <div style={{
+            textAlign: 'center',
+            padding: '4rem 2rem',
             background: 'white',
             borderRadius: '16px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-            textAlign: 'center'
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
           }}>
-            <h2 style={{ marginBottom: '1rem' }}>Want to Be First to Know?</h2>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem', opacity: '0.9' }}>
-              Join our Early Access program. We'll keep you updated on our progress and give you 
-              first access when we launch.
+            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>😊</div>
+            <h2 style={{ marginBottom: '1rem' }}>No more profiles right now</h2>
+            <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
+              Check back later for new members, or invite your friends to join!
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/join" className="button" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
-                Join Early Access 💙
-              </a>
-              <a href="/news" className="button button-secondary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
-                Read Our Progress
-              </a>
-            </div>
+            <a 
+              href="/dashboard"
+              style={{
+                display: 'inline-block',
+                padding: '1rem 2rem',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: '600'
+              }}
+            >
+              Back to Dashboard
+            </a>
           </div>
-        </div>
-      </section>
-    </>
+        )}
+      </div>
+    </div>
   )
 }
