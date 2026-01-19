@@ -1,10 +1,6 @@
-import Link from 'next/link'
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'News & Updates',
-  description: 'Latest news and updates from Open Hearts Dating.',
-}
+import Link from 'next/link'
 
 export default function NewsPage() {
   const news = [
