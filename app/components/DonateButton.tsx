@@ -34,7 +34,7 @@ export default function DonateButton({
 
   return (
     <a
-      href="https://gofund.me/2ce8664b"
+      href="https://gofund.me/03630f97"
       target="_blank"
       rel="noopener noreferrer"
       style={{

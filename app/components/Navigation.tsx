@@ -125,7 +125,7 @@ export default function Navigation() {
           )}
           
           <Link 
-            href="https://gofund.me/77c6e9a3" 
+            href="https://gofund.me/03630f97" 
             className="button" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -185,7 +185,7 @@ export default function Navigation() {
           
           <div className="mobile-nav-divider" />
           <Link 
-            href="https://gofund.me/77c6e9a3" 
+            href="https://gofund.me/03630f97" 
             target="_blank" 
             rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
