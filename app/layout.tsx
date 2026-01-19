@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
 import StructuredData from './components/StructuredData'
+import GoFundMeBanner from './components/GoFundMeBanner'
 
 export const metadata: Metadata = {
   title: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
@@ -20,10 +21,16 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body>
+        {/* Sticky Donation Banner */}
+        <GoFundMeBanner />
+        
+        {/* Navigation */}
         <Navigation />
 
+        {/* Main Content */}
         {children}
 
+        {/* Footer */}
         <footer style={{
           background: '#1f2937',
           color: 'white',
@@ -72,7 +79,7 @@ export default function RootLayout({
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Connect</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none' }}>Contact</Link>
-                  <a href="https://gofund.me/03630f97" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</a>
+                  <a href="https://www.paypal.com/ncp/payment/LY67CR4F29BKN" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</a>
                   <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
                   <Link href="/login" style={{ color: '#9ca3af', textDecoration: 'none' }}>Login</Link>
                 </div>
