@@ -100,9 +100,8 @@ export default function HomePage() {
               borderRadius: '12px',
               textDecoration: 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              textAlign: 'center',
-              transition: 'all 0.3s ease'
-            }} className="community-card">
+              textAlign: 'center'
+            }}>
               <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>💑</div>
               <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                 Dating
@@ -128,9 +127,8 @@ export default function HomePage() {
               borderRadius: '12px',
               textDecoration: 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              textAlign: 'center',
-              transition: 'all 0.3s ease'
-            }} className="community-card">
+              textAlign: 'center'
+            }}>
               <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🗣️</div>
               <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                 Community Forum
@@ -157,9 +155,8 @@ export default function HomePage() {
               borderRadius: '12px',
               textDecoration: 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              textAlign: 'center',
-              transition: 'all 0.3s ease'
-            }} className="community-card">
+              textAlign: 'center'
+            }}>
               <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>💼</div>
               <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                 Job Board
@@ -186,9 +183,8 @@ export default function HomePage() {
               borderRadius: '12px',
               textDecoration: 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              textAlign: 'center',
-              transition: 'all 0.3s ease'
-            }} className="community-card">
+              textAlign: 'center'
+            }}>
               <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>💬</div>
               <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                 Messages
@@ -208,13 +204,6 @@ export default function HomePage() {
               </div>
             </a>
           </div>
-
-          <style jsx>{`
-            .community-card:hover {
-              transform: translateY(-8px);
-              box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            }
-          `}</style>
         </div>
       </section>
 
