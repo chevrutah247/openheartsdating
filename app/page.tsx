@@ -72,6 +72,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+
+{/* ВОТ СЮДА ВСТАВЬ НОВЫЙ КОД! */}
+<section className="content-section">
+  ... весь код из файла ...
+</section>
+
+{/* WHY WE STARTED */}
+<section id="story" ...>
+
 
       {/* WHY WE STARTED */}
       <section id="story" className="content-section content-section-alt">
