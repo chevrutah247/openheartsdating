@@ -5,6 +5,22 @@ import Link from 'next/link'
 export default function NewsPage() {
   const news = [
     {
+      id: 12,
+      date: 'January 19, 2026',
+      title: '💼 Job Board Launches — Accessible Employment for All',
+      excerpt: 'Find accessible employment opportunities or post jobs for candidates with disabilities. Our new job board connects inclusive employers with talented candidates.',
+      slug: 'job-board-launch',
+      image: '/images/news/job-board-launch.jpg'
+    },
+    {
+      id: 11,
+      date: 'January 19, 2026',
+      title: '🗣️ Community Forum Now Live!',
+      excerpt: 'Connect, share, and support each other in our new community forum built by and for people with disabilities.',
+      slug: 'forum-launch',
+      image: '/images/news/forum-launch.jpg'
+    },
+    {
       id: 10,
       date: 'January 18, 2026',
       title: '🎉 Major Update: Profile Editing & UI Improvements Are Live!',
@@ -224,12 +240,14 @@ export default function NewsPage() {
       </section>
 
       {/* Add hover effect */}
-      <style jsx>{`
-        .news-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-      `}</style>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+          }
+        `
+      }} />
     </>
   )
 }
