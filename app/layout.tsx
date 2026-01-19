@@ -79,7 +79,7 @@ export default function RootLayout({
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Connect</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none' }}>Contact</Link>
-                  <a href="https://www.paypal.com/ncp/payment/LY67CR4F29BKN" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</a>
+                  <Link href="/donate" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</Link>
                   <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
                   <Link href="/login" style={{ color: '#9ca3af', textDecoration: 'none' }}>Login</Link>
                 </div>

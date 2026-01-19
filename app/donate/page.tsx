@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import GoFundMeWidget from '../components/GoFundMeWidget'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Support Our Mission — Open Hearts Dating',
@@ -112,103 +113,6 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* Funding Goals */}
-      <section className="content-section">
-        <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              Our Funding Goals
-            </h2>
-
-            <div style={{ 
-              display: 'grid', 
-              gap: '1.5rem',
-              marginBottom: '2rem'
-            }}>
-              <div style={{ 
-                padding: '2rem', 
-                background: 'white', 
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-                  🎯 Goal 1: $15,000 — Beta Launch
-                </h3>
-                <ul style={{ lineHeight: '2', color: '#666' }}>
-                  <li>Complete core dating features</li>
-                  <li>Launch beta testing program</li>
-                  <li>6 months of hosting costs</li>
-                  <li>Basic moderation system</li>
-                </ul>
-              </div>
-
-              <div style={{ 
-                padding: '2rem', 
-                background: 'white', 
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-                  🚀 Goal 2: $35,000 — Public Launch
-                </h3>
-                <ul style={{ lineHeight: '2', color: '#666' }}>
-                  <li>Full public launch</li>
-                  <li>Mobile apps (iOS + Android)</li>
-                  <li>Advanced matching algorithm</li>
-                  <li>12 months operating costs</li>
-                  <li>Professional accessibility audit</li>
-                </ul>
-              </div>
-
-              <div style={{ 
-                padding: '2rem', 
-                background: 'white', 
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-                  🌟 Goal 3: $75,000 — Scale & Grow
-                </h3>
-                <ul style={{ lineHeight: '2', color: '#666' }}>
-                  <li>Multilingual support (10+ languages)</li>
-                  <li>Video chat features</li>
-                  <li>Advanced safety features</li>
-                  <li>Community events & meetups</li>
-                  <li>Scholarship program for premium features</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Nonprofit */}
-      <section className="content-section content-section-alt">
-        <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              Why We're Nonprofit
-            </h2>
-            
-            <div style={{ 
-              padding: '2rem', 
-              background: 'rgba(102, 126, 234, 0.1)', 
-              borderRadius: '12px',
-              borderLeft: '4px solid #667eea'
-            }}>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                Most dating apps are owned by two giant corporations that prioritize profit over people. 
-                They make money by keeping you single and swiping. <strong>We're different.</strong>
-              </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginTop: '1rem', marginBottom: 0 }}>
-                We succeed when you find love. That's why we're building this as a nonprofit — 
-                mission first, money second. Every decision is made with our users' best interests in mind.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Other Ways to Help */}
       <section className="content-section">
         <div className="container">
@@ -240,7 +144,7 @@ export default function DonatePage() {
               }}>
                 <strong style={{ fontSize: '1.1rem' }}>🤝 Volunteer</strong>
                 <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
-                  Join our <a href="/volunteer" style={{ color: '#667eea' }}>volunteer program</a> and 
+                  Join our <Link href="/volunteer" style={{ color: '#667eea' }}>volunteer program</Link> and 
                   help us build the platform
                 </p>
               </div>
@@ -252,7 +156,7 @@ export default function DonatePage() {
               }}>
                 <strong style={{ fontSize: '1.1rem' }}>🧪 Beta test</strong>
                 <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
-                  Sign up for <a href="/join" style={{ color: '#667eea' }}>early access</a> and 
+                  Sign up for <Link href="/join" style={{ color: '#667eea' }}>early access</Link> and 
                   help us improve with your feedback
                 </p>
               </div>
