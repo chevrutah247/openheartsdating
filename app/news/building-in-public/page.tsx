@@ -1,0 +1,27 @@
+'use client'
+
+import Link from 'next/link'
+import Image from 'next/image'
+
+export default function BuildingInPublicNews() {
+  return (
+    <article style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+      <Link href="/news" style={{ color: '#667eea', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>← Back to News</Link>
+      <header style={{ marginBottom: '3rem' }}>
+        <time style={{ color: '#666', fontSize: '0.9rem' }}>December 15, 2025</time>
+        <h1 style={{ fontSize: '2.5rem', marginTop: '1rem', marginBottom: '1rem' }}>Building in Public</h1>
+        <p style={{ fontSize: '1.25rem', color: '#666' }}>Transparency in development. Follow our journey as we build Open Hearts Dating openly.</p>
+      </header>
+      <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '3rem', borderRadius: '16px', overflow: 'hidden' }}>
+        <Image src="/images/team-working.jpg" alt="Team collaborating" fill style={{ objectFit: 'cover' }} priority />
+      </div>
+      <div style={{ lineHeight: '1.8', color: '#333' }}>
+        <p style={{ fontSize: '1.1rem', marginBottom: '2rem' }}>We believe in transparency. That's why we're building Open Hearts Dating in public — sharing our progress, challenges, and decisions openly with our community.</p>
+        <p style={{ marginBottom: '2rem' }}>Follow our journey on GitHub and stay updated on every milestone.</p>
+      </div>
+      <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+        <Link href="/news" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#f3f4f6', color: '#667eea', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>← Back to All News</Link>
+      </div>
+    </article>
+  )
+}
