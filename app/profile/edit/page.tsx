@@ -1,586 +1,402 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/client'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export default function EditProfilePage() {
+export default function EditProfile() {
   const router = useRouter()
-  const [user, setUser] = useState<any>(null)
+  const supabase = createClient()
+  
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  const [uploadingPhoto, setUploadingPhoto] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null)
   
-  // Form fields
-  const [displayName, setDisplayName] = useState('')
-  const [dateOfBirth, setDateOfBirth] = useState('')
-  const [gender, setGender] = useState('')
-  const [location, setLocation] = useState('')
-  const [disabilityType, setDisabilityType] = useState('')
-  const [bio, setBio] = useState('')
-  const [lookingFor, setLookingFor] = useState('')
-  const [profilePhoto, setProfilePhoto] = useState('')
-  const [photoFile, setPhotoFile] = useState<File | null>(null)
-  const [photoPreview, setPhotoPreview] = useState('')
+  const [formData, setFormData] = useState({
+    display_name: '',
+    bio: '',
+    location: '',
+    gender: '',
+    date_of_birth: '',
+    disability_type: '',
+    photo_url: ''
+  })
 
   useEffect(() => {
-    checkUser()
+    loadProfile()
   }, [])
 
-  const checkUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    
-    if (!user) {
-      router.push('/login')
-      return
-    }
-
-    setUser(user)
-
-    // Load current profile data
-    const { data: profileData } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .single()
-
-    if (profileData) {
-      setDisplayName(profileData.display_name || '')
-      setDateOfBirth(profileData.date_of_birth || '')
-      setGender(profileData.gender || '')
-      setLocation(profileData.location || '')
-      setDisabilityType(profileData.disability_type || '')
-      setBio(profileData.bio || '')
-      setLookingFor(profileData.looking_for || '')
-      setProfilePhoto(profileData.profile_photo || '')
-      setPhotoPreview(profileData.profile_photo || '')
-    }
-
-    setLoading(false)
-  }
-
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      // Validate file type
-      if (!file.type.startsWith('image/')) {
-        alert('Please select an image file')
+  async function loadProfile() {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        router.push('/login')
         return
       }
 
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single()
+
+      if (error) throw error
+
+      if (profile) {
+        setFormData({
+          display_name: profile.display_name || '',
+          bio: profile.bio || '',
+          location: profile.location || '',
+          gender: profile.gender || '',
+          date_of_birth: profile.date_of_birth || '',
+          disability_type: profile.disability_type || '',
+          photo_url: profile.photo_url || ''
+        })
+        if (profile.photo_url) {
+          setPhotoPreview(profile.photo_url)
+        }
+      }
+    } catch (error: any) {
+      setError(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handlePhotoUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    try {
+      setUploading(true)
+      setError(null)
+
+      if (!event.target.files || event.target.files.length === 0) {
+        return
+      }
+
+      const file = event.target.files[0]
+      
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        alert('Image size must be less than 5MB')
-        return
+        throw new Error('File size must be less than 5MB')
       }
 
-      setPhotoFile(file)
-
-      // Create preview
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setPhotoPreview(reader.result as string)
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        throw new Error('File must be an image')
       }
-      reader.readAsDataURL(file)
-    }
-  }
 
-  const uploadPhoto = async () => {
-    if (!photoFile || !user) return null
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) throw new Error('Not authenticated')
 
-    setUploadingPhoto(true)
-
-    try {
-      // Create unique filename
-      const fileExt = photoFile.name.split('.').pop()
-      const fileName = `${user.id}-${Date.now()}.${fileExt}`
-      const filePath = `${fileName}`
+      const fileExt = file.name.split('.').pop()
+      const filePath = `${user.id}/${Date.now()}.${fileExt}`
 
       // Upload to Supabase Storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('profile-photos')
-        .upload(filePath, photoFile, {
-          cacheControl: '3600',
-          upsert: true
-        })
+        .upload(filePath, file)
 
-      if (uploadError) {
-        console.error('Upload error:', uploadError)
-        throw uploadError
-      }
+      if (uploadError) throw uploadError
 
       // Get public URL
       const { data: { publicUrl } } = supabase.storage
         .from('profile-photos')
         .getPublicUrl(filePath)
 
-      setUploadingPhoto(false)
-      return publicUrl
-    } catch (error) {
-      console.error('Error uploading photo:', error)
-      setUploadingPhoto(false)
-      alert('Failed to upload photo. Please try again.')
-      return null
+      setFormData(prev => ({ ...prev, photo_url: publicUrl }))
+      setPhotoPreview(publicUrl)
+      
+    } catch (error: any) {
+      setError(error.message)
+    } finally {
+      setUploading(false)
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     
-    if (!user) return
-
-    // Validation
-    if (!displayName.trim()) {
-      alert('Display name is required')
-      return
-    }
-
-    if (dateOfBirth) {
-      const age = calculateAge(dateOfBirth)
-      if (age < 18) {
-        alert('You must be at least 18 years old')
-        return
-      }
-    }
-
-    setSaving(true)
-
     try {
-      let photoUrl = profilePhoto
+      setSaving(true)
+      setError(null)
 
-      // Upload new photo if selected
-      if (photoFile) {
-        const uploadedUrl = await uploadPhoto()
-        if (uploadedUrl) {
-          photoUrl = uploadedUrl
-        }
-      }
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) throw new Error('Not authenticated')
 
-      // Update profile
+      // Автоматически установить looking_for в зависимости от gender
+      // Male → ищет Female, Female → ищет Male
+      const lookingFor = formData.gender === 'male' ? 'female' : 'male'
+
       const { error } = await supabase
         .from('profiles')
         .update({
-          display_name: displayName.trim(),
-          date_of_birth: dateOfBirth || null,
-          gender: gender || null,
-          location: location.trim() || null,
-          disability_type: disabilityType || null,
-          bio: bio.trim() || null,
-          looking_for: lookingFor.trim() || null,
-          profile_photo: photoUrl || null
+          display_name: formData.display_name,
+          bio: formData.bio,
+          location: formData.location,
+          gender: formData.gender,
+          date_of_birth: formData.date_of_birth || null,
+          disability_type: formData.disability_type || null,
+          looking_for: lookingFor, // Автоматически устанавливается
+          photo_url: formData.photo_url || null,
+          updated_at: new Date().toISOString()
         })
         .eq('id', user.id)
 
-      if (error) {
-        console.error('Update error:', error)
-        alert('Failed to update profile. Please try again.')
-        setSaving(false)
-        return
-      }
+      if (error) throw error
 
-      // Success - redirect to profile
-      alert('Profile updated successfully!')
-      router.push(`/profile/${user.id}`)
-    } catch (error) {
-      console.error('Error:', error)
-      alert('An error occurred. Please try again.')
+      setSuccess(true)
+      setTimeout(() => {
+        router.push('/dashboard')
+      }, 2000)
+
+    } catch (error: any) {
+      setError(error.message)
+    } finally {
       setSaving(false)
     }
   }
 
-  const calculateAge = (dob: string) => {
-    const today = new Date()
-    const birthDate = new Date(dob)
-    let age = today.getFullYear() - birthDate.getFullYear()
-    const monthDiff = today.getMonth() - birthDate.getMonth()
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--
-    }
-    return age
-  }
-
   if (loading) {
-    return <div style={{ padding: '4rem', textAlign: 'center' }}>Loading...</div>
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
+        <p>Loading...</p>
+      </div>
+    )
   }
 
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '0 1.5rem' }}>
-      {/* Header */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '2rem'
-      }}>
-        <h1 style={{ margin: 0, fontSize: '2rem', color: '#333' }}>Edit Profile</h1>
-        <Link 
-          href={`/profile/${user?.id}`}
-          style={{
-            padding: '0.5rem 1rem',
-            color: '#666',
-            textDecoration: 'none',
-            border: '1px solid #e5e7eb',
-            borderRadius: '6px'
-          }}
-        >
-          Cancel
-        </Link>
-      </div>
-
-      {/* Form */}
-      <form onSubmit={handleSubmit} style={{
+    <div style={{ 
+      minHeight: '100vh', 
+      padding: '2rem 1rem',
+      background: '#f9fafb'
+    }}>
+      <div style={{ 
+        maxWidth: '600px', 
+        margin: '0 auto',
         background: 'white',
-        borderRadius: '16px',
         padding: '2rem',
+        borderRadius: '12px',
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
       }}>
-        {/* Photo Upload */}
-        <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '1rem',
-            fontWeight: 600,
-            color: '#333',
-            fontSize: '1.1rem'
+        <h1 style={{ marginBottom: '2rem' }}>Edit Profile</h1>
+
+        {error && (
+          <div style={{ 
+            padding: '1rem', 
+            background: '#fee2e2', 
+            color: '#991b1b',
+            borderRadius: '8px',
+            marginBottom: '1rem'
           }}>
-            Profile Photo
-          </label>
-          
-          {/* Photo Preview */}
-          <div style={{
-            width: '150px',
-            height: '150px',
-            margin: '0 auto 1rem',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative'
+            {error}
+          </div>
+        )}
+
+        {success && (
+          <div style={{ 
+            padding: '1rem', 
+            background: '#d1fae5', 
+            color: '#065f46',
+            borderRadius: '8px',
+            marginBottom: '1rem'
           }}>
-            {photoPreview ? (
-              <img
-                src={photoPreview}
-                alt="Profile preview"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
-            ) : (
-              <div style={{
-                fontSize: '4rem',
-                color: 'white',
-                fontWeight: 'bold'
-              }}>
-                {displayName.charAt(0).toUpperCase() || '?'}
+            Profile updated successfully! Redirecting...
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          {/* Photo Upload */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Profile Photo
+            </label>
+            
+            {photoPreview && (
+              <div style={{ marginBottom: '1rem' }}>
+                <img 
+                  src={photoPreview} 
+                  alt="Profile preview"
+                  style={{ 
+                    width: '150px', 
+                    height: '150px', 
+                    objectFit: 'cover',
+                    borderRadius: '50%'
+                  }}
+                />
               </div>
             )}
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoUpload}
+              disabled={uploading}
+              style={{
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                width: '100%'
+              }}
+            />
+            {uploading && <p style={{ marginTop: '0.5rem', color: '#666' }}>Uploading...</p>}
+            <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#666' }}>
+              Max size: 5MB. Supported formats: JPG, PNG, GIF
+            </p>
           </div>
 
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handlePhotoChange}
-            id="photo-upload"
-            style={{ display: 'none' }}
-          />
-          <label
-            htmlFor="photo-upload"
-            style={{
-              display: 'inline-block',
-              padding: '0.75rem 1.5rem',
-              background: '#f5f5f5',
-              color: '#667eea',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: 500,
-              border: '2px solid #667eea'
-            }}
-          >
-            Choose Photo
-          </label>
-          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#999' }}>
-            Max size: 5MB. Formats: JPG, PNG, GIF
-          </p>
-        </div>
+          {/* Display Name */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Display Name *
+            </label>
+            <input
+              type="text"
+              required
+              value={formData.display_name}
+              onChange={(e) => setFormData({ ...formData, display_name: e.target.value })}
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
 
-        {/* Display Name */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Display Name *
-          </label>
-          <input
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-            maxLength={50}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box'
-            }}
-            placeholder="How should others see you?"
-          />
-        </div>
+          {/* Bio */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Bio
+            </label>
+            <textarea
+              value={formData.bio}
+              onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+              rows={4}
+              placeholder="Tell us about yourself..."
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                resize: 'vertical'
+              }}
+            />
+          </div>
 
-        {/* Date of Birth */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Date of Birth
-          </label>
-          <input
-            type="date"
-            value={dateOfBirth}
-            onChange={(e) => setDateOfBirth(e.target.value)}
-            max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0]}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box'
-            }}
-          />
-          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#999' }}>
-            Must be 18+ to use the platform
-          </p>
-        </div>
+          {/* Location */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Location
+            </label>
+            <input
+              type="text"
+              value={formData.location}
+              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+              placeholder="City, Country"
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
 
-        {/* Gender */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Gender
-          </label>
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box',
-              background: 'white'
-            }}
-          >
-            <option value="">Select gender...</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="non-binary">Non-binary</option>
-            <option value="transgender">Transgender</option>
-            <option value="prefer-not-to-say">Prefer not to say</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+          {/* Gender - ТОЛЬКО 2 ОПЦИИ */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Gender *
+            </label>
+            <select
+              required
+              value={formData.gender}
+              onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            >
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#666' }}>
+              {formData.gender === 'male' && '👨 You will be matched with women'}
+              {formData.gender === 'female' && '👩 You will be matched with men'}
+            </p>
+          </div>
 
-        {/* Location */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Location
-          </label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            maxLength={100}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box'
-            }}
-            placeholder="City, State/Country"
-          />
-        </div>
+          {/* Date of Birth */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Date of Birth
+            </label>
+            <input
+              type="date"
+              value={formData.date_of_birth}
+              onChange={(e) => setFormData({ ...formData, date_of_birth: e.target.value })}
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
 
-        {/* Disability Type */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Disability Type (Optional)
-          </label>
-          <select
-            value={disabilityType}
-            onChange={(e) => setDisabilityType(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box',
-              background: 'white'
-            }}
-          >
-            <option value="">Select...</option>
-            <option value="Physical disability">Physical disability</option>
-            <option value="Visual impairment">Visual impairment</option>
-            <option value="Hearing impairment">Hearing impairment</option>
-            <option value="Cognitive disability">Cognitive disability</option>
-            <option value="Mental health condition">Mental health condition</option>
-            <option value="Chronic illness">Chronic illness</option>
-            <option value="Neurodivergent">Neurodivergent</option>
-            <option value="Multiple disabilities">Multiple disabilities</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+          {/* Disability Type */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+              Disability Type (Optional)
+            </label>
+            <input
+              type="text"
+              value={formData.disability_type}
+              onChange={(e) => setFormData({ ...formData, disability_type: e.target.value })}
+              placeholder="e.g., Visual impairment, Mobility, etc."
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
 
-        {/* Bio */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            About Me
-          </label>
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            maxLength={500}
-            rows={5}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box',
-              fontFamily: 'inherit',
-              resize: 'vertical'
-            }}
-            placeholder="Tell others about yourself..."
-          />
-          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#999', textAlign: 'right' }}>
-            {bio.length}/500 characters
-          </p>
-        </div>
-
-        {/* Looking For */}
-        <div style={{ marginBottom: '2rem' }}>
-          <label style={{
-            display: 'block',
-            marginBottom: '0.5rem',
-            fontWeight: 600,
-            color: '#333'
-          }}>
-            Looking For
-          </label>
-          <textarea
-            value={lookingFor}
-            onChange={(e) => setLookingFor(e.target.value)}
-            maxLength={300}
-            rows={3}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid #e5e7eb',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              boxSizing: 'border-box',
-              fontFamily: 'inherit',
-              resize: 'vertical'
-            }}
-            placeholder="What kind of connection are you seeking?"
-          />
-          <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#999', textAlign: 'right' }}>
-            {lookingFor.length}/300 characters
-          </p>
-        </div>
-
-        {/* Buttons */}
-        <div style={{
-          display: 'flex',
-          gap: '1rem',
-          justifyContent: 'flex-end',
-          paddingTop: '1rem',
-          borderTop: '1px solid #e5e7eb'
-        }}>
-          <Link
-            href={`/profile/${user?.id}`}
-            style={{
-              padding: '0.75rem 2rem',
-              background: '#f5f5f5',
-              color: '#666',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontWeight: 600
-            }}
-          >
-            Cancel
-          </Link>
+          {/* Submit Button */}
           <button
             type="submit"
-            disabled={saving || uploadingPhoto}
+            disabled={saving}
             style={{
-              padding: '0.75rem 2rem',
-              background: (saving || uploadingPhoto) ? '#ccc' : '#667eea',
+              width: '100%',
+              padding: '1rem',
+              background: saving ? '#9ca3af' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
-              cursor: (saving || uploadingPhoto) ? 'not-allowed' : 'pointer',
-              fontWeight: 600,
-              fontSize: '1rem'
+              fontSize: '1rem',
+              fontWeight: '600',
+              cursor: saving ? 'not-allowed' : 'pointer'
             }}
           >
-            {uploadingPhoto ? 'Uploading Photo...' : saving ? 'Saving...' : 'Save Changes'}
+            {saving ? 'Saving...' : 'Save Changes'}
           </button>
-        </div>
-      </form>
-
-      {/* Help Text */}
-      <div style={{
-        marginTop: '2rem',
-        padding: '1.5rem',
-        background: '#f0f4ff',
-        borderRadius: '12px'
-      }}>
-        <h3 style={{ marginBottom: '1rem', color: '#667eea' }}>Profile Tips</h3>
-        <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#666', lineHeight: '1.8' }}>
-          <li>Use a clear, recent photo that shows your face</li>
-          <li>Be honest and authentic in your bio</li>
-          <li>Share what makes you unique</li>
-          <li>Describe what you're looking for in a connection</li>
-          <li>Keep your profile information up to date</li>
-        </ul>
+        </form>
       </div>
     </div>
   )
