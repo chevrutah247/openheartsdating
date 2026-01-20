@@ -1,128 +1,177 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export default function NewsPage() {
-  const news = [
-    {
-      id: 12,
-      date: 'January 19, 2026',
-      title: '💼 Job Board Launches — Accessible Employment for All',
-      excerpt: 'Find accessible employment opportunities or post jobs for candidates with disabilities. Our new job board connects inclusive employers with talented candidates.',
-      slug: 'job-board-launch',
-      image: '/images/news/job-board-launch.jpg'
-    },
-    {
-      id: 11,
-      date: 'January 19, 2026',
-      title: '🗣️ Community Forum Now Live!',
-      excerpt: 'Connect, share, and support each other in our new community forum built by and for people with disabilities.',
-      slug: 'forum-launch',
-      image: '/images/news/forum-launch.jpg'
-    },
-    {
-      id: 10,
-      date: 'January 18, 2026',
-      title: '🎉 Major Update: Profile Editing & UI Improvements Are Live!',
-      excerpt: "We're excited to announce profile editing, photo uploads, and a completely refreshed user interface. Read about all the improvements.",
-      slug: 'profile-editing-launch',
-      image: '/images/news/profile-editing-launch.jpg'
-    },
-    {
-      id: 9,
-      date: 'January 18, 2026',
-      title: 'Platform MVP Is Live! 🚀',
-      excerpt: 'Our core dating features are now available. This is just the beginning — help us grow into something bigger.',
-      slug: 'mvp-launch',
-      image: '/images/mvp-launch.jpg'
-    },
-    {
-      id: 8,
-      date: 'January 17, 2026',
-      title: 'Identity Verification System Launched 🔐',
-      excerpt: "Your safety is our priority. We've launched a comprehensive identity verification system to ensure every connection is genuine.",
-      slug: 'verification-launch',
-      image: '/images/verification-launch.jpg'
-    },
-    {
-      id: 7,
-      date: 'January 16, 2026',
-      title: 'Profiles Are Live! Create Yours Today 🎉',
-      excerpt: 'Your journey to meaningful connection starts now. Create your profile and let others see the real you.',
-      slug: 'profiles-launch',
-      image: '/images/profile-creation-live.jpg'
-    },
-    {
-      id: 6,
-      date: 'January 13, 2026',
-      title: 'Volunteer Program Launched! Join Our Team 🤝',
-      excerpt: 'Want to make a real impact? Our volunteer program is now open. Join us in building something meaningful.',
-      slug: 'volunteer-program',
-      image: '/images/early-access-celebration.jpg'
-    },
-    {
-      id: 5,
-      date: 'January 12, 2026',
-      title: 'Early Access Is Open! 🎉',
-      excerpt: 'Join our Early Access program today and be among the first to experience Open Hearts Dating.',
-      slug: 'early-access-open',
-      image: '/images/mission-community.jpg'
-    },
-    {
-      id: 4,
-      date: 'December 28, 2025',
-      title: 'Why Accessibility Matters',
-      excerpt: 'Accessibility is our foundation. Learn why we built Open Hearts Dating with accessibility first.',
-      slug: 'why-accessibility',
-      image: '/images/accessibility-work.jpg'
-    },
-    {
-      id: 3,
-      date: 'December 15, 2025',
-      title: 'Building in Public',
-      excerpt: 'Transparency in development. Follow our journey as we build Open Hearts Dating openly.',
-      slug: 'building-in-public',
-      image: '/images/team-working.jpg'
-    },
-    {
-      id: 2,
-      date: 'December 1, 2025',
-      title: 'The Numbers Behind the Need',
-      excerpt: '1.3 billion people with disabilities deserve better. Here is why we are building this.',
-      slug: 'numbers-behind-need',
-      image: '/images/couple-walking.jpg'
-    },
-    {
-      id: 1,
-      date: 'November 15, 2025',
-      title: 'Welcome to Open Hearts Dating',
-      excerpt: 'Building something different. Our mission to create an accessible dating platform for everyone.',
-      slug: 'welcome',
-      image: '/images/dating-app-phone.jpg'
-    }
-  ]
+export const metadata: Metadata = {
+  title: 'News & Updates — Open Hearts Dating',
+  description: 'Latest news, updates, and announcements from Open Hearts Dating. Stay informed about our progress building an accessible dating platform.',
+}
 
+const newsArticles = [
+  {
+    id: 14,
+    slug: 'gofundme-campaign',
+    title: 'Help Us Build Love Without Barriers',
+    excerpt: 'Support our GoFundMe campaign to create the first truly accessible dating platform for 1.3 billion people with disabilities.',
+    date: 'January 19, 2026',
+    category: 'Fundraising',
+    emoji: '💙',
+    color: '#667eea'
+  },
+  {
+    id: 13,
+    slug: 'gofundme-launch',
+    title: 'Support Our Mission: GoFundMe Campaign Live',
+    excerpt: 'Our nonprofit fundraising campaign is now live. Help us build an accessible dating platform for everyone.',
+    date: 'January 18, 2026',
+    category: 'Fundraising',
+    emoji: '💙',
+    color: '#667eea'
+  },
+  {
+    id: 12,
+    slug: 'job-board-launch',
+    title: 'Introducing Our Job Board',
+    excerpt: 'Find inclusive employment opportunities with our new accessible job board, connecting talented individuals with disability-friendly employers.',
+    date: 'January 17, 2026',
+    category: 'Product Launch',
+    emoji: '💼',
+    color: '#10b981'
+  },
+  {
+    id: 11,
+    slug: 'forum-launch',
+    title: 'Community Forum Now Live',
+    excerpt: 'Connect, share, and support each other in our new accessible community forum. More than just dating — building real connections.',
+    date: 'January 16, 2026',
+    category: 'Product Launch',
+    emoji: '💬',
+    color: '#10b981'
+  },
+  {
+    id: 10,
+    slug: 'binary-gender-update',
+    title: 'Important Update on Gender Options',
+    excerpt: 'Addressing our recent mistake and our commitment to true inclusivity for all gender identities.',
+    date: 'January 15, 2026',
+    category: 'Community',
+    emoji: '🏳️‍🌈',
+    color: '#f59e0b'
+  },
+  {
+    id: 9,
+    slug: 'messages-redesign',
+    title: 'New Messages Experience',
+    excerpt: 'Our messaging system gets a major upgrade with improved accessibility, better organization, and enhanced privacy features.',
+    date: 'January 14, 2026',
+    category: 'Product Update',
+    emoji: '💬',
+    color: '#3b82f6'
+  },
+  {
+    id: 8,
+    slug: 'profile-editing',
+    title: 'Enhanced Profile Editing',
+    excerpt: 'New profile editing features make it easier than ever to express yourself authentically while maintaining full accessibility.',
+    date: 'January 13, 2026',
+    category: 'Product Update',
+    emoji: '✏️',
+    color: '#3b82f6'
+  },
+  {
+    id: 7,
+    slug: 'seo-improvements',
+    title: 'Making Open Hearts More Discoverable',
+    excerpt: 'Behind-the-scenes improvements to help more people find our platform and join our inclusive community.',
+    date: 'January 12, 2026',
+    category: 'Platform',
+    emoji: '🔍',
+    color: '#8b5cf6'
+  },
+  {
+    id: 6,
+    slug: 'design-system',
+    title: 'A Fresh New Look',
+    excerpt: 'Introducing our refined design system: more accessible, more beautiful, and more inclusive than ever.',
+    date: 'January 11, 2026',
+    category: 'Design',
+    emoji: '🎨',
+    color: '#ec4899'
+  },
+  {
+    id: 5,
+    slug: 'homepage-launch',
+    title: 'Welcome to Our New Homepage',
+    excerpt: 'Experience our redesigned homepage built with accessibility at its core. Clear, welcoming, and easy to navigate.',
+    date: 'January 10, 2026',
+    category: 'Product Launch',
+    emoji: '🏠',
+    color: '#10b981'
+  },
+  {
+    id: 4,
+    slug: 'database-update',
+    title: 'Stronger Foundations',
+    excerpt: 'Major database improvements ensure faster performance, better security, and room to grow as our community expands.',
+    date: 'January 9, 2026',
+    category: 'Platform',
+    emoji: '🗄️',
+    color: '#8b5cf6'
+  },
+  {
+    id: 3,
+    slug: 'navigation-redesign',
+    title: 'Smoother Navigation Experience',
+    excerpt: 'Our navigation just got smarter with improved accessibility, better mobile support, and intuitive user flows.',
+    date: 'January 8, 2026',
+    category: 'Product Update',
+    emoji: '🧭',
+    color: '#3b82f6'
+  },
+  {
+    id: 2,
+    slug: 'beta-testing',
+    title: 'Beta Testing Program Opens',
+    excerpt: 'Be among the first to try Open Hearts Dating. Join our beta program and help shape the future of accessible online dating.',
+    date: 'January 5, 2026',
+    category: 'Community',
+    emoji: '🧪',
+    color: '#f59e0b'
+  },
+  {
+    id: 1,
+    slug: 'welcome',
+    title: 'Welcome to Open Hearts Dating',
+    excerpt: 'Introducing the first truly accessible dating platform built for people with disabilities. Love without barriers starts here.',
+    date: 'January 1, 2026',
+    category: 'Announcement',
+    emoji: '💙',
+    color: '#667eea'
+  },
+]
+
+export default function NewsPage() {
   return (
     <>
+      {/* Hero */}
       <section className="hero">
         <div className="container">
           <h1>News & Updates</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
-            Follow our journey as we build Open Hearts Dating.
+          <p style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '0 auto' }}>
+            Stay up to date with the latest from Open Hearts Dating
           </p>
         </div>
       </section>
 
+      {/* News Grid */}
       <section className="content-section">
         <div className="container">
-          <div style={{ 
+          <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: '2rem',
-            maxWidth: '1200px',
-            margin: '0 auto'
+            marginBottom: '3rem'
           }}>
-            {news.map((article) => (
+            {newsArticles.map((article) => (
               <Link
                 key={article.id}
                 href={`/news/${article.slug}`}
@@ -130,124 +179,95 @@ export default function NewsPage() {
                   display: 'block',
                   background: 'white',
                   borderRadius: '16px',
-                  overflow: 'hidden',
+                  padding: '2rem',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                   textDecoration: 'none',
-                  transition: 'all 0.3s ease',
-                  height: '100%'
+                  transition: 'all 0.2s ease',
+                  border: '1px solid #f3f4f6'
                 }}
-                className="news-card"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+                }}
               >
-                {/* Image */}
+                {/* Category Badge */}
                 <div style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '200px',
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  overflow: 'hidden'
+                  display: 'inline-block',
+                  background: `${article.color}15`,
+                  color: article.color,
+                  padding: '0.4rem 0.8rem',
+                  borderRadius: '12px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600',
+                  marginBottom: '1rem'
                 }}>
-                  {article.image && (
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
-                    />
-                  )}
+                  {article.emoji} {article.category}
                 </div>
 
-                {/* Content */}
-                <div style={{ padding: '1.5rem' }}>
-                  <time style={{ 
-                    display: 'block',
-                    color: '#667eea', 
-                    fontSize: '0.875rem', 
-                    fontWeight: '600',
-                    marginBottom: '0.5rem'
-                  }}>
-                    {article.date}
-                  </time>
-                  
-                  <h2 style={{ 
-                    fontSize: '1.25rem', 
-                    marginBottom: '0.75rem',
-                    color: '#333',
-                    lineHeight: '1.3'
-                  }}>
-                    {article.title}
-                  </h2>
-                  
-                  <p style={{ 
-                    color: '#666', 
-                    margin: 0,
-                    fontSize: '0.95rem',
-                    lineHeight: '1.6'
-                  }}>
-                    {article.excerpt}
-                  </p>
+                {/* Title */}
+                <h2 style={{
+                  fontSize: '1.5rem',
+                  marginBottom: '0.75rem',
+                  color: '#1f2937',
+                  lineHeight: '1.3'
+                }}>
+                  {article.title}
+                </h2>
 
-                  <div style={{
-                    marginTop: '1rem',
-                    color: '#667eea',
-                    fontSize: '0.9rem',
-                    fontWeight: '600'
-                  }}>
-                    Read more →
-                  </div>
-                </div>
+                {/* Excerpt */}
+                <p style={{
+                  color: '#6b7280',
+                  marginBottom: '1rem',
+                  lineHeight: '1.6'
+                }}>
+                  {article.excerpt}
+                </p>
+
+                {/* Date */}
+                <time style={{
+                  fontSize: '0.9rem',
+                  color: '#9ca3af'
+                }}>
+                  {article.date}
+                </time>
               </Link>
             ))}
           </div>
 
-          {/* CTA Section */}
+          {/* Stay Updated CTA */}
           <div style={{
-            maxWidth: '900px',
-            margin: '4rem auto 0',
-            padding: '3rem',
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             borderRadius: '16px',
+            padding: '3rem 2rem',
             textAlign: 'center',
             color: 'white'
           }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Ready to Start Your Journey?</h2>
-            <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: 0.95 }}>
-              Join our community and start connecting with others who understand your story.
+            <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'white' }}>
+              Never Miss an Update
+            </h2>
+            <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.95 }}>
+              Subscribe to our newsletter for the latest news and platform updates
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/join" className="button" style={{ 
-                background: 'white', 
+            <Link
+              href="/newsletter"
+              className="button"
+              style={{
+                background: 'white',
                 color: '#667eea',
                 padding: '1rem 2rem',
-                fontSize: '1.1rem'
-              }}>
-                Join Early Access
-              </a>
-              <a href="/volunteer" className="button button-secondary" style={{ 
-                background: 'transparent',
-                border: '2px solid white',
-                color: 'white',
-                padding: '1rem 2rem',
-                fontSize: '1.1rem'
-              }}>
-                Volunteer With Us
-              </a>
-            </div>
+                fontSize: '1.1rem',
+                fontWeight: '700'
+              }}
+            >
+              Subscribe to Newsletter
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Add hover effect */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-          }
-        `
-      }} />
     </>
   )
 }
