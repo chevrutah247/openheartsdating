@@ -175,23 +175,10 @@ export default function NewsPage() {
               <Link
                 key={article.id}
                 href={`/news/${article.slug}`}
+                className="card"
                 style={{
-                  display: 'block',
-                  background: 'white',
-                  borderRadius: '16px',
-                  padding: '2rem',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                   textDecoration: 'none',
-                  transition: 'all 0.2s ease',
                   border: '1px solid #f3f4f6'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)'
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
                 }}
               >
                 {/* Category Badge */}
