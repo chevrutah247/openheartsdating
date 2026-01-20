@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function GoFundMeBanner() {
   const [isVisible, setIsVisible] = useState(true)
@@ -40,10 +41,8 @@ export default function GoFundMeBanner() {
         }}>
           Help us build an accessible dating platform for everyone
         </p>
-        <a 
-          href="https://www.paypal.com/ncp/payment/LY67CR4F29BKN"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link 
+          href="/donate"
           style={{
             background: 'white',
             color: '#667eea',
@@ -58,8 +57,8 @@ export default function GoFundMeBanner() {
           onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
           onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
         >
-          Donate via PayPal 💙
-        </a>
+          Support Us 💙
+        </Link>
       </div>
       
       {/* Close button */}

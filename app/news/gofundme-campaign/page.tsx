@@ -308,6 +308,7 @@ export default function GoFundMeCampaignPage() {
               href="https://gofund.me/11dc5cf78"
               target="_blank"
               rel="noopener noreferrer"
+              className="button"
               style={{
                 display: 'inline-block',
                 background: 'white',
@@ -316,16 +317,14 @@ export default function GoFundMeCampaignPage() {
                 borderRadius: '8px',
                 textDecoration: 'none',
                 fontWeight: '700',
-                fontSize: '1.1rem',
-                transition: 'transform 0.2s ease'
+                fontSize: '1.1rem'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               Donate on GoFundMe 💙
             </a>
             <Link 
               href="/donate"
+              className="button"
               style={{
                 display: 'inline-block',
                 background: 'transparent',
@@ -335,16 +334,7 @@ export default function GoFundMeCampaignPage() {
                 borderRadius: '8px',
                 textDecoration: 'none',
                 fontWeight: '700',
-                fontSize: '1.1rem',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'white'
-                e.currentTarget.style.color = '#667eea'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.color = 'white'
+                fontSize: '1.1rem'
               }}
             >
               Learn More
