@@ -71,218 +71,262 @@ export default function GoFundMeCampaignPage() {
         lineHeight: '1.8',
         color: '#374151'
       }}>
-        {/* Opening */}
-        <p style={{ fontSize: '1.3rem', fontWeight: '500', color: '#1f2937', marginBottom: '2rem' }}>
-          Today, we're launching our GoFundMe campaign to build something that should have existed years ago: 
-          a dating platform that actually works for people with disabilities.
-        </p>
-
-        {/* The Problem */}
-        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          The Problem We're Solving
-        </h2>
-
-        <p>
-          1.3 billion people worldwide live with disabilities. Yet when it comes to dating apps, they face 
-          a simple but painful reality: these platforms weren't built for them.
+        {/* Opening Scenario */}
+        <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: '#667eea', marginBottom: '2rem' }}>
+          Imagine this:
         </p>
 
         <p>
-          Screen readers fail to read buttons. Keyboard navigation doesn't work. Images lack descriptions. 
-          And even when someone manages to match with someone, they're often ghosted after disclosing 
-          their disability.
+          You download a dating app. You're excited, hopeful. But your screen reader doesn't work. 
+          Buttons aren't labeled. Navigation is impossible. You give up.
+        </p>
+
+        <p>
+          Or worse — you actually match with someone. Things are going great. Then you mention your 
+          disability. They ghost you. Again.
         </p>
 
         <p style={{ 
-          padding: '1.5rem',
-          background: '#fef3c7',
-          borderLeft: '4px solid #f59e0b',
-          borderRadius: '4px',
-          margin: '2rem 0'
+          fontSize: '1.3rem',
+          fontWeight: '600',
+          color: '#1f2937',
+          marginBottom: '2rem'
         }}>
-          <strong>The statistics are stark:</strong> People with disabilities are significantly less likely 
-          to be in relationships, not because they don't want love, but because the tools available to find 
-          it simply don't work for them.
+          This happens every single day to 1.3 billion people with disabilities worldwide.
         </p>
 
-        {/* Our Solution */}
+        {/* Why We're Building */}
         <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          What We're Building
+          Why We're Building Open Hearts Dating
         </h2>
 
         <p>
-          Open Hearts Dating is different from the start. We're building a platform that's:
+          We're not building another dating app. We're creating the first truly accessible dating platform where:
         </p>
 
-        <ul style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }}>
+        <ul style={{ marginLeft: '1.5rem', marginBottom: '2rem' }}>
           <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Actually accessible:</strong> Every feature tested with real assistive technology by real users
+            ✅ <strong>Every feature is tested by real users with disabilities</strong>
           </li>
           <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Community-driven:</strong> Built with input from people with disabilities, not just for them
+            ✅ <strong>Screen readers actually work</strong> — because we build WITH people, not just FOR them
           </li>
           <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Nonprofit:</strong> We succeed when you find love, not when you keep swiping
+            ✅ <strong>Safety comes first</strong> — verification, moderation, protection
           </li>
           <li style={{ marginBottom: '0.75rem' }}>
-            <strong>More than dating:</strong> Community forum, job board, and resources
+            ✅ <strong>It's nonprofit</strong> — we don't profit from loneliness
           </li>
         </ul>
 
-        {/* Campaign Details */}
+        {/* More Than Dating */}
         <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          Our Fundraising Goals
-        </h2>
-
-        <div style={{ 
-          background: '#f9fafb',
-          padding: '2rem',
-          borderRadius: '12px',
-          marginBottom: '2rem'
-        }}>
-          <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-            🎯 Goal 1: $15,000 — Beta Launch
-          </h3>
-          <ul style={{ marginLeft: '1.5rem', color: '#666' }}>
-            <li>Complete core dating features</li>
-            <li>Launch beta testing program with real users</li>
-            <li>6 months of hosting and infrastructure</li>
-            <li>Basic moderation and safety systems</li>
-          </ul>
-        </div>
-
-        <div style={{ 
-          background: '#f9fafb',
-          padding: '2rem',
-          borderRadius: '12px',
-          marginBottom: '2rem'
-        }}>
-          <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-            🚀 Goal 2: $35,000 — Public Launch
-          </h3>
-          <ul style={{ marginLeft: '1.5rem', color: '#666' }}>
-            <li>Full public launch to everyone</li>
-            <li>iOS and Android mobile apps</li>
-            <li>Advanced matching algorithm</li>
-            <li>12 months operating costs</li>
-            <li>Professional accessibility audit</li>
-          </ul>
-        </div>
-
-        <div style={{ 
-          background: '#f9fafb',
-          padding: '2rem',
-          borderRadius: '12px',
-          marginBottom: '2rem'
-        }}>
-          <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>
-            🌟 Goal 3: $75,000 — Scale & Grow
-          </h3>
-          <ul style={{ marginLeft: '1.5rem', color: '#666' }}>
-            <li>Multilingual support (10+ languages)</li>
-            <li>Video chat features with accessibility controls</li>
-            <li>Advanced safety and verification features</li>
-            <li>Community events and in-person meetups</li>
-            <li>Scholarship program for premium features</li>
-          </ul>
-        </div>
-
-        {/* Where Money Goes */}
-        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          Where Your Money Goes
+          More Than Dating
         </h2>
 
         <p>
-          100% of donations go directly to building and running the platform:
+          Open Hearts isn't just a dating app. It's a complete support ecosystem:
         </p>
 
         <div style={{ 
           display: 'grid',
           gap: '1rem',
-          margin: '1.5rem 0'
+          margin: '1.5rem 0 2rem'
         }}>
           <div style={{ 
             padding: '1.25rem',
-            background: 'white',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px'
+            background: '#f9fafb',
+            borderRadius: '8px',
+            borderLeft: '4px solid #667eea'
           }}>
-            <strong style={{ color: '#667eea' }}>💻 40% Development & Hosting</strong>
-            <p style={{ margin: '0.5rem 0 0', fontSize: '1rem', color: '#666' }}>
-              Servers, databases, CDN, security, and infrastructure
+            <strong style={{ color: '#667eea', fontSize: '1.1rem' }}>💬 Community Forum</strong>
+            <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
+              Where people share experiences and support each other
             </p>
           </div>
 
           <div style={{ 
             padding: '1.25rem',
-            background: 'white',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px'
+            background: '#f9fafb',
+            borderRadius: '8px',
+            borderLeft: '4px solid #10b981'
           }}>
-            <strong style={{ color: '#667eea' }}>♿ 25% Accessibility Testing</strong>
-            <p style={{ margin: '0.5rem 0 0', fontSize: '1rem', color: '#666' }}>
-              Paying real users to test with screen readers, keyboards, and assistive tech
+            <strong style={{ color: '#10b981', fontSize: '1.1rem' }}>💼 Job Board</strong>
+            <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
+              Accessible employment for people with disabilities
             </p>
           </div>
 
           <div style={{ 
             padding: '1.25rem',
-            background: 'white',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px'
+            background: '#f9fafb',
+            borderRadius: '8px',
+            borderLeft: '4px solid #ec4899'
           }}>
-            <strong style={{ color: '#667eea' }}>🛡️ 20% Safety & Moderation</strong>
-            <p style={{ margin: '0.5rem 0 0', fontSize: '1rem', color: '#666' }}>
-              Verification systems, moderation tools, and community safety
-            </p>
-          </div>
-
-          <div style={{ 
-            padding: '1.25rem',
-            background: 'white',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px'
-          }}>
-            <strong style={{ color: '#667eea' }}>📱 15% Mobile Apps</strong>
-            <p style={{ margin: '0.5rem 0 0', fontSize: '1rem', color: '#666' }}>
-              iOS and Android development with full accessibility
+            <strong style={{ color: '#ec4899', fontSize: '1.1rem' }}>💙 Dating</strong>
+            <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
+              Where everyone can find love without barriers
             </p>
           </div>
         </div>
 
-        {/* Why Nonprofit */}
+        {/* Where Your Money Goes */}
         <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          Why We're Nonprofit
+          Where Your Money Goes
         </h2>
 
-        <p>
-          Most dating apps are owned by two giant corporations (Match Group and Bumble) that prioritize 
-          profit over people. Their business model requires keeping you single and swiping — the longer 
-          you use the app, the more money they make.
-        </p>
+        <div style={{ 
+          overflowX: 'auto',
+          marginBottom: '2rem'
+        }}>
+          <table style={{ 
+            width: '100%',
+            borderCollapse: 'collapse',
+            background: 'white',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px'
+          }}>
+            <thead>
+              <tr style={{ background: '#f9fafb' }}>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>Category</th>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>%</th>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>What It Means</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Development</strong></td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>40%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Building accessible features</td>
+              </tr>
+              <tr>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Testing</strong></td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>25%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Paying testers with disabilities</td>
+              </tr>
+              <tr>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Safety</strong></td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>20%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Moderation and user protection</td>
+              </tr>
+              <tr>
+                <td style={{ padding: '1rem' }}><strong>Mobile Apps</strong></td>
+                <td style={{ padding: '1rem', color: '#667eea', fontWeight: '600' }}>15%</td>
+                <td style={{ padding: '1rem', color: '#666' }}>iOS and Android versions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <p style={{ 
-          fontSize: '1.2rem',
+          fontSize: '1.1rem',
           fontWeight: '500',
-          color: '#667eea',
           padding: '1.5rem',
           background: 'rgba(102, 126, 234, 0.1)',
           borderRadius: '8px',
           margin: '2rem 0'
         }}>
-          We're different. We succeed when you find love. That's why we're building this as a nonprofit — 
-          mission first, money second.
+          Every dollar goes to the platform. We don't pay ourselves salaries. This is a project by the community, 
+          for the community.
+        </p>
+
+        {/* Funding Goals */}
+        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
+          We need $27,400 to launch Phase 1:
+        </h2>
+
+        <div style={{ 
+          background: '#f9fafb',
+          padding: '2rem',
+          borderRadius: '12px',
+          marginBottom: '2rem',
+          border: '2px solid #667eea'
+        }}>
+          <h3 style={{ color: '#667eea', marginBottom: '1rem', fontSize: '1.3rem' }}>
+            💻 $18,000 — MVP Development + AI + Accessible UX/UI
+          </h3>
+          <ul style={{ marginLeft: '1.5rem', color: '#666', lineHeight: '1.8' }}>
+            <li>Voice navigation</li>
+            <li>High-contrast mode</li>
+            <li>Large-text interface</li>
+            <li>Secure chat</li>
+            <li>AI-based psychological matching</li>
+            <li>Development by an experienced Ukrainian team offering a discounted nonprofit rate</li>
+          </ul>
+        </div>
+
+        <div style={{ 
+          background: '#f9fafb',
+          padding: '2rem',
+          borderRadius: '12px',
+          marginBottom: '2rem',
+          border: '2px solid #10b981'
+        }}>
+          <h3 style={{ color: '#10b981', marginBottom: '1rem', fontSize: '1.3rem' }}>
+            ⚖️ $7,000 — Legal Protection
+          </h3>
+          <ul style={{ marginLeft: '1.5rem', color: '#666', lineHeight: '1.8' }}>
+            <li>Accessibility compliance</li>
+            <li>Legal standards and policies</li>
+            <li>Liability protections</li>
+            <li>Safety and verification procedures</li>
+          </ul>
+        </div>
+
+        <div style={{ 
+          background: '#f9fafb',
+          padding: '2rem',
+          borderRadius: '12px',
+          marginBottom: '2rem',
+          border: '2px solid #f59e0b'
+        }}>
+          <h3 style={{ color: '#f59e0b', marginBottom: '1rem', fontSize: '1.3rem' }}>
+            📋 $2,400 — Nonprofit Setup
+          </h3>
+          <ul style={{ marginLeft: '1.5rem', color: '#666', lineHeight: '1.8' }}>
+            <li>501(c)(3) registration</li>
+            <li>Accounting</li>
+            <li>Compliance</li>
+            <li>Transparent reporting structure</li>
+          </ul>
+        </div>
+
+        {/* Why This Matters */}
+        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
+          Why This Matters to Me
+        </h2>
+
+        <p style={{ 
+          fontSize: '1.15rem',
+          lineHeight: '1.8',
+          padding: '2rem',
+          background: '#f9fafb',
+          borderRadius: '12px',
+          borderLeft: '4px solid #667eea',
+          fontStyle: 'italic'
+        }}>
+          For over 25 years, I've led charitable projects and worked alongside people who face barriers 
+          every day. I've seen firsthand how isolation affects people with disabilities — not just physically, 
+          but emotionally. They don't just need ramps and screen readers. They need connection. They need love. 
+          That's why I'm building this.
         </p>
 
         {/* Call to Action */}
-        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
+        <h2 style={{ fontSize: '1.75rem', marginTop: '3rem', marginBottom: '1rem', color: '#1f2937' }}>
           How You Can Help
         </h2>
 
-        <p>
-          Every donation, no matter the size, brings us closer to launch. Whether you give $5 or $500, 
-          you're helping create a platform where 1.3 billion people can find love without barriers.
-        </p>
+        <ul style={{ marginLeft: '1.5rem', marginBottom: '2rem', fontSize: '1.1rem' }}>
+          <li style={{ marginBottom: '0.75rem' }}>
+            <strong>💙 Donate</strong> — every amount matters
+          </li>
+          <li style={{ marginBottom: '0.75rem' }}>
+            <strong>📢 Share</strong> — tell your friends and family
+          </li>
+          <li style={{ marginBottom: '0.75rem' }}>
+            <strong>🧪 Become a tester</strong> — help us make the platform better
+          </li>
+        </ul>
 
         <div style={{ 
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -292,11 +336,11 @@ export default function GoFundMeCampaignPage() {
           margin: '2rem 0',
           color: 'white'
         }}>
-          <h3 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'white' }}>
-            Support Our Campaign
+          <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'white' }}>
+            Everyone deserves love without barriers.
           </h3>
           <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', opacity: 0.95 }}>
-            Help us build something that changes lives
+            Join us in building something that changes lives
           </p>
           <div style={{ 
             display: 'flex',
@@ -322,8 +366,8 @@ export default function GoFundMeCampaignPage() {
             >
               Donate on GoFundMe 💙
             </a>
-            <Link 
-              href="/donate"
+            <a 
+              href="https://openheartsdating.com"
               className="button"
               style={{
                 display: 'inline-block',
@@ -337,71 +381,9 @@ export default function GoFundMeCampaignPage() {
                 fontSize: '1.1rem'
               }}
             >
-              Learn More
-            </Link>
+              Visit OpenHeartsDating.com
+            </a>
           </div>
-        </div>
-
-        {/* Alternative Ways to Help */}
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          Can't Donate? You Can Still Help
-        </h3>
-
-        <ul style={{ marginLeft: '1.5rem', marginBottom: '2rem' }}>
-          <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Share our campaign</strong> on social media with friends and family
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Join our <Link href="/volunteer" style={{ color: '#667eea' }}>volunteer program</Link></strong> and 
-            help us build features
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Sign up for <Link href="/join" style={{ color: '#667eea' }}>early access</Link></strong> and 
-            be among the first to try the platform
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            <strong>Spread the word</strong> — tell someone who might benefit from this platform
-          </li>
-        </ul>
-
-        {/* Transparency */}
-        <h2 style={{ fontSize: '1.75rem', marginTop: '2rem', marginBottom: '1rem', color: '#1f2937' }}>
-          Our Commitment to Transparency
-        </h2>
-
-        <p>
-          As a nonprofit, we're committed to being completely transparent about how we use donations:
-        </p>
-
-        <ul style={{ marginLeft: '1.5rem', marginBottom: '2rem' }}>
-          <li style={{ marginBottom: '0.75rem' }}>
-            Monthly financial reports shared with our community
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            Public development roadmap showing what we're building
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            Regular updates on campaign progress and milestones
-          </li>
-          <li style={{ marginBottom: '0.75rem' }}>
-            Open communication with donors about challenges and successes
-          </li>
-        </ul>
-
-        {/* Closing */}
-        <div style={{ 
-          padding: '2rem',
-          background: '#f9fafb',
-          borderRadius: '12px',
-          margin: '2rem 0'
-        }}>
-          <p style={{ fontSize: '1.2rem', lineHeight: '1.8', margin: 0 }}>
-            <strong>Everyone deserves love.</strong> Everyone deserves a platform that works for them. 
-            Everyone deserves to feel seen, valued, and connected.
-          </p>
-          <p style={{ fontSize: '1.2rem', lineHeight: '1.8', marginTop: '1rem', marginBottom: 0 }}>
-            Help us make this a reality. <a href="https://gofund.me/11dc5cf78" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea', fontWeight: '600' }}>Support our campaign today.</a>
-          </p>
         </div>
 
         {/* Footer CTA */}
