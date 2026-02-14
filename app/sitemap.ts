@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/jobs', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/signup', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/login', priority: 0.5, changeFrequency: 'monthly' as const },
+    { path: '/dashboard', priority: 0.6, changeFrequency: 'daily' as const },
+    { path: '/messages', priority: 0.6, changeFrequency: 'daily' as const },
   ]
 
   return routes.map((route) => ({

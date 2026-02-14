@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import NotificationBell from './NotificationBell'
 
 export default function Navigation() {
   const router = useRouter()
@@ -87,8 +88,9 @@ export default function Navigation() {
                 <Link href="/admin" style={{ color: '#f59e0b' }}>Admin</Link>
               )}
               <div className="nav-user-menu">
-                <span style={{ 
-                  color: '#667eea', 
+                <NotificationBell />
+                <span style={{
+                  color: '#667eea',
                   fontWeight: 500,
                   display: 'flex',
                   alignItems: 'center',

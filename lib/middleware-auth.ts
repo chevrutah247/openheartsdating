@@ -59,7 +59,17 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   // Protected routes that require authentication
-  const protectedPaths = ['/dashboard', '/profile/create', '/profile/edit']
+  const protectedPaths = [
+    '/dashboard',
+    '/profile/create',
+    '/profile/edit',
+    '/profile/blocked',
+    '/messages',
+    '/profiles',
+    '/platform-preview/dating',
+    '/platform-preview/matches',
+    '/platform-preview/verify',
+  ]
   const isProtectedPath = protectedPaths.some(path => 
     request.nextUrl.pathname.startsWith(path)
   )
@@ -71,9 +81,53 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl)
   }
 
+  // Check account status for authenticated users
+  if (user) {
+    const suspendedPage = '/account-suspended'
+    const isSuspendedPage = request.nextUrl.pathname === suspendedPage
+    const isLogoutPath = request.nextUrl.pathname === '/api/auth/signout'
+
+    // Skip check for the suspended page itself and logout
+    if (!isSuspendedPage && !isLogoutPath) {
+      try {
+        const { createClient } = await import('@supabase/supabase-js')
+        const adminClient = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        )
+        const { data: profile } = await adminClient
+          .from('profiles')
+          .select('account_status, suspension_until')
+          .eq('id', user.id)
+          .single()
+
+        if (profile) {
+          // Auto-unsuspend if suspension period has passed
+          if (profile.account_status === 'suspended' && profile.suspension_until) {
+            const until = new Date(profile.suspension_until)
+            if (until < new Date()) {
+              await adminClient
+                .from('profiles')
+                .update({ account_status: 'active', suspension_reason: null, suspension_until: null })
+                .eq('id', user.id)
+            } else {
+              return NextResponse.redirect(new URL(suspendedPage, request.url))
+            }
+          }
+
+          if (profile.account_status === 'banned') {
+            return NextResponse.redirect(new URL(suspendedPage, request.url))
+          }
+        }
+      } catch {
+        // If check fails, allow through rather than blocking
+      }
+    }
+  }
+
   // If accessing auth pages (login/signup) while authenticated, redirect to dashboard
   const authPaths = ['/login', '/signup']
-  const isAuthPath = authPaths.some(path => 
+  const isAuthPath = authPaths.some(path =>
     request.nextUrl.pathname.startsWith(path)
   )
 

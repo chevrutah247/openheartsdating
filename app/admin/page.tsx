@@ -283,21 +283,28 @@ export default function AdminPage() {
           </div>
         </Link>
 
-        {/* Reports (Future) */}
-        <div style={{
-          padding: '2rem',
-          background: '#f9f9f9',
-          borderRadius: '12px',
-          opacity: 0.6
-        }}>
-          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🚨</div>
-          <h3 style={{ marginBottom: '0.5rem' }}>Reports</h3>
-          <p style={{ color: '#666', margin: 0 }}>
-            Review user reports and complaints
-            <br />
-            <span style={{ fontSize: '0.85rem', color: '#999' }}>(Coming soon)</span>
-          </p>
-        </div>
+        {/* Reports */}
+        <Link href="/admin/reports" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div style={{
+            padding: '2rem',
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            border: '2px solid transparent',
+            transition: 'border-color 0.2s',
+            cursor: 'pointer',
+            position: 'relative'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.borderColor = '#ef4444'}
+          onMouseOut={(e) => e.currentTarget.style.borderColor = 'transparent'}
+          >
+            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🚨</div>
+            <h3 style={{ marginBottom: '0.5rem' }}>Reports</h3>
+            <p style={{ color: '#666', margin: 0 }}>
+              Review user reports, warn/suspend/ban users
+            </p>
+          </div>
+        </Link>
       </div>
 
       {/* Quick Actions */}

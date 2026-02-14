@@ -17,8 +17,9 @@ interface Message {
 interface OtherUser {
   id: string
   display_name: string
-  age: number
+  date_of_birth: string
   location: string
+  profile_photo: string | null
 }
 
 export default function ChatPage() {
@@ -34,7 +35,12 @@ export default function ChatPage() {
   const [loading, setLoading] = useState(true)
   const [sending, setSending] = useState(false)
   const [isMatched, setIsMatched] = useState(false)
-  
+  const [isBlocked, setIsBlocked] = useState(false)
+  const [showReportModal, setShowReportModal] = useState(false)
+  const [reportReason, setReportReason] = useState('')
+  const [reportDescription, setReportDescription] = useState('')
+  const [reportSending, setReportSending] = useState(false)
+
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -117,10 +123,23 @@ export default function ChatPage() {
 
     setIsMatched(true)
 
+    // Check if blocked
+    const { data: block } = await supabase
+      .from('blocks')
+      .select('id')
+      .or(`and(blocker_id.eq.${user.id},blocked_id.eq.${otherUserId}),and(blocker_id.eq.${otherUserId},blocked_id.eq.${user.id})`)
+      .limit(1)
+
+    if (block && block.length > 0) {
+      setIsBlocked(true)
+      setLoading(false)
+      return
+    }
+
     // Load other user's profile
     const { data: otherProfile } = await supabase
       .from('profiles')
-      .select('id, display_name, age, location')
+      .select('id, display_name, date_of_birth, location, profile_photo')
       .eq('id', otherUserId)
       .single()
 
@@ -171,7 +190,12 @@ export default function ChatPage() {
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!newMessage.trim() || !user || sending) return
+    const trimmed = newMessage.trim()
+    if (!trimmed || !user || sending) return
+    if (trimmed.length > 2000) {
+      alert('Message is too long (max 2000 characters).')
+      return
+    }
 
     setSending(true)
 
@@ -180,7 +204,7 @@ export default function ChatPage() {
       .insert({
         from_user_id: user.id,
         to_user_id: otherUserId,
-        content: newMessage.trim()
+        content: trimmed
       })
       .select()
       .single()
@@ -236,6 +260,52 @@ export default function ChatPage() {
       <div style={{ padding: '4rem', textAlign: 'center' }}>
         Loading...
       </div>
+    )
+  }
+
+  const handleBlock = async () => {
+    if (!user || !confirm('Are you sure you want to block this user? This will remove your match and messages.')) return
+
+    await supabase.from('blocks').insert({ blocker_id: user.id, blocked_id: otherUserId })
+    // Remove match and likes
+    await supabase.from('matches').delete().or(`and(user1_id.eq.${user.id},user2_id.eq.${otherUserId}),and(user1_id.eq.${otherUserId},user2_id.eq.${user.id})`)
+    await supabase.from('likes').delete().or(`and(from_user_id.eq.${user.id},to_user_id.eq.${otherUserId}),and(from_user_id.eq.${otherUserId},to_user_id.eq.${user.id})`)
+    router.push('/messages')
+  }
+
+  const handleReport = async () => {
+    if (!user || !reportReason) return
+    setReportSending(true)
+
+    await supabase.from('reports').insert({
+      reporter_id: user.id,
+      reported_user_id: otherUserId,
+      reason: reportReason,
+      description: reportDescription || null,
+    })
+
+    setReportSending(false)
+    setShowReportModal(false)
+    setReportReason('')
+    setReportDescription('')
+    alert('Report submitted. Thank you for helping keep our community safe.')
+  }
+
+  // Blocked
+  if (isBlocked) {
+    return (
+      <section style={{ padding: '4rem 1.5rem', maxWidth: '700px', margin: '0 auto' }}>
+        <div style={{ padding: '3rem', background: '#f3f4f6', borderRadius: '12px', textAlign: 'center' }}>
+          <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🚫</div>
+          <h1 style={{ color: '#333', marginBottom: '1rem' }}>Conversation Unavailable</h1>
+          <p style={{ color: '#666', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
+            This conversation is no longer available.
+          </p>
+          <Link href="/messages" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#667eea', color: 'white', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>
+            Back to Messages
+          </Link>
+        </div>
+      </section>
     )
   }
 
@@ -365,20 +435,106 @@ export default function ChatPage() {
           </p>
         </div>
 
-        <Link
-          href={`/profile/${otherUserId}`}
-          style={{
-            padding: '0.4rem 0.8rem',
-            background: '#f5f5f5',
-            color: '#333',
-            borderRadius: '6px',
-            textDecoration: 'none',
-            fontSize: '0.85rem'
-          }}
-        >
-          Profile
-        </Link>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <Link
+            href={`/profile/${otherUserId}`}
+            style={{
+              padding: '0.4rem 0.8rem',
+              background: '#f5f5f5',
+              color: '#333',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              fontSize: '0.85rem'
+            }}
+          >
+            Profile
+          </Link>
+          <button
+            onClick={() => setShowReportModal(true)}
+            style={{
+              padding: '0.4rem 0.6rem',
+              background: 'transparent',
+              border: '1px solid #e5e7eb',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '0.85rem',
+              color: '#f59e0b',
+            }}
+            title="Report"
+          >
+            ⚠️
+          </button>
+          <button
+            onClick={handleBlock}
+            style={{
+              padding: '0.4rem 0.6rem',
+              background: 'transparent',
+              border: '1px solid #e5e7eb',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '0.85rem',
+              color: '#ef4444',
+            }}
+            title="Block"
+          >
+            🚫
+          </button>
+        </div>
       </div>
+
+      {/* Report Modal */}
+      {showReportModal && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.5)', zIndex: 100,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem',
+        }}>
+          <div style={{
+            background: 'white', borderRadius: '12px', padding: '2rem',
+            maxWidth: '450px', width: '100%',
+          }}>
+            <h3 style={{ marginBottom: '1rem' }}>Report User</h3>
+            <select
+              value={reportReason}
+              onChange={(e) => setReportReason(e.target.value)}
+              style={{ width: '100%', padding: '0.75rem', border: '1px solid #ddd', borderRadius: '6px', marginBottom: '1rem', fontSize: '1rem' }}
+            >
+              <option value="">Select reason...</option>
+              <option value="harassment">Harassment</option>
+              <option value="spam">Spam</option>
+              <option value="fake_profile">Fake Profile</option>
+              <option value="inappropriate_content">Inappropriate Content</option>
+              <option value="scam">Scam / Fraud</option>
+              <option value="other">Other</option>
+            </select>
+            <textarea
+              value={reportDescription}
+              onChange={(e) => setReportDescription(e.target.value)}
+              placeholder="Additional details (optional)"
+              rows={3}
+              style={{ width: '100%', padding: '0.75rem', border: '1px solid #ddd', borderRadius: '6px', marginBottom: '1rem', fontSize: '1rem', resize: 'vertical' }}
+            />
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
+              <button
+                onClick={() => { setShowReportModal(false); setReportReason(''); setReportDescription('') }}
+                style={{ padding: '0.6rem 1.2rem', background: '#f5f5f5', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleReport}
+                disabled={!reportReason || reportSending}
+                style={{
+                  padding: '0.6rem 1.2rem', background: reportReason ? '#ef4444' : '#ccc',
+                  color: 'white', border: 'none', borderRadius: '6px', cursor: reportReason ? 'pointer' : 'not-allowed', fontWeight: 600
+                }}
+              >
+                {reportSending ? 'Sending...' : 'Submit Report'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Messages */}
       <div style={{
