@@ -17,78 +17,33 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.get(name)?.value
         },
         set(name: string, value: string, options: any) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
-          })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          })
+          request.cookies.set({ name, value, ...options })
+          response = NextResponse.next({ request: { headers: request.headers } })
+          response.cookies.set({ name, value, ...options })
         },
         remove(name: string, options: any) {
-          request.cookies.set({
-            name,
-            value: '',
-            ...options,
-          })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value: '',
-            ...options,
-          })
+          request.cookies.set({ name, value: '', ...options })
+          response = NextResponse.next({ request: { headers: request.headers } })
+          response.cookies.set({ name, value: '', ...options })
         },
       },
     }
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // Refresh session cookie if it exists
+  const { data: { user } } = await supabase.auth.getUser()
 
-  // Protected routes that require authentication
-  const protectedPaths = [
-    '/dashboard',
-    '/profile/create',
-    '/profile/edit',
-    '/profile/blocked',
-    '/messages',
-    '/profiles',
-    '/platform-preview/dating',
-    '/platform-preview/matches',
-    '/platform-preview/verify',
-  ]
-  const isProtectedPath = protectedPaths.some(path => 
-    request.nextUrl.pathname.startsWith(path)
-  )
+  // NOTE: Protected route checks are handled client-side in each page.
+  // The client uses localStorage for auth (not cookies), so middleware
+  // cannot reliably block unauthenticated users. Pages like /dashboard,
+  // /messages, etc. each check supabase.auth.getUser() and redirect.
 
-  // If accessing protected route without auth, redirect to login
-  if (isProtectedPath && !user) {
-    const redirectUrl = new URL('/login', request.url)
-    redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname)
-    return NextResponse.redirect(redirectUrl)
-  }
-
-  // Check account status for authenticated users
+  // Check account status for suspended/banned users (only if cookie session exists)
   if (user) {
     const suspendedPage = '/account-suspended'
     const isSuspendedPage = request.nextUrl.pathname === suspendedPage
-    const isLogoutPath = request.nextUrl.pathname === '/api/auth/signout'
 
-    // Skip check for the suspended page itself and logout
-    if (!isSuspendedPage && !isLogoutPath) {
+    if (!isSuspendedPage) {
       try {
         const { createClient } = await import('@supabase/supabase-js')
         const adminClient = createClient(
@@ -102,7 +57,6 @@ export async function updateSession(request: NextRequest) {
           .single()
 
         if (profile) {
-          // Auto-unsuspend if suspension period has passed
           if (profile.account_status === 'suspended' && profile.suspension_until) {
             const until = new Date(profile.suspension_until)
             if (until < new Date()) {
@@ -114,25 +68,20 @@ export async function updateSession(request: NextRequest) {
               return NextResponse.redirect(new URL(suspendedPage, request.url))
             }
           }
-
           if (profile.account_status === 'banned') {
             return NextResponse.redirect(new URL(suspendedPage, request.url))
           }
         }
       } catch {
-        // If check fails, allow through rather than blocking
+        // If check fails, allow through
       }
     }
-  }
 
-  // If accessing auth pages (login/signup) while authenticated, redirect to dashboard
-  const authPaths = ['/login', '/signup']
-  const isAuthPath = authPaths.some(path =>
-    request.nextUrl.pathname.startsWith(path)
-  )
-
-  if (isAuthPath && user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    // Redirect authenticated users away from login/signup
+    const authPaths = ['/login', '/signup']
+    if (authPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
   }
 
   return response

@@ -25,7 +25,10 @@ export default function LoginPage() {
       setMessage(error.message)
       setLoading(false)
     } else {
-      router.push('/dashboard')
+      // Check for redirect parameter
+      const params = new URLSearchParams(window.location.search)
+      const redirectTo = params.get('redirectTo') || '/dashboard'
+      window.location.href = redirectTo
     }
   }
 
