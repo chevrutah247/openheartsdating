@@ -188,7 +188,7 @@ export default function JoinPage() {
                 <li>📜 Listed on our "Community Founders" page (optional)</li>
               </ul>
               <p style={{ fontSize: '0.95rem', fontStyle: 'italic', opacity: '0.8', marginTop: '1rem' }}>
-                <strong>23 spots remaining</strong> (updated daily)
+                <strong>Limited spots available</strong>
               </p>
             </div>
           </div>
@@ -239,7 +239,7 @@ export default function JoinPage() {
               <div className="ml-embedded" data-form="qmB8BX" suppressHydrationWarning></div>
 
               <p style={{ fontSize: '0.85rem', textAlign: 'center', marginTop: '1rem', opacity: '0.7' }}>
-                We'll contact you when beta testing begins (Spring 2025)
+                We'll contact you when beta testing begins (Spring 2026)
               </p>
             </div>
 

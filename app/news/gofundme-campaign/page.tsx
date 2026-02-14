@@ -349,7 +349,7 @@ export default function GoFundMeCampaignPage() {
             flexWrap: 'wrap'
           }}>
             <a 
-              href="https://gofund.me/11dc5cf78"
+              href="https://gofund.me/03630f97"
               target="_blank"
               rel="noopener noreferrer"
               className="button"
@@ -398,7 +398,7 @@ export default function GoFundMeCampaignPage() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a 
-              href="https://gofund.me/11dc5cf78"
+              href="https://gofund.me/03630f97"
               target="_blank"
               rel="noopener noreferrer"
               className="button button-primary"

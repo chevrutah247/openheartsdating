@@ -60,13 +60,9 @@ export default function AdminVerificationPage() {
     if (adminData) {
       setIsAdmin(true)
     } else {
-      const { error } = await supabase
-        .from('admin_users')
-        .upsert([{ id: user.id, role: 'super_admin' }])
-      
-      if (!error) {
-        setIsAdmin(true)
-      }
+      // Not an admin — redirect away
+      router.push('/')
+      return
     }
 
     setLoading(false)
