@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Profile Editing & UI Improvements Are Live',
+  description: 'Major update: full profile editing and beautiful new design on Open Hearts Dating. Upload photos, update your bio, and customize your profile.',
+  openGraph: {
+    title: 'Profile Editing & UI Improvements Are Live',
+    description: 'Full profile editing and beautiful new accessible design.',
+    type: 'article',
+    publishedTime: '2026-01-18T00:00:00Z',
+  },
+}
 
 export default function ProfileEditingLaunchNews() {
   return (

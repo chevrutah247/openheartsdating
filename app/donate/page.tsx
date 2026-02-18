@@ -3,8 +3,16 @@ import GoFundMeWidget from '../components/GoFundMeWidget'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Support Our Mission — Open Hearts Dating',
-  description: 'Help us build an accessible dating platform for 1.3 billion people with disabilities. Every donation makes a difference.',
+  title: 'Donate — Support Our Mission',
+  description: 'Help us build an accessible dating platform for 1.3 billion people with disabilities. Every donation makes a difference. 100% goes to development.',
+  alternates: {
+    canonical: '/donate',
+  },
+  openGraph: {
+    title: 'Support Open Hearts Dating',
+    description: 'Help us build an accessible dating platform for 1.3 billion people with disabilities.',
+    url: 'https://openheartsdating.com/donate',
+  },
 }
 
 export default function DonatePage() {

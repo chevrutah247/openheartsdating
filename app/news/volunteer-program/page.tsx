@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Volunteer Program Launched — Join Our Team',
+  description: 'Our volunteer program is now open. Help us build an accessible dating platform for people with disabilities. Developers, designers, moderators welcome.',
+  openGraph: {
+    title: 'Volunteer Program Launched — Join Our Team',
+    description: 'Help us build an accessible dating platform for everyone.',
+    type: 'article',
+    publishedTime: '2026-01-13T00:00:00Z',
+  },
+}
 
 export default function VolunteerProgramNews() {
   return (

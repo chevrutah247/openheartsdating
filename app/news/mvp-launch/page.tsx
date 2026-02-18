@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Platform MVP Is Live — Open Hearts Dating Launch',
+  description: 'Our core dating features are now available. Registration, verification, profiles, matching, and messaging. Help us grow into something bigger.',
+  openGraph: {
+    title: 'Platform MVP Is Live!',
+    description: 'Core dating features are now available on Open Hearts Dating.',
+    type: 'article',
+    publishedTime: '2026-01-18T00:00:00Z',
+  },
+}
 
 export default function MVPLaunchNews() {
   return (

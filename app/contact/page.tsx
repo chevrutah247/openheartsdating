@@ -2,13 +2,17 @@ import type { Metadata } from 'next'
 import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Open Hearts Dating',
+  title: 'Contact Us',
   description:
     'Contact Open Hearts Dating with questions, feedback, partnership ideas, or safety concerns. We believe in transparency, trust, and open communication.',
+  alternates: {
+    canonical: '/contact',
+  },
   openGraph: {
     title: 'Contact Open Hearts Dating',
     description:
       'Get in touch with Open Hearts Dating. We welcome questions, feedback, partnerships, and community support.',
+    url: 'https://openheartsdating.com/contact',
   },
 }
 

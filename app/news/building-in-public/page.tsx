@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Building in Public — Transparent Development',
+  description: 'Transparency in development. Follow our journey as we build Open Hearts Dating openly and share our progress with the community.',
+  openGraph: {
+    title: 'Building in Public — Open Hearts Dating',
+    description: 'Follow our journey as we build Open Hearts Dating openly.',
+    type: 'article',
+    publishedTime: '2025-12-15T00:00:00Z',
+  },
+}
 
 export default function BuildingInPublicNews() {
   return (

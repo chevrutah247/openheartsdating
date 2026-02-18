@@ -2,8 +2,16 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: 'Newsletter - Open Hearts Dating',
-  description: 'Subscribe to our newsletter and get the latest updates about Open Hearts Dating.',
+  title: 'Newsletter — Stay Updated',
+  description: 'Subscribe to our newsletter and get the latest updates about Open Hearts Dating. Platform updates, dating tips, success stories, and community events.',
+  alternates: {
+    canonical: '/newsletter',
+  },
+  openGraph: {
+    title: 'Subscribe to Open Hearts Dating Newsletter',
+    description: 'Get the latest updates about accessible dating delivered to your inbox.',
+    url: 'https://openheartsdating.com/newsletter',
+  },
 }
 
 export default function NewsletterPage() {

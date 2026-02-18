@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: "Our Mission — Love Without Barriers",
   description:
     "We're building Open Hearts Dating because 1.3 billion people with disabilities deserve to find love without barriers, judgment, or feeling invisible.",
+  alternates: {
+    canonical: '/mission',
+  },
+  openGraph: {
+    title: 'Our Mission — Love Without Barriers',
+    description: '1.3 billion people with disabilities deserve to find love without barriers.',
+    url: 'https://openheartsdating.com/mission',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Open Hearts Dating Mission' }],
+  },
 }
 
 export default function MissionPage() {

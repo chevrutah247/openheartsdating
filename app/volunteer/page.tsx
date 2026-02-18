@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Join Our Team — Volunteer Opportunities',
+  title: 'Volunteer — Join Our Team',
   description: 'Help us build Open Hearts Dating. Join our team as a volunteer and make a real difference in the lives of people with disabilities seeking love.',
+  alternates: {
+    canonical: '/volunteer',
+  },
+  openGraph: {
+    title: 'Volunteer With Open Hearts Dating',
+    description: 'Make a real difference in the lives of people with disabilities seeking love.',
+    url: 'https://openheartsdating.com/volunteer',
+  },
 }
 
 export default function VolunteerPage() {

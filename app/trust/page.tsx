@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Trust & Safety — Why It Is Our Competitive Advantage',
-  description: 'The dating app industry faces a trust crisis. 75%+ scammer complaints in the US, fake profiles plague major platforms globally. We are building the safe alternative.',
+  title: 'Trust & Safety — Our Competitive Advantage',
+  description: 'The dating app industry faces a trust crisis. 75%+ scammer complaints, fake profiles everywhere. Open Hearts Dating is building the safe alternative with verified profiles.',
+  alternates: {
+    canonical: '/trust',
+  },
+  openGraph: {
+    title: 'Trust & Safety — Open Hearts Dating',
+    description: 'Building the safest dating platform with verified profiles and active moderation.',
+    url: 'https://openheartsdating.com/trust',
+  },
 }
 
 export default function TrustPage() {

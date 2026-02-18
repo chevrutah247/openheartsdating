@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Profiles Are Live — Create Yours Today',
+  description: 'Profile creation is now live on Open Hearts Dating. Build your complete dating profile and start connecting with others who understand your journey.',
+  openGraph: {
+    title: 'Profiles Are Live — Create Yours Today',
+    description: 'Build your complete dating profile and start connecting.',
+    type: 'article',
+    publishedTime: '2026-01-16T00:00:00Z',
+  },
+}
 
 export default function ProfilesLaunchNews() {
   return (

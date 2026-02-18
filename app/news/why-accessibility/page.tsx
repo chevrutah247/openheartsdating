@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Why Accessibility Matters in Dating Apps',
+  description: 'Accessibility is our foundation. Learn why we built Open Hearts Dating with accessibility first, not as an afterthought.',
+  openGraph: {
+    title: 'Why Accessibility Matters in Dating Apps',
+    description: 'Accessibility is our foundation, not an afterthought.',
+    type: 'article',
+    publishedTime: '2025-12-28T00:00:00Z',
+  },
+}
 
 export default function WhyAccessibilityNews() {
   return (

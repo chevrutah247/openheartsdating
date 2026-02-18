@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Welcome to Open Hearts Dating',
+  description: 'Building something different. Our mission to create an accessible dating platform for everyone with disabilities.',
+  openGraph: {
+    title: 'Welcome to Open Hearts Dating',
+    description: 'Building something different. Our mission to create an accessible dating platform for everyone.',
+    type: 'article',
+    publishedTime: '2025-11-15T00:00:00Z',
+  },
+}
 
 export default function WelcomeNews() {
   return (

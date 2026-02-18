@@ -3,7 +3,15 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'When We Launch — Development Timeline',
-  description: 'Follow our journey from development to launch. Beta testing Spring 2026, public launch Summer 2026.',
+  description: 'Follow our journey from development to launch. Beta testing Spring 2026, public launch Summer 2026. Track our accessible dating platform progress.',
+  alternates: {
+    canonical: '/when-we-launch',
+  },
+  openGraph: {
+    title: 'When We Launch — Open Hearts Dating Timeline',
+    description: 'Beta testing Spring 2026, public launch Summer 2026.',
+    url: 'https://openheartsdating.com/when-we-launch',
+  },
 }
 
 export default function DatingPage() {

@@ -2,8 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'News & Updates — Open Hearts Dating',
+  title: 'News & Updates',
   description: 'Latest news, updates, and announcements from Open Hearts Dating. Stay informed about our progress building an accessible dating platform.',
+  alternates: {
+    canonical: '/news',
+  },
+  openGraph: {
+    title: 'News & Updates — Open Hearts Dating',
+    description: 'Stay informed about our progress building an accessible dating platform.',
+    url: 'https://openheartsdating.com/news',
+  },
 }
 
 const newsArticles = [

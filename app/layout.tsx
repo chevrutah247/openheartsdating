@@ -1,13 +1,82 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
 import StructuredData from './components/StructuredData'
 import GoFundMeBanner from './components/GoFundMeBanner'
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#667eea',
+}
+
 export const metadata: Metadata = {
-  title: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
+  metadataBase: new URL('https://openheartsdating.com'),
+  title: {
+    default: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
+    template: '%s | Open Hearts Dating',
+  },
   description: 'The first accessible dating platform built for people with disabilities. Find love without barriers. Verified, safe, and 100% accessible. Join our nonprofit community today.',
+  keywords: [
+    'accessible dating',
+    'disability dating',
+    'inclusive dating app',
+    'dating for people with disabilities',
+    'accessible dating platform',
+    'disability friendly dating',
+    'nonprofit dating app',
+    'safe dating platform',
+    'screen reader dating app',
+    'WCAG dating',
+    'wheelchair dating',
+    'blind dating app accessible',
+    'deaf dating app',
+    'chronic illness dating',
+  ],
+  authors: [{ name: 'Open Hearts Dating', url: 'https://openheartsdating.com' }],
+  creator: 'Open Hearts Dating',
+  publisher: 'Open Hearts Dating',
+  alternates: {
+    canonical: 'https://openheartsdating.com',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://openheartsdating.com',
+    siteName: 'Open Hearts Dating',
+    title: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
+    description: 'The first accessible dating platform built for people with disabilities. Find love without barriers.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Open Hearts Dating — Building Love Without Barriers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Open Hearts Dating — Inclusive Dating for People with Disabilities',
+    description: 'The first accessible dating platform built for people with disabilities. Find love without barriers.',
+    images: ['/og-image.jpg'],
+    creator: '@openheartsdating',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+  },
 }
 
 export default function RootLayout({
@@ -28,7 +97,9 @@ export default function RootLayout({
         <Navigation />
 
         {/* Main Content */}
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
 
         {/* Footer */}
         <footer style={{
@@ -53,7 +124,7 @@ export default function RootLayout({
               </div>
 
               {/* Column 2 */}
-              <div>
+              <nav aria-label="Platform navigation">
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Platform</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/platform-preview/dating" style={{ color: '#9ca3af', textDecoration: 'none' }}>Browse Profiles</Link>
@@ -61,10 +132,10 @@ export default function RootLayout({
                   <Link href="/messages" style={{ color: '#9ca3af', textDecoration: 'none' }}>Messages</Link>
                   <Link href="/dashboard" style={{ color: '#9ca3af', textDecoration: 'none' }}>Dashboard</Link>
                 </div>
-              </div>
+              </nav>
 
               {/* Column 3 */}
-              <div>
+              <nav aria-label="Community navigation">
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Community</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/news" style={{ color: '#9ca3af', textDecoration: 'none' }}>News</Link>
@@ -72,10 +143,10 @@ export default function RootLayout({
                   <Link href="/volunteer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Volunteer</Link>
                   <Link href="/support" style={{ color: '#9ca3af', textDecoration: 'none' }}>Support</Link>
                 </div>
-              </div>
+              </nav>
 
               {/* Column 4 */}
-              <div>
+              <nav aria-label="Account navigation">
                 <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Connect</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none' }}>Contact</Link>
@@ -83,7 +154,7 @@ export default function RootLayout({
                   <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
                   <Link href="/login" style={{ color: '#9ca3af', textDecoration: 'none' }}>Login</Link>
                 </div>
-              </div>
+              </nav>
             </div>
 
             {/* Newsletter CTA */}

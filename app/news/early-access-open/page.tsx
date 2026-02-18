@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Early Access Is Open — Join Open Hearts Dating',
+  description: 'Join our Early Access program today and be among the first to experience Open Hearts Dating, an accessible dating platform for people with disabilities.',
+  openGraph: {
+    title: 'Early Access Is Open!',
+    description: 'Be among the first to experience Open Hearts Dating.',
+    type: 'article',
+    publishedTime: '2026-01-12T00:00:00Z',
+  },
+}
 
 export default function EarlyAccessNews() {
   return (

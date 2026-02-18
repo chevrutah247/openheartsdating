@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Identity Verification System Launched — Safe Dating',
+  description: 'Your safety is our priority. We launched a comprehensive identity verification system to ensure every connection on Open Hearts Dating is genuine.',
+  openGraph: {
+    title: 'Identity Verification System Launched',
+    description: 'Comprehensive identity verification to ensure every connection is genuine.',
+    type: 'article',
+    publishedTime: '2026-01-17T00:00:00Z',
+  },
+}
 
 export default function VerificationLaunchNews() {
   return (

@@ -3,9 +3,13 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Get Involved — Investors, Partners & Supporters',
   description: 'Join Open Hearts Dating in addressing the $8.4B accessibility gap. Seeking mission-aligned investors, strategic partners, and community supporters.',
+  alternates: {
+    canonical: '/support',
+  },
   openGraph: {
     title: 'Get Involved — Investment & Partnership Opportunities',
     description: 'Help us rebuild trust in online dating. Addressing a $8.4B market gap with a nonprofit, trust-first approach.',
+    url: 'https://openheartsdating.com/support',
   },
 }
 

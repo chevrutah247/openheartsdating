@@ -2,8 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Community Forum — Open Hearts Dating',
+  title: 'Community Forum',
   description: 'Connect, share, and support each other. A safe space for people with disabilities to discuss everything from dating to daily life.',
+  alternates: {
+    canonical: '/forum',
+  },
+  openGraph: {
+    title: 'Community Forum — Open Hearts Dating',
+    description: 'A safe space for people with disabilities to connect and support each other.',
+    url: 'https://openheartsdating.com/forum',
+  },
 }
 
 export default function ForumPage() {

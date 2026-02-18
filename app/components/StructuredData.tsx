@@ -1,5 +1,3 @@
-'use client'
-
 export default function StructuredData() {
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -8,7 +6,7 @@ export default function StructuredData() {
     name: 'Open Hearts Dating',
     alternateName: 'Open Hearts',
     url: 'https://openheartsdating.com',
-    logo: 'https://openheartsdating.com/logo.png',
+    logo: 'https://openheartsdating.com/favicon.svg',
     description: 'Nonprofit accessible dating platform for people with disabilities. Building love without barriers for 1.3 billion people worldwide.',
     foundingDate: '2026',
     nonprofitStatus: 'Nonprofit',
@@ -17,6 +15,7 @@ export default function StructuredData() {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
       email: 'support@openheartsdating.com',
+      url: 'https://openheartsdating.com/contact',
     },
     sameAs: [
       'https://twitter.com/openheartsdating',
@@ -32,11 +31,19 @@ export default function StructuredData() {
     '@id': 'https://openheartsdating.com/#website',
     url: 'https://openheartsdating.com',
     name: 'Open Hearts Dating',
-    description: 'Accessible dating platform for people with disabilities',
+    description: 'The first accessible dating platform built for people with disabilities. Find love without barriers.',
     publisher: {
       '@id': 'https://openheartsdating.com/#organization',
     },
     inLanguage: 'en-US',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://openheartsdating.com/news?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
   }
 
   const webApplicationSchema = {
@@ -79,31 +86,6 @@ export default function StructuredData() {
     accessModeSufficient: ['textual', 'visual'],
   }
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://openheartsdating.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Mission',
-        item: 'https://openheartsdating.com/mission',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'News',
-        item: 'https://openheartsdating.com/news',
-      },
-    ],
-  }
-
   return (
     <>
       <script
@@ -117,10 +99,6 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </>
   )

@@ -1,7 +1,17 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'The Numbers Behind the Need — 1.3 Billion People Deserve Better',
+  description: '1.3 billion people with disabilities deserve better dating options. Here is why we are building Open Hearts Dating.',
+  openGraph: {
+    title: 'The Numbers Behind the Need',
+    description: '1.3 billion people with disabilities deserve better dating options.',
+    type: 'article',
+    publishedTime: '2025-12-01T00:00:00Z',
+  },
+}
 
 export default function NumbersBehindNeedNews() {
   return (

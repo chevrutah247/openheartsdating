@@ -2,8 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Job Board — Open Hearts Dating',
-  description: 'Connecting people with disabilities to accessible employment opportunities. Find inclusive employers who value your skills.',
+  title: 'Accessible Job Board',
+  description: 'Connecting people with disabilities to accessible employment opportunities. Find inclusive employers who value your skills and abilities.',
+  alternates: {
+    canonical: '/jobs',
+  },
+  openGraph: {
+    title: 'Accessible Job Board — Open Hearts Dating',
+    description: 'Find inclusive employers who value your skills.',
+    url: 'https://openheartsdating.com/jobs',
+  },
 }
 
 export default function JobsPage() {

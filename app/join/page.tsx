@@ -3,7 +3,15 @@ import ShareButtons from '../components/ShareButtons'
 
 export const metadata: Metadata = {
   title: 'Join Early Access — Be Among the First',
-  description: 'Join Open Hearts Dating Early Access Program. Help us build the dating platform you deserve. Be notified first when we launch.',
+  description: 'Join Open Hearts Dating Early Access Program. Help us build the accessible dating platform you deserve. Be notified first when we launch.',
+  alternates: {
+    canonical: '/join',
+  },
+  openGraph: {
+    title: 'Join Open Hearts Dating Early Access',
+    description: 'Help us build the dating platform you deserve. Be notified first when we launch.',
+    url: 'https://openheartsdating.com/join',
+  },
 }
 
 export default function JoinPage() {
