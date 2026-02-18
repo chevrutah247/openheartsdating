@@ -52,7 +52,7 @@ export default function AccountSuspendedPage() {
     return (
       <div style={{ padding: '4rem', textAlign: 'center' }}>
         <p>Your account is active.</p>
-        <Link href="/dashboard" style={{ color: '#667eea' }}>Go to Dashboard</Link>
+        <Link href="/" style={{ color: 'var(--primary)' }}>Go to Dashboard</Link>
       </div>
     )
   }
@@ -112,7 +112,7 @@ export default function AccountSuspendedPage() {
             href="mailto:contact@openheartsdating.com"
             style={{
               padding: '0.75rem 1.5rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ProfilesLaunchNews() {
   return (
     <article style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-      <Link href="/news" style={{ color: '#667eea', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>
+      <Link href="/news" style={{ color: 'var(--primary)', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>
         ← Back to News
       </Link>
 
@@ -39,7 +39,7 @@ export default function ProfilesLaunchNews() {
           After months of development, profile creation is now live! Build your complete dating profile and start connecting with others who understand your journey.
         </p>
 
-        <h3 style={{ fontSize: '1.5rem', color: '#667eea', marginBottom: '1rem' }}>What You Can Do:</h3>
+        <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '1rem' }}>What You Can Do:</h3>
         <ul style={{ marginBottom: '2rem', paddingLeft: '1.5rem', lineHeight: '2' }}>
           <li>✨ Tell your story with a personalized bio</li>
           <li>📍 Share your location preferences</li>
@@ -53,7 +53,7 @@ export default function ProfilesLaunchNews() {
       </div>
 
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-        <Link href="/news" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#f3f4f6', color: '#667eea', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>
+        <Link href="/news" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#f3f4f6', color: 'var(--primary)', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>
           ← Back to All News
         </Link>
       </div>

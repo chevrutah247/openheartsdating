@@ -246,7 +246,7 @@ export default function AdminVerificationPage() {
       <div style={{ padding: '4rem', textAlign: 'center' }}>
         <h1 style={{ color: '#dc3545' }}>Access Denied</h1>
         <p>You do not have admin permissions.</p>
-        <a href="/dashboard" style={{ color: '#667eea' }}>Back to Dashboard</a>
+        <a href="/" style={{ color: 'var(--primary)' }}>Back to Dashboard</a>
       </div>
     )
   }
@@ -290,7 +290,7 @@ export default function AdminVerificationPage() {
               onClick={() => setFilter(f)}
               style={{
                 padding: '0.5rem 1rem',
-                background: filter === f ? '#667eea' : '#f0f0f0',
+                background: filter === f ? 'var(--primary)' : '#f0f0f0',
                 color: filter === f ? 'white' : '#333',
                 border: 'none',
                 borderRadius: '6px',
@@ -374,7 +374,7 @@ export default function AdminVerificationPage() {
                   style={{
                     padding: '1.5rem',
                     background: selectedRequest?.id === request.id ? '#e7f3ff' : 'white',
-                    border: `2px solid ${selectedRequest?.id === request.id ? '#667eea' : '#e5e7eb'}`,
+                    border: `2px solid ${selectedRequest?.id === request.id ? 'var(--primary)' : '#e5e7eb'}`,
                     borderRadius: '8px',
                     cursor: 'pointer',
                     transition: 'all 0.2s'
@@ -481,7 +481,7 @@ export default function AdminVerificationPage() {
                   style={{
                     display: 'inline-block',
                     padding: '0.75rem 1.5rem',
-                    background: '#667eea',
+                    background: 'var(--primary)',
                     color: 'white',
                     borderRadius: '6px',
                     textDecoration: 'none'
@@ -579,7 +579,7 @@ export default function AdminVerificationPage() {
       </div>
 
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-        <a href="/dashboard" style={{ color: '#667eea' }}>Back to Dashboard</a>
+        <a href="/" style={{ color: 'var(--primary)' }}>Back to Dashboard</a>
       </div>
     </section>
   )

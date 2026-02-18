@@ -36,7 +36,7 @@ export default function EthicsPage() {
         ].map((item, i) => (
           <div key={i} style={{
             padding: '2rem',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
             borderRadius: '12px',
             color: 'white',
             textAlign: 'center'
@@ -49,7 +49,7 @@ export default function EthicsPage() {
       </div>
 
       {/* Ethical Matching */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>Ethical Matching</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Ethical Matching</h2>
       
       <div style={{
         padding: '2rem',
@@ -133,14 +133,14 @@ export default function EthicsPage() {
       </div>
 
       {/* Financial Model */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>Financial Model</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Financial Model</h2>
       
       <div style={{
         padding: '2rem',
         background: '#e7f3ff',
         borderRadius: '12px',
         marginBottom: '3rem',
-        borderLeft: '4px solid #667eea'
+        borderLeft: '4px solid var(--primary)'
       }}>
         <p style={{ fontSize: '1.15rem', marginBottom: '1rem', fontWeight: 600 }}>
           All core functionality is free.
@@ -153,7 +153,7 @@ export default function EthicsPage() {
       </div>
 
       {/* Nonprofit Status */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>Nonprofit Commitment</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Nonprofit Commitment</h2>
       
       <div style={{
         padding: '2rem',
@@ -174,7 +174,7 @@ export default function EthicsPage() {
       </div>
 
       {/* What We Don't Do */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>What We Will Never Do</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>What We Will Never Do</h2>
       
       <div style={{
         display: 'grid',
@@ -207,7 +207,7 @@ export default function EthicsPage() {
       {/* CTA */}
       <div style={{
         padding: '2rem',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
         borderRadius: '12px',
         textAlign: 'center',
         color: 'white',
@@ -223,7 +223,7 @@ export default function EthicsPage() {
             display: 'inline-block',
             padding: '1rem 2rem',
             background: 'white',
-            color: '#667eea',
+            color: 'var(--primary)',
             borderRadius: '8px',
             textDecoration: 'none',
             fontWeight: 600
@@ -234,7 +234,7 @@ export default function EthicsPage() {
       </div>
 
       <p style={{ marginTop: '2rem', textAlign: 'center' }}>
-        <a href="/platform-preview" style={{ color: '#667eea' }}>← Back to Platform Preview</a>
+        <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back to Platform Preview</a>
       </p>
     </section>
   )

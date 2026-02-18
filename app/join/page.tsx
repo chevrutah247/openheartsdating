@@ -53,7 +53,7 @@ export default function JoinPage() {
                 transition: 'all 0.3s ease'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📧</div>
-                <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                   Newsletter Subscriber
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.5rem', minHeight: '80px' }}>
@@ -84,7 +84,7 @@ export default function JoinPage() {
                 background: 'white',
                 borderRadius: '12px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                border: '2px solid #667eea',
+                border: '2px solid var(--primary)',
                 position: 'relative',
                 transition: 'all 0.3s ease'
               }}>
@@ -93,7 +93,7 @@ export default function JoinPage() {
                   top: '-12px',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  background: '#667eea',
+                  background: 'var(--primary)',
                   color: 'white',
                   padding: '4px 16px',
                   borderRadius: '20px',
@@ -104,7 +104,7 @@ export default function JoinPage() {
                 </div>
                 
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🧪</div>
-                <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                   Beta Tester
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.5rem', minHeight: '80px' }}>
@@ -140,7 +140,7 @@ export default function JoinPage() {
                 transition: 'all 0.3s ease'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🤝</div>
-                <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                   Community Builder
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.5rem', minHeight: '80px' }}>
@@ -172,11 +172,11 @@ export default function JoinPage() {
               padding: '2rem',
               background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
               borderRadius: '12px',
-              borderLeft: '4px solid #667eea',
+              borderLeft: '4px solid var(--primary)',
               marginBottom: '4rem',
               textAlign: 'center'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 🎁 Founder's Circle (First 100 People!)
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.7', maxWidth: '700px', margin: '0 auto' }}>
@@ -236,7 +236,7 @@ export default function JoinPage() {
               borderRadius: '12px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
               marginBottom: '3rem',
-              border: '2px solid #667eea'
+              border: '2px solid var(--primary)'
             }}>
               <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>🧪 Beta Tester Signup</h2>
               <p style={{ textAlign: 'center', marginBottom: '2rem', opacity: '0.8' }}>

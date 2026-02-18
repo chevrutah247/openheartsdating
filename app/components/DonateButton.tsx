@@ -16,14 +16,14 @@ export default function DonateButton({
 
   const styleTypes = {
     primary: {
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
       color: 'white',
       border: 'none'
     },
     secondary: {
       background: 'white',
-      color: '#667eea',
-      border: '2px solid #667eea'
+      color: 'var(--primary)',
+      border: '2px solid var(--primary)'
     },
     header: {
       background: '#22c55e',

@@ -140,7 +140,7 @@ export default function BrowseProfilesPage() {
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -151,7 +151,7 @@ export default function BrowseProfilesPage() {
           </a>
         </div>
         <p style={{ marginTop: '2rem' }}>
-          <a href="/platform-preview" style={{ color: '#667eea' }}>← Back to Platform Preview</a>
+          <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back to Platform Preview</a>
         </p>
       </section>
     )
@@ -174,7 +174,7 @@ export default function BrowseProfilesPage() {
             {filteredProfiles.length} verified {filteredProfiles.length === 1 ? 'profile' : 'profiles'} available
           </p>
         </div>
-        <a href="/platform-preview" style={{ color: '#667eea' }}>← Back</a>
+        <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back</a>
       </div>
 
       <div style={{
@@ -263,8 +263,8 @@ export default function BrowseProfilesPage() {
               width: '100%',
               padding: '0.75rem',
               background: 'transparent',
-              color: '#667eea',
-              border: '1px solid #667eea',
+              color: 'var(--primary)',
+              border: '1px solid var(--primary)',
               borderRadius: '6px',
               cursor: 'pointer'
             }}
@@ -304,7 +304,7 @@ export default function BrowseProfilesPage() {
                 onClick={() => setCurrentIndex(0)}
                 style={{
                   padding: '1rem 2rem',
-                  background: '#667eea',
+                  background: 'var(--primary)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
@@ -325,7 +325,7 @@ export default function BrowseProfilesPage() {
               {/* Profile Photo / Avatar */}
               <div style={{
                 height: '300px',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'

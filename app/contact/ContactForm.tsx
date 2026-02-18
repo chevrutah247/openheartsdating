@@ -70,7 +70,7 @@ export default function ContactForm() {
           style={{
             marginTop: '1rem',
             padding: '0.5rem 1.5rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             border: 'none',
             borderRadius: '8px',

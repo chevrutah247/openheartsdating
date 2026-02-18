@@ -32,7 +32,7 @@ export default function ShareButtons({
       borderRadius: '12px',
       textAlign: 'center'
     }}>
-      <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#667eea' }}>
+      <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--primary)' }}>
         📢 Share with Friends
       </h3>
       <p style={{ fontSize: '1rem', marginBottom: '1.5rem', opacity: '0.9' }}>
@@ -142,7 +142,7 @@ export default function ShareButtons({
           href={shareLinks.email}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             borderRadius: '8px',
             textDecoration: 'none',

@@ -20,7 +20,7 @@ export default function ProfileEditingLaunchNews() {
       <Link 
         href="/news" 
         style={{ 
-          color: '#667eea', 
+          color: 'var(--primary)', 
           textDecoration: 'none',
           display: 'inline-block',
           marginBottom: '2rem'
@@ -87,7 +87,7 @@ export default function ProfileEditingLaunchNews() {
           <h2 style={{ 
             fontSize: '1.75rem', 
             marginBottom: '1rem',
-            color: '#667eea'
+            color: 'var(--primary)'
           }}>
             What's New
           </h2>
@@ -145,14 +145,14 @@ export default function ProfileEditingLaunchNews() {
         <div style={{
           padding: '2rem',
           background: '#f0f4ff',
-          borderLeft: '4px solid #667eea',
+          borderLeft: '4px solid var(--primary)',
           borderRadius: '8px',
           marginBottom: '3rem'
         }}>
           <h3 style={{ 
             fontSize: '1.25rem', 
             marginBottom: '0.5rem',
-            color: '#667eea'
+            color: 'var(--primary)'
           }}>
             Why This Matters
           </h3>
@@ -167,7 +167,7 @@ export default function ProfileEditingLaunchNews() {
           <h2 style={{ 
             fontSize: '1.75rem', 
             marginBottom: '1rem',
-            color: '#667eea'
+            color: 'var(--primary)'
           }}>
             What's Next
           </h2>
@@ -210,7 +210,7 @@ export default function ProfileEditingLaunchNews() {
               href="/login"
               style={{
                 padding: '1rem 2rem',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
                 color: 'white',
                 borderRadius: '8px',
                 textDecoration: 'none',
@@ -224,8 +224,8 @@ export default function ProfileEditingLaunchNews() {
               style={{
                 padding: '1rem 2rem',
                 background: 'white',
-                color: '#667eea',
-                border: '2px solid #667eea',
+                color: 'var(--primary)',
+                border: '2px solid var(--primary)',
                 borderRadius: '8px',
                 textDecoration: 'none',
                 fontWeight: 600
@@ -241,7 +241,7 @@ export default function ProfileEditingLaunchNews() {
           <h2 style={{ 
             fontSize: '1.75rem', 
             marginBottom: '1rem',
-            color: '#667eea'
+            color: 'var(--primary)'
           }}>
             Thank You
           </h2>
@@ -250,7 +250,7 @@ export default function ProfileEditingLaunchNews() {
             this mission—thank you. You're not just users. You're co-builders of something that 
             will change lives.
           </p>
-          <p style={{ fontWeight: 600, color: '#667eea' }}>
+          <p style={{ fontWeight: 600, color: 'var(--primary)' }}>
             We're building Open Hearts Dating <em>with</em> you, not just <em>for</em> you.
           </p>
           <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
@@ -275,17 +275,17 @@ export default function ProfileEditingLaunchNews() {
           <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>🔗 Related:</h4>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             <li style={{ marginBottom: '0.5rem' }}>
-              <Link href="/mission" style={{ color: '#667eea' }}>
+              <Link href="/mission" style={{ color: 'var(--primary)' }}>
                 Learn About Our Mission
               </Link>
             </li>
             <li style={{ marginBottom: '0.5rem' }}>
-              <Link href="/platform-preview/verify" style={{ color: '#667eea' }}>
+              <Link href="/platform-preview/verify" style={{ color: 'var(--primary)' }}>
                 Explore Verification Process
               </Link>
             </li>
             <li style={{ marginBottom: '0.5rem' }}>
-              <Link href="/volunteer" style={{ color: '#667eea' }}>
+              <Link href="/volunteer" style={{ color: 'var(--primary)' }}>
                 Volunteer With Us
               </Link>
             </li>
@@ -347,7 +347,7 @@ export default function ProfileEditingLaunchNews() {
             display: 'inline-block',
             padding: '1rem 2rem',
             background: '#f3f4f6',
-            color: '#667eea',
+            color: 'var(--primary)',
             borderRadius: '8px',
             textDecoration: 'none',
             fontWeight: 600

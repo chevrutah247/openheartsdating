@@ -19,7 +19,7 @@ export default function VerificationLaunchNews() {
       <Link 
         href="/news" 
         style={{ 
-          color: '#667eea', 
+          color: 'var(--primary)', 
           textDecoration: 'none',
           display: 'inline-block',
           marginBottom: '2rem'
@@ -81,7 +81,7 @@ export default function VerificationLaunchNews() {
           Today marks a major milestone for Open Hearts Dating: we are launching our identity verification system to make our platform safer for everyone.
         </p>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           Why Verification Matters:
         </h3>
 
@@ -104,7 +104,7 @@ export default function VerificationLaunchNews() {
           <p>Your documents are encrypted, reviewed only by trained staff, and never shared. You can request deletion at any time.</p>
         </div>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           How It Works:
         </h3>
 
@@ -115,7 +115,7 @@ export default function VerificationLaunchNews() {
           <li><strong>Connect safely</strong> — Start meeting real, verified people</li>
         </ol>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           Accepted Documents:
         </h3>
 
@@ -126,7 +126,7 @@ export default function VerificationLaunchNews() {
           <li>📄 Other Government-Issued ID</li>
         </ul>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           Our Commitment:
         </h3>
 
@@ -159,7 +159,7 @@ export default function VerificationLaunchNews() {
             display: 'inline-block',
             padding: '1rem 2rem',
             background: '#f3f4f6',
-            color: '#667eea',
+            color: 'var(--primary)',
             borderRadius: '8px',
             textDecoration: 'none',
             fontWeight: 600

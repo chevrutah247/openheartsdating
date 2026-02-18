@@ -62,7 +62,7 @@ export default function MissionPage() {
             </p>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem' }}>The Question That Started Everything</h3>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem' }}>The Question That Started Everything</h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
                 A friend of ours, let's call him Alex, was having a rough day. He'd been on three 
                 different dating apps for months. Got some matches. Even some conversations.
@@ -79,7 +79,7 @@ export default function MissionPage() {
               padding: '2rem', 
               background: 'rgba(102, 126, 234, 0.1)', 
               borderRadius: '12px',
-              borderLeft: '4px solid #667eea',
+              borderLeft: '4px solid var(--primary)',
               marginBottom: '2.5rem'
             }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
@@ -88,7 +88,7 @@ export default function MissionPage() {
             </div>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem' }}>Then We Started Listening</h3>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem' }}>Then We Started Listening</h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
                 The more we talked to people, the more stories we heard:
               </p>
@@ -127,7 +127,7 @@ export default function MissionPage() {
           
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#667eea', marginBottom: '1rem' }}>
+              <div style={{ fontSize: '4rem', fontWeight: 'bold', color: 'var(--primary)', marginBottom: '1rem' }}>
                 1.3 Billion
               </div>
               <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>
@@ -177,7 +177,7 @@ export default function MissionPage() {
           
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem', marginBottom: '1rem' }}>
                 🏗️ Built BY People Who Get It
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -188,7 +188,7 @@ export default function MissionPage() {
             </div>
 
             <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem', marginBottom: '1rem' }}>
                 ♿ Accessibility Isn't a Feature—It's the Foundation
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -217,7 +217,7 @@ export default function MissionPage() {
             </div>
 
             <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem', marginBottom: '1rem' }}>
                 💰 Nonprofit = No Hidden Motives
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -228,7 +228,7 @@ export default function MissionPage() {
             </div>
 
             <div style={{ marginBottom: '3rem' }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem', marginBottom: '1rem' }}>
                 🛡️ Safety Is Non-Negotiable
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -239,7 +239,7 @@ export default function MissionPage() {
             </div>
 
             <div>
-              <h3 style={{ color: '#667eea', fontSize: '1.4rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.4rem', marginBottom: '1rem' }}>
                 🤝 Community-Driven Development
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -316,7 +316,7 @@ export default function MissionPage() {
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
                 <strong>Want to help?</strong> We're looking for experienced grant writers, 
                 fundraising professionals, and community partners who can help us grow sustainably. 
-                <Link href="/volunteer" style={{ color: '#667eea', fontWeight: '600' }}> Join our team →</Link>
+                <Link href="/volunteer" style={{ color: 'var(--primary)', fontWeight: '600' }}> Join our team →</Link>
               </p>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default function MissionPage() {
               gap: '2rem'
             }}>
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   Accessibility First
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -343,7 +343,7 @@ export default function MissionPage() {
               </div>
 
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   Radical Transparency
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -352,7 +352,7 @@ export default function MissionPage() {
               </div>
 
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   Community Ownership
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -361,7 +361,7 @@ export default function MissionPage() {
               </div>
 
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   Safety Above All
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -370,7 +370,7 @@ export default function MissionPage() {
               </div>
 
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   No Exploitation
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
@@ -379,7 +379,7 @@ export default function MissionPage() {
               </div>
 
               <div>
-                <h3 style={{ color: '#667eea', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ color: 'var(--primary)', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
                   Human Dignity
                 </h3>
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>

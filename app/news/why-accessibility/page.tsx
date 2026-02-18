@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function WhyAccessibilityNews() {
   return (
     <article style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-      <Link href="/news" style={{ color: '#667eea', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>← Back to News</Link>
+      <Link href="/news" style={{ color: 'var(--primary)', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>← Back to News</Link>
       <header style={{ marginBottom: '3rem' }}>
         <time style={{ color: '#666', fontSize: '0.9rem' }}>December 28, 2025</time>
         <h1 style={{ fontSize: '2.5rem', marginTop: '1rem', marginBottom: '1rem' }}>Why Accessibility Matters</h1>
@@ -30,7 +30,7 @@ export default function WhyAccessibilityNews() {
         <p style={{ marginBottom: '2rem' }}>Because everyone deserves to find love without fighting with technology first.</p>
       </div>
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-        <Link href="/news" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#f3f4f6', color: '#667eea', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>← Back to All News</Link>
+        <Link href="/news" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#f3f4f6', color: 'var(--primary)', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>← Back to All News</Link>
       </div>
     </article>
   )

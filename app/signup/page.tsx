@@ -2,104 +2,119 @@
 
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function SignUpPage() {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setError('')
     setMessage('')
 
     const { error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/profile/create`,
+      },
     })
 
     if (error) {
-      setMessage(error.message)
+      setError(error.message)
     } else {
-      setMessage('Success! Check your email for confirmation link.')
+      router.push('/profile/create')
     }
-    
+
     setLoading(false)
   }
 
   return (
-    <div style={{ maxWidth: '400px', margin: '4rem auto', padding: '2rem' }}>
-      <h1 style={{ marginBottom: '2rem' }}>Sign Up</h1>
-      
-      <form onSubmit={handleSignUp}>
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem' }}>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ 
-              width: '100%', 
-              padding: '0.75rem',
-              border: '1px solid #ddd',
-              borderRadius: '6px',
-              fontSize: '1rem'
-            }}
-          />
-        </div>
+    <div style={{ maxWidth: '400px', margin: '3rem auto', padding: '0 1.5rem' }}>
+      <div style={{
+        background: 'white',
+        borderRadius: 'var(--radius-xl)',
+        padding: '2.5rem 2rem',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+      }}>
+        <h1 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', textAlign: 'center' }}>
+          Create Account
+        </h1>
+        <p style={{ color: 'var(--gray-500)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.95rem' }}>
+          Join the community — it&apos;s free
+        </p>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem' }}>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={6}
-            style={{ 
-              width: '100%', 
-              padding: '0.75rem',
-              border: '1px solid #ddd',
-              borderRadius: '6px',
-              fontSize: '1rem'
-            }}
-          />
-          <small style={{ color: '#666' }}>Minimum 6 characters</small>
-        </div>
-
-        {message && (
-          <div style={{ 
-            padding: '0.75rem', 
-            marginBottom: '1rem',
-            background: message.includes('Success') ? '#d4edda' : '#f8d7da',
-            color: message.includes('Success') ? '#155724' : '#721c24',
-            borderRadius: '6px',
-            border: `1px solid ${message.includes('Success') ? '#c3e6cb' : '#f5c6cb'}`
-          }}>
-            {message}
+        <form onSubmit={handleSignUp}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="you@email.com"
+            />
           </div>
-        )}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="button"
-          style={{ 
-            width: '100%',
-            padding: '0.75rem',
-            fontSize: '1rem',
-            opacity: loading ? 0.6 : 1
-          }}
-        >
-          {loading ? 'Signing up...' : 'Sign Up'}
-        </button>
-      </form>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={6}
+              placeholder="Min 6 characters"
+            />
+          </div>
 
-      <p style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-        Already have an account? <a href="/login" style={{ color: '#667eea' }}>Login</a>
-      </p>
+          {error && (
+            <div style={{
+              padding: '0.75rem',
+              marginBottom: '1rem',
+              background: 'var(--error-bg)',
+              color: 'var(--error-text)',
+              borderRadius: 'var(--radius-md)',
+              fontSize: '0.9rem',
+            }}>
+              {error}
+            </div>
+          )}
+
+          {message && (
+            <div style={{
+              padding: '0.75rem',
+              marginBottom: '1rem',
+              background: 'var(--success-bg)',
+              color: 'var(--success-text)',
+              borderRadius: 'var(--radius-md)',
+              fontSize: '0.9rem',
+            }}>
+              {message}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="button button-primary"
+            style={{ width: '100%', padding: '0.85rem', fontSize: '1rem', opacity: loading ? 0.6 : 1 }}
+          >
+            {loading ? 'Creating account...' : 'Join Free'}
+          </button>
+        </form>
+
+        <p style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--gray-500)', fontSize: '0.95rem' }}>
+          Already have an account? <Link href="/login">Sign In</Link>
+        </p>
+      </div>
     </div>
   )
 }

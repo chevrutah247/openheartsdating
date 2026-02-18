@@ -41,7 +41,7 @@ export default function Testimonials() {
                 background: 'white',
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}
             >
               <p style={{ 
@@ -55,7 +55,7 @@ export default function Testimonials() {
               <p style={{ 
                 fontWeight: '600', 
                 marginBottom: '0.25rem',
-                color: '#667eea'
+                color: 'var(--primary)'
               }}>
                 {testimonial.author}
               </p>

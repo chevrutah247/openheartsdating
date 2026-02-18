@@ -7,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/dashboard',
-          '/dashboard/*',
           '/admin',
           '/admin/*',
           '/messages',
@@ -20,6 +18,8 @@ export default function robots(): MetadataRoute.Robots {
           '/account-suspended',
           '/verify',
           '/api/*',
+          '/dashboard',
+          '/platform-preview/*',
         ],
       },
     ],

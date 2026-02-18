@@ -61,7 +61,7 @@ export default function BlockedUsersPage() {
     <div style={{ maxWidth: '600px', margin: '4rem auto', padding: '2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
         <h1 style={{ margin: 0 }}>Blocked Users</h1>
-        <Link href="/profile/edit" style={{ color: '#667eea', textDecoration: 'none' }}>
+        <Link href="/profile/edit" style={{ color: 'var(--primary)', textDecoration: 'none' }}>
           ← Back to Profile
         </Link>
       </div>
@@ -102,7 +102,7 @@ export default function BlockedUsersPage() {
                 flexShrink: 0,
                 background: user.profile_photo
                   ? `url(${user.profile_photo}) center/cover no-repeat`
-                  : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  : 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

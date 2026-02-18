@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden;">
           <tr>
-            <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center;">
+            <td style="background: linear-gradient(135deg, var(--primary) 0%, #764ba2 100%); padding: 30px; text-align: center;">
               <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Open Hearts Dating</h1>
             </td>
           </tr>
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
               <p style="color: #666; font-size: 16px; line-height: 1.6;">${excerpt}</p>
               <table cellpadding="0" cellspacing="0" style="margin: 30px auto;">
                 <tr>
-                  <td style="background: #667eea; border-radius: 8px;">
+                  <td style="background: var(--primary); border-radius: 8px;">
                     <a href="${link}" style="display: inline-block; padding: 15px 30px; color: #ffffff; text-decoration: none; font-weight: bold;">Read More</a>
                   </td>
                 </tr>

@@ -162,7 +162,7 @@ export default function VerifyPage() {
             Your identity has been verified. You now have full access to all platform features.
           </p>
           <a 
-            href="/platform-preview/dating"
+            href="/browse"
             style={{
               display: 'inline-block',
               marginTop: '1.5rem',
@@ -244,7 +244,7 @@ export default function VerifyPage() {
           padding: '1.5rem',
           background: '#e7f3ff',
           borderRadius: '8px',
-          borderLeft: '4px solid #667eea',
+          borderLeft: '4px solid var(--primary)',
           marginBottom: '2rem'
         }}>
           <p style={{ margin: 0, fontWeight: 600, color: '#1a365d', marginBottom: '0.5rem' }}>
@@ -325,7 +325,7 @@ export default function VerifyPage() {
                       <p style={{ color: '#666', fontSize: '0.9rem' }}>
                         {(file.size / 1024 / 1024).toFixed(2)} MB
                       </p>
-                      <p style={{ color: '#667eea', marginTop: '0.5rem' }}>Click to change file</p>
+                      <p style={{ color: 'var(--primary)', marginTop: '0.5rem' }}>Click to change file</p>
                     </div>
                   ) : (
                     <div>
@@ -391,7 +391,7 @@ export default function VerifyPage() {
               style={{
                 width: '100%',
                 padding: '1rem',
-                background: uploading || !file ? '#ccc' : '#667eea',
+                background: uploading || !file ? '#ccc' : 'var(--primary)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '8px',
@@ -404,7 +404,7 @@ export default function VerifyPage() {
             </button>
 
             <p style={{ marginTop: '1.5rem', textAlign: 'center', color: '#666' }}>
-              <a href="/platform-preview" style={{ color: '#667eea' }}>← Back to Platform Preview</a>
+              <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back to Platform Preview</a>
             </p>
           </form>
         )}

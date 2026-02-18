@@ -38,7 +38,7 @@ export default function SafetyArchitecturePage() {
       </div>
 
       {/* What This Includes */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>What This Includes</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>What This Includes</h2>
       
       <div style={{
         display: 'grid',
@@ -66,7 +66,7 @@ export default function SafetyArchitecturePage() {
       </div>
 
       {/* User Roles */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>User Roles & Permissions</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>User Roles & Permissions</h2>
       
       <div style={{ marginBottom: '3rem' }}>
         {/* Guest */}
@@ -125,7 +125,7 @@ export default function SafetyArchitecturePage() {
           background: '#e7f3ff',
           borderRadius: '8px',
           marginBottom: '1rem',
-          borderLeft: '4px solid #667eea'
+          borderLeft: '4px solid var(--primary)'
         }}>
           <h3 style={{ marginBottom: '0.5rem' }}>🤝 Verified Volunteer</h3>
           <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#1a365d' }}>
@@ -153,7 +153,7 @@ export default function SafetyArchitecturePage() {
       </div>
 
       {/* Data Protection */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>Data Protection</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Data Protection</h2>
       
       <div style={{
         display: 'grid',
@@ -181,7 +181,7 @@ export default function SafetyArchitecturePage() {
       </div>
 
       {/* Escalation Flow */}
-      <h2 style={{ marginBottom: '1.5rem', color: '#667eea' }}>Abuse Escalation Flow</h2>
+      <h2 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Abuse Escalation Flow</h2>
       
       <div style={{
         display: 'flex',
@@ -216,7 +216,7 @@ export default function SafetyArchitecturePage() {
           style={{
             display: 'inline-block',
             padding: '1rem 2rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             borderRadius: '8px',
             textDecoration: 'none',
@@ -226,7 +226,7 @@ export default function SafetyArchitecturePage() {
           Why Verification? →
         </a>
         <p style={{ marginTop: '1rem' }}>
-          <a href="/platform-preview" style={{ color: '#667eea' }}>← Back to Platform Preview</a>
+          <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back to Platform Preview</a>
         </p>
       </div>
     </section>

@@ -301,7 +301,7 @@ export default function ChatPage() {
           <p style={{ color: '#666', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
             This conversation is no longer available.
           </p>
-          <Link href="/messages" style={{ display: 'inline-block', padding: '1rem 2rem', background: '#667eea', color: 'white', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>
+          <Link href="/messages" style={{ display: 'inline-block', padding: '1rem 2rem', background: 'var(--primary)', color: 'white', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>
             Back to Messages
           </Link>
         </div>
@@ -330,7 +330,7 @@ export default function ChatPage() {
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -361,11 +361,11 @@ export default function ChatPage() {
             You can only message people you have matched with.
           </p>
           <Link 
-            href="/platform-preview/dating"
+            href="/browse"
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -403,7 +403,7 @@ export default function ChatPage() {
         <Link 
           href="/messages"
           style={{
-            color: '#667eea',
+            color: 'var(--primary)',
             textDecoration: 'none',
             fontSize: '1.5rem',
             lineHeight: 1
@@ -416,7 +416,7 @@ export default function ChatPage() {
           width: '40px',
           height: '40px',
           borderRadius: '50%',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -580,7 +580,7 @@ export default function ChatPage() {
                       maxWidth: '75%',
                       padding: '0.75rem 1rem',
                       borderRadius: isMe ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                      background: isMe ? '#667eea' : 'white',
+                      background: isMe ? 'var(--primary)' : 'white',
                       color: isMe ? 'white' : '#333',
                       boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
                     }}>
@@ -638,7 +638,7 @@ export default function ChatPage() {
           disabled={!newMessage.trim() || sending}
           style={{
             padding: '0.75rem 1.5rem',
-            background: newMessage.trim() && !sending ? '#667eea' : '#ccc',
+            background: newMessage.trim() && !sending ? 'var(--primary)' : '#ccc',
             color: 'white',
             border: 'none',
             borderRadius: '24px',

@@ -154,7 +154,7 @@ export default function ProfilePage() {
         <p style={{ color: '#666', marginBottom: '2rem' }}>
           This profile doesn't exist or has been removed.
         </p>
-        <Link href="/platform-preview/dating" className="button">
+        <Link href="/browse" className="button">
           Browse Profiles
         </Link>
       </div>
@@ -181,7 +181,7 @@ export default function ProfilePage() {
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -205,7 +205,7 @@ export default function ProfilePage() {
         <p style={{ color: '#666', marginBottom: '2rem' }}>
           This user hasn't completed verification yet.
         </p>
-        <Link href="/platform-preview/dating" className="button">
+        <Link href="/browse" className="button">
           Browse Profiles
         </Link>
       </div>
@@ -224,8 +224,8 @@ export default function ProfilePage() {
         gap: '1rem'
       }}>
         <Link 
-          href="/platform-preview/dating" 
-          style={{ color: '#667eea', textDecoration: 'none' }}
+          href="/browse" 
+          style={{ color: 'var(--primary)', textDecoration: 'none' }}
         >
           ← Back to Browse
         </Link>
@@ -255,7 +255,7 @@ export default function ProfilePage() {
         {/* Header with photo */}
         <div style={{
           height: '250px',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -384,7 +384,7 @@ export default function ProfilePage() {
               borderRadius: '12px',
               marginBottom: '2rem'
             }}>
-              <h3 style={{ marginBottom: '1rem', color: '#667eea', fontSize: '1.1rem' }}>
+              <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', fontSize: '1.1rem' }}>
                 About Me
               </h3>
               <p style={{
@@ -406,7 +406,7 @@ export default function ProfilePage() {
               borderRadius: '12px',
               marginBottom: '2rem'
             }}>
-              <h3 style={{ marginBottom: '1rem', color: '#667eea', fontSize: '1.1rem' }}>
+              <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', fontSize: '1.1rem' }}>
                 Looking For
               </h3>
               <p style={{ margin: 0, color: '#333' }}>
@@ -428,7 +428,7 @@ export default function ProfilePage() {
                   onClick={handleMessage}
                   style={{
                     padding: '1rem 2.5rem',
-                    background: '#667eea',
+                    background: 'var(--primary)',
                     color: 'white',
                     border: 'none',
                     borderRadius: '30px',
@@ -448,7 +448,7 @@ export default function ProfilePage() {
                   disabled={hasLiked || likeLoading}
                   style={{
                     padding: '1rem 2.5rem',
-                    background: hasLiked ? '#d4edda' : '#667eea',
+                    background: hasLiked ? '#d4edda' : 'var(--primary)',
                     color: hasLiked ? '#155724' : 'white',
                     border: 'none',
                     borderRadius: '30px',
@@ -482,7 +482,7 @@ export default function ProfilePage() {
                 style={{
                   display: 'inline-block',
                   padding: '0.75rem 2rem',
-                  background: '#667eea',
+                  background: 'var(--primary)',
                   color: 'white',
                   borderRadius: '8px',
                   textDecoration: 'none',
@@ -520,16 +520,16 @@ export default function ProfilePage() {
         justifyContent: 'center',
         flexWrap: 'wrap'
       }}>
-        <Link href="/platform-preview/dating" style={{ color: '#667eea' }}>
+        <Link href="/browse" style={{ color: 'var(--primary)' }}>
           Browse Profiles
         </Link>
-        <Link href="/platform-preview/matches" style={{ color: '#667eea' }}>
+        <Link href="/matches" style={{ color: 'var(--primary)' }}>
           My Matches
         </Link>
-        <Link href="/messages" style={{ color: '#667eea' }}>
+        <Link href="/messages" style={{ color: 'var(--primary)' }}>
           Messages
         </Link>
-        <Link href="/dashboard" style={{ color: '#667eea' }}>
+        <Link href="/" style={{ color: 'var(--primary)' }}>
           Dashboard
         </Link>
       </div>

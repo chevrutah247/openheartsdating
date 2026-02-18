@@ -48,7 +48,7 @@ export default function AdminPage() {
       .single()
 
     if (!profileData || (profileData.role !== 'admin' && profileData.role !== 'moderator')) {
-      router.push('/dashboard')
+      router.push('/')
       return
     }
 
@@ -138,7 +138,7 @@ export default function AdminPage() {
           borderRadius: '12px',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#667eea' }}>
+          <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>
             {stats.totalUsers}
           </div>
           <div style={{ color: '#666' }}>Total Users</div>
@@ -212,7 +212,7 @@ export default function AdminPage() {
             transition: 'border-color 0.2s',
             cursor: 'pointer'
           }}
-          onMouseOver={(e) => e.currentTarget.style.borderColor = '#667eea'}
+          onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
           onMouseOut={(e) => e.currentTarget.style.borderColor = 'transparent'}
           >
             <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>👥</div>
@@ -235,7 +235,7 @@ export default function AdminPage() {
             cursor: 'pointer',
             position: 'relative'
           }}
-          onMouseOver={(e) => e.currentTarget.style.borderColor = '#667eea'}
+          onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
           onMouseOut={(e) => e.currentTarget.style.borderColor = 'transparent'}
           >
             {stats.pendingVerification > 0 && (
@@ -272,7 +272,7 @@ export default function AdminPage() {
             transition: 'border-color 0.2s',
             cursor: 'pointer'
           }}
-          onMouseOver={(e) => e.currentTarget.style.borderColor = '#667eea'}
+          onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
           onMouseOut={(e) => e.currentTarget.style.borderColor = 'transparent'}
           >
             <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📧</div>
@@ -315,7 +315,7 @@ export default function AdminPage() {
           href="/admin/users"
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             borderRadius: '8px',
             textDecoration: 'none'
@@ -342,8 +342,8 @@ export default function AdminPage() {
           style={{
             padding: '0.75rem 1.5rem',
             background: 'white',
-            color: '#667eea',
-            border: '1px solid #667eea',
+            color: 'var(--primary)',
+            border: '1px solid var(--primary)',
             borderRadius: '8px',
             cursor: 'pointer'
           }}

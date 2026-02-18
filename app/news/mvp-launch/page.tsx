@@ -20,7 +20,7 @@ export default function MVPLaunchNews() {
       <Link 
         href="/news" 
         style={{ 
-          color: '#667eea', 
+          color: 'var(--primary)', 
           textDecoration: 'none',
           display: 'inline-block',
           marginBottom: '2rem'
@@ -99,7 +99,7 @@ export default function MVPLaunchNews() {
           </p>
         </div>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           What Is Available Now:
         </h3>
 
@@ -133,7 +133,7 @@ export default function MVPLaunchNews() {
           <p>Chat with your matches in real-time. Only matched users can message each other — no unwanted contacts.</p>
         </div>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           What Is Coming Next:
         </h3>
 
@@ -152,7 +152,7 @@ export default function MVPLaunchNews() {
           <li>♿ Enhanced accessibility features</li>
         </ul>
 
-        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h3 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           We Need Your Help:
         </h3>
 
@@ -211,7 +211,7 @@ export default function MVPLaunchNews() {
             display: 'inline-block',
             padding: '1rem 2rem',
             background: '#f3f4f6',
-            color: '#667eea',
+            color: 'var(--primary)',
             borderRadius: '8px',
             textDecoration: 'none',
             fontWeight: 600

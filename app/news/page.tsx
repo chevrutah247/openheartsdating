@@ -23,7 +23,7 @@ const newsArticles = [
     date: 'January 19, 2026',
     category: 'Fundraising',
     emoji: '💙',
-    color: '#667eea'
+    color: 'var(--primary)'
   },
   {
     id: 13,
@@ -33,7 +33,7 @@ const newsArticles = [
     date: 'January 18, 2026',
     category: 'Fundraising',
     emoji: '💙',
-    color: '#667eea'
+    color: 'var(--primary)'
   },
   {
     id: 12,
@@ -153,7 +153,7 @@ const newsArticles = [
     date: 'January 1, 2026',
     category: 'Announcement',
     emoji: '💙',
-    color: '#667eea'
+    color: 'var(--primary)'
   },
 ]
 
@@ -235,7 +235,7 @@ export default function NewsPage() {
 
           {/* Stay Updated CTA */}
           <div style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
             borderRadius: '16px',
             padding: '3rem 2rem',
             textAlign: 'center',
@@ -252,7 +252,7 @@ export default function NewsPage() {
               className="button"
               style={{
                 background: 'white',
-                color: '#667eea',
+                color: 'var(--primary)',
                 padding: '1rem 2rem',
                 fontSize: '1.1rem',
                 fontWeight: '700'

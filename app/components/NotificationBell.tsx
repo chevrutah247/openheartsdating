@@ -88,9 +88,9 @@ export default function NotificationBell() {
 
   const getNotificationLink = (notif: NotificationItem) => {
     switch (notif.type) {
-      case 'new_match': return '/platform-preview/matches'
+      case 'new_match': return '/matches'
       case 'new_message': return notif.data?.fromUserId ? `/messages/${notif.data.fromUserId}` : '/messages'
-      default: return '/dashboard'
+      default: return '/'
     }
   }
 

@@ -186,7 +186,7 @@ export default function MessagesPage() {
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -213,8 +213,8 @@ export default function MessagesPage() {
       }}>
         <h1 style={{ margin: 0, fontSize: '1.5rem' }}>Messages</h1>
         <Link
-          href="/platform-preview/matches"
-          style={{ color: '#667eea', textDecoration: 'none', fontSize: '0.9rem' }}
+          href="/matches"
+          style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.9rem' }}
         >
           My Matches
         </Link>
@@ -232,7 +232,7 @@ export default function MessagesPage() {
             Match with someone to start chatting!
           </p>
           <Link
-            href="/platform-preview/dating"
+            href="/browse"
             className="button"
             style={{ display: 'inline-block', padding: '1rem 2rem' }}
           >
@@ -265,7 +265,7 @@ export default function MessagesPage() {
                   flexShrink: 0,
                   background: conv.otherUserPhoto
                     ? `url(${conv.otherUserPhoto}) center/cover no-repeat`
-                    : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    : 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -310,7 +310,7 @@ export default function MessagesPage() {
                     width: '24px',
                     height: '24px',
                     borderRadius: '50%',
-                    background: '#667eea',
+                    background: 'var(--primary)',
                     color: 'white',
                     display: 'flex',
                     alignItems: 'center',

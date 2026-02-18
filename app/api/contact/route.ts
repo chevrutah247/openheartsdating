@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       subject: `[Contact Form] ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #667eea;">New Contact Form Submission</h2>
+          <h2 style="color: var(--primary);">New Contact Form Submission</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #eee;">Name</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${name}</td></tr>
             <tr><td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #eee;">Email</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${email}</td></tr>

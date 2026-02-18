@@ -19,7 +19,7 @@ export default function WhyVerificationPage() {
       {/* Core Message - LOCKED TEXT from TZ */}
       <div style={{
         padding: '2rem',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
         borderRadius: '12px',
         color: 'white',
         marginBottom: '3rem'
@@ -38,7 +38,7 @@ export default function WhyVerificationPage() {
           <strong> all interaction requires identity verification</strong>.
         </p>
 
-        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           What Does This Mean?
         </h2>
 
@@ -51,7 +51,7 @@ export default function WhyVerificationPage() {
           <li>Publish content</li>
         </ul>
 
-        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           How Verification Works
         </h2>
 
@@ -86,7 +86,7 @@ export default function WhyVerificationPage() {
           </div>
         </div>
 
-        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           Your Privacy Is Protected
         </h2>
 
@@ -98,7 +98,7 @@ export default function WhyVerificationPage() {
           <li>You can request <strong>full data deletion</strong> at any time</li>
         </ul>
 
-        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: '#667eea' }}>
+        <h2 style={{ marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--primary)' }}>
           Why Manual Review?
         </h2>
 
@@ -113,7 +113,7 @@ export default function WhyVerificationPage() {
           background: '#e7f3ff',
           borderRadius: '8px',
           marginTop: '2.5rem',
-          borderLeft: '4px solid #667eea'
+          borderLeft: '4px solid var(--primary)'
         }}>
           <p style={{ margin: 0, fontWeight: 600 }}>
             Our Commitment
@@ -131,7 +131,7 @@ export default function WhyVerificationPage() {
             style={{
               display: 'inline-block',
               padding: '1rem 2rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -142,7 +142,7 @@ export default function WhyVerificationPage() {
             Start Verification →
           </a>
           <p style={{ marginTop: '1rem' }}>
-            <a href="/platform-preview" style={{ color: '#667eea' }}>← Back to Platform Preview</a>
+            <a href="/platform-preview" style={{ color: 'var(--primary)' }}>← Back to Platform Preview</a>
           </p>
         </div>
       </div>

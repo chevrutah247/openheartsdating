@@ -55,7 +55,7 @@ export default function AdminReportsPage() {
       .single()
 
     if (!profile || (profile.role !== 'admin' && profile.role !== 'moderator')) {
-      router.push('/dashboard')
+      router.push('/')
       return
     }
 
@@ -217,7 +217,7 @@ export default function AdminReportsPage() {
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 style={{ margin: 0 }}>Reports</h1>
-        <Link href="/admin" style={{ color: '#667eea', textDecoration: 'none' }}>← Back to Admin</Link>
+        <Link href="/admin" style={{ color: 'var(--primary)', textDecoration: 'none' }}>← Back to Admin</Link>
       </div>
 
       {/* Filters */}
@@ -230,7 +230,7 @@ export default function AdminReportsPage() {
               padding: '0.5rem 1.25rem',
               borderRadius: '20px',
               border: 'none',
-              background: filterStatus === f.value ? '#667eea' : '#f3f4f6',
+              background: filterStatus === f.value ? 'var(--primary)' : '#f3f4f6',
               color: filterStatus === f.value ? 'white' : '#666',
               cursor: 'pointer',
               fontWeight: filterStatus === f.value ? '600' : 'normal',
@@ -256,7 +256,7 @@ export default function AdminReportsPage() {
                 style={{
                   padding: '1rem 1.5rem',
                   background: selectedReport?.id === report.id ? '#f0f4ff' : 'white',
-                  border: selectedReport?.id === report.id ? '2px solid #667eea' : '1px solid #e5e7eb',
+                  border: selectedReport?.id === report.id ? '2px solid var(--primary)' : '1px solid #e5e7eb',
                   borderRadius: '8px',
                   marginBottom: '0.75rem',
                   cursor: 'pointer',
@@ -310,7 +310,7 @@ export default function AdminReportsPage() {
 
             <div style={{ marginBottom: '1rem' }}>
               <strong>Reported User:</strong>{' '}
-              <Link href={`/profile/${selectedReport.reported_user_id}`} target="_blank" style={{ color: '#667eea' }}>
+              <Link href={`/profile/${selectedReport.reported_user_id}`} target="_blank" style={{ color: 'var(--primary)' }}>
                 {selectedReport.reported_name}
               </Link>
               {(selectedReport.previous_reports_count || 0) > 1 && (

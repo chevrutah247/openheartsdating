@@ -107,7 +107,7 @@ export default function NewsletterPage() {
                 fontSize: '1.8rem', 
                 marginBottom: '1rem',
                 textAlign: 'center',
-                color: '#667eea'
+                color: 'var(--primary)'
               }}>
                 Subscribe to Our Newsletter
               </h2>
@@ -129,7 +129,7 @@ export default function NewsletterPage() {
               padding: '1.5rem',
               background: '#f0f4ff',
               borderRadius: '8px',
-              borderLeft: '4px solid #667eea',
+              borderLeft: '4px solid var(--primary)',
               marginBottom: '2rem'
             }}>
               <p style={{ margin: 0, fontSize: '0.95rem', color: '#555' }}>

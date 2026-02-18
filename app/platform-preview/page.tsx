@@ -15,7 +15,7 @@ export default function PlatformPreviewHome() {
       {/* Header */}
       <div style={{
         padding: '3rem 2rem',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
         borderRadius: '16px',
         color: 'white',
         textAlign: 'center',
@@ -77,7 +77,7 @@ export default function PlatformPreviewHome() {
           </p>
         </a>
 
-        <a href="/platform-preview/dating" style={{
+        <a href="/browse" style={{
           padding: '2rem',
           background: '#f8f9fa',
           borderRadius: '12px',
@@ -185,7 +185,7 @@ export default function PlatformPreviewHome() {
         padding: '2rem',
         background: '#e7f3ff',
         borderRadius: '12px',
-        borderLeft: '4px solid #667eea'
+        borderLeft: '4px solid var(--primary)'
       }}>
         <h3 style={{ marginBottom: '1rem' }}>Ready to Join?</h3>
         <p style={{ marginBottom: '1.5rem', color: '#666' }}>
@@ -196,7 +196,7 @@ export default function PlatformPreviewHome() {
           style={{
             display: 'inline-block',
             padding: '1rem 2rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             borderRadius: '8px',
             textDecoration: 'none',

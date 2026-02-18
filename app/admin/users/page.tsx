@@ -47,7 +47,7 @@ export default function AdminUsersPage() {
       .single()
 
     if (!profileData || (profileData.role !== 'admin' && profileData.role !== 'moderator')) {
-      router.push('/dashboard')
+      router.push('/')
       return
     }
 
@@ -162,7 +162,7 @@ export default function AdminUsersPage() {
         gap: '1rem'
       }}>
         <div>
-          <Link href="/admin" style={{ color: '#667eea', textDecoration: 'none' }}>
+          <Link href="/admin" style={{ color: 'var(--primary)', textDecoration: 'none' }}>
             ← Back to Admin
           </Link>
           <h1 style={{ marginTop: '0.5rem', marginBottom: '0.25rem' }}>User Management</h1>
@@ -173,7 +173,7 @@ export default function AdminUsersPage() {
           onClick={loadUsers}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#667eea',
+            background: 'var(--primary)',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
@@ -291,7 +291,7 @@ export default function AdminUsersPage() {
                             width: '40px',
                             height: '40px',
                             borderRadius: '50%',
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -303,7 +303,7 @@ export default function AdminUsersPage() {
                           <div>
                             <div style={{ fontWeight: 500 }}>
                               {user.display_name || 'No name'}
-                              {isCurrentUser && <span style={{ color: '#667eea', marginLeft: '0.5rem' }}>(You)</span>}
+                              {isCurrentUser && <span style={{ color: 'var(--primary)', marginLeft: '0.5rem' }}>(You)</span>}
                             </div>
                             {user.location && (
                               <div style={{ fontSize: '0.85rem', color: '#666' }}>

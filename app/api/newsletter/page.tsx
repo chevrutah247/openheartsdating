@@ -88,7 +88,7 @@ export default function AdminNewsletterPage() {
       <div style={{ padding: '4rem', textAlign: 'center' }}>
         <h1 style={{ color: '#dc3545' }}>Access Denied</h1>
         <p>You do not have admin permissions.</p>
-        <a href="/dashboard" style={{ color: '#667eea' }}>Back to Dashboard</a>
+        <a href="/" style={{ color: 'var(--primary)' }}>Back to Dashboard</a>
       </div>
     )
   }
@@ -198,7 +198,7 @@ export default function AdminNewsletterPage() {
           borderRadius: '8px',
           marginBottom: '2rem'
         }}>
-          <h3 style={{ marginBottom: '1rem', color: '#667eea' }}>Preview</h3>
+          <h3 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>Preview</h3>
           <div style={{
             padding: '1.5rem',
             background: 'white',
@@ -215,7 +215,7 @@ export default function AdminNewsletterPage() {
             <span style={{
               display: 'inline-block',
               padding: '0.5rem 1rem',
-              background: '#667eea',
+              background: 'var(--primary)',
               color: 'white',
               borderRadius: '6px',
               fontSize: '0.9rem'
@@ -231,7 +231,7 @@ export default function AdminNewsletterPage() {
           style={{
             width: '100%',
             padding: '1rem',
-            background: sending ? '#ccc' : '#667eea',
+            background: sending ? '#ccc' : 'var(--primary)',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
@@ -245,10 +245,10 @@ export default function AdminNewsletterPage() {
       </form>
 
       <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-        <a href="/admin/verification" style={{ color: '#667eea', marginRight: '1rem' }}>
+        <a href="/admin/verification" style={{ color: 'var(--primary)', marginRight: '1rem' }}>
           ← Verification Queue
         </a>
-        <a href="/dashboard" style={{ color: '#667eea' }}>
+        <a href="/" style={{ color: 'var(--primary)' }}>
           Dashboard
         </a>
       </div>

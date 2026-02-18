@@ -18,7 +18,7 @@ export default function NotFound() {
       margin: '0 auto',
       textAlign: 'center',
     }}>
-      <h1 style={{ fontSize: '4rem', marginBottom: '1rem', color: '#667eea' }}>404</h1>
+      <h1 style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--primary)' }}>404</h1>
       <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Page Not Found</h2>
       <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '2rem', lineHeight: '1.7' }}>
         Sorry, the page you are looking for does not exist or has been moved.

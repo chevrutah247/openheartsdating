@@ -3,12 +3,11 @@ import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
 import StructuredData from './components/StructuredData'
-import GoFundMeBanner from './components/GoFundMeBanner'
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#667eea',
+  themeColor: '#E8607C',
 }
 
 export const metadata: Metadata = {
@@ -90,101 +89,69 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body>
-        {/* Sticky Donation Banner */}
-        <GoFundMeBanner />
-        
-        {/* Navigation */}
         <Navigation />
 
-        {/* Main Content */}
         <main id="main-content">
           {children}
         </main>
 
-        {/* Footer */}
         <footer style={{
           background: '#1f2937',
           color: 'white',
-          padding: '3rem 0 2rem',
-          marginTop: '4rem'
+          padding: '2.5rem 0 1.5rem',
+          marginTop: '3rem'
         }}>
           <div className="container">
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
               gap: '2rem',
               marginBottom: '2rem'
             }}>
-              {/* Column 1 */}
               <div>
-                <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>Open Hearts Dating</h3>
-                <p style={{ color: '#9ca3af', lineHeight: '1.6' }}>
-                  Building an accessible dating platform for everyone.
+                <h4 style={{ marginBottom: '0.75rem', fontSize: '1rem', color: 'white' }}>Open Hearts Dating</h4>
+                <p style={{ color: '#9ca3af', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+                  Accessible dating for everyone.
                 </p>
               </div>
 
-              {/* Column 2 */}
-              <nav aria-label="Platform navigation">
-                <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Platform</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <Link href="/platform-preview/dating" style={{ color: '#9ca3af', textDecoration: 'none' }}>Browse Profiles</Link>
-                  <Link href="/platform-preview/matches" style={{ color: '#9ca3af', textDecoration: 'none' }}>Matches</Link>
-                  <Link href="/messages" style={{ color: '#9ca3af', textDecoration: 'none' }}>Messages</Link>
-                  <Link href="/dashboard" style={{ color: '#9ca3af', textDecoration: 'none' }}>Dashboard</Link>
+              <nav aria-label="Platform links">
+                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>Platform</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <Link href="/browse" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Browse</Link>
+                  <Link href="/matches" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Matches</Link>
+                  <Link href="/messages" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Messages</Link>
                 </div>
               </nav>
 
-              {/* Column 3 */}
-              <nav aria-label="Community navigation">
-                <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Community</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <Link href="/news" style={{ color: '#9ca3af', textDecoration: 'none' }}>News</Link>
-                  <Link href="/mission" style={{ color: '#9ca3af', textDecoration: 'none' }}>Mission</Link>
-                  <Link href="/volunteer" style={{ color: '#9ca3af', textDecoration: 'none' }}>Volunteer</Link>
-                  <Link href="/support" style={{ color: '#9ca3af', textDecoration: 'none' }}>Support</Link>
+              <nav aria-label="Info links">
+                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>About</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <Link href="/mission" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Mission</Link>
+                  <Link href="/news" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>News</Link>
+                  <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Contact</Link>
+                  <Link href="/trust" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Safety</Link>
                 </div>
               </nav>
 
-              {/* Column 4 */}
-              <nav aria-label="Account navigation">
-                <h4 style={{ marginBottom: '1rem', fontSize: '1rem' }}>Connect</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none' }}>Contact</Link>
-                  <Link href="/donate" style={{ color: '#9ca3af', textDecoration: 'none' }}>Donate</Link>
-                  <Link href="/signup" style={{ color: '#9ca3af', textDecoration: 'none' }}>Sign Up</Link>
-                  <Link href="/login" style={{ color: '#9ca3af', textDecoration: 'none' }}>Login</Link>
+              <nav aria-label="Support links">
+                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>Support</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <Link href="/donate" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Donate</Link>
+                  <Link href="/volunteer" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Volunteer</Link>
+                  <Link href="/support" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Help</Link>
                 </div>
               </nav>
             </div>
 
-            {/* Newsletter CTA */}
             <div style={{
-              padding: '2rem',
-              background: '#374151',
-              borderRadius: '8px',
-              marginBottom: '2rem',
-              textAlign: 'center'
-            }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Stay Updated 💌</h3>
-              <p style={{ color: '#9ca3af', marginBottom: '1rem' }}>
-                Get the latest news and updates delivered to your inbox
-              </p>
-              <Link href="/newsletter" className="button" style={{
-                display: 'inline-block',
-                padding: '0.75rem 1.5rem'
-              }}>
-                Subscribe to Newsletter
-              </Link>
-            </div>
-
-            <div style={{
-              paddingTop: '2rem',
+              paddingTop: '1.5rem',
               borderTop: '1px solid #374151',
               textAlign: 'center',
-              color: '#9ca3af',
-              fontSize: '0.9rem'
+              color: '#6b7280',
+              fontSize: '0.85rem'
             }}>
-              <p>© 2026 Open Hearts Dating. Built with 💙 for everyone.</p>
+              <p style={{ margin: 0 }}>&copy; 2026 Open Hearts Dating. Free, safe, accessible.</p>
             </div>
           </div>
         </footer>

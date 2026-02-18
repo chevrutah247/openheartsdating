@@ -63,7 +63,7 @@ export default function DonatePage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                   💻 Development & Hosting (40%)
                 </h3>
                 <p style={{ margin: 0, color: '#666', lineHeight: '1.7' }}>
@@ -78,7 +78,7 @@ export default function DonatePage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                   ♿ Accessibility Testing (25%)
                 </h3>
                 <p style={{ margin: 0, color: '#666', lineHeight: '1.7' }}>
@@ -93,7 +93,7 @@ export default function DonatePage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                   🛡️ Safety & Moderation (20%)
                 </h3>
                 <p style={{ margin: 0, color: '#666', lineHeight: '1.7' }}>
@@ -108,7 +108,7 @@ export default function DonatePage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.3rem' }}>
                   📱 Mobile Apps (15%)
                 </h3>
                 <p style={{ margin: 0, color: '#666', lineHeight: '1.7' }}>
@@ -152,7 +152,7 @@ export default function DonatePage() {
               }}>
                 <strong style={{ fontSize: '1.1rem' }}>🤝 Volunteer</strong>
                 <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
-                  Join our <Link href="/volunteer" style={{ color: '#667eea' }}>volunteer program</Link> and 
+                  Join our <Link href="/volunteer" style={{ color: 'var(--primary)' }}>volunteer program</Link> and 
                   help us build the platform
                 </p>
               </div>
@@ -164,7 +164,7 @@ export default function DonatePage() {
               }}>
                 <strong style={{ fontSize: '1.1rem' }}>🧪 Beta test</strong>
                 <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
-                  Sign up for <Link href="/join" style={{ color: '#667eea' }}>early access</Link> and 
+                  Sign up for <Link href="/join" style={{ color: 'var(--primary)' }}>early access</Link> and 
                   help us improve with your feedback
                 </p>
               </div>

@@ -15,7 +15,7 @@ export default function GoFundMeBanner() {
       left: 0,
       right: 0,
       zIndex: 1000,
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
       color: 'white',
       padding: '0.75rem 1rem',
       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
@@ -45,7 +45,7 @@ export default function GoFundMeBanner() {
           href="/donate"
           style={{
             background: 'white',
-            color: '#667eea',
+            color: 'var(--primary)',
             padding: '0.5rem 1.5rem',
             borderRadius: '6px',
             textDecoration: 'none',

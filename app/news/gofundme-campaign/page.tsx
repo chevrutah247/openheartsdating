@@ -20,7 +20,7 @@ export default function GoFundMeCampaignPage() {
         <div style={{ 
           display: 'inline-block',
           background: 'rgba(102, 126, 234, 0.1)',
-          color: '#667eea',
+          color: 'var(--primary)',
           padding: '0.5rem 1rem',
           borderRadius: '20px',
           fontSize: '0.875rem',
@@ -72,7 +72,7 @@ export default function GoFundMeCampaignPage() {
         color: '#374151'
       }}>
         {/* Opening Scenario */}
-        <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: '#667eea', marginBottom: '2rem' }}>
+        <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: 'var(--primary)', marginBottom: '2rem' }}>
           Imagine this:
         </p>
 
@@ -137,9 +137,9 @@ export default function GoFundMeCampaignPage() {
             padding: '1.25rem',
             background: '#f9fafb',
             borderRadius: '8px',
-            borderLeft: '4px solid #667eea'
+            borderLeft: '4px solid var(--primary)'
           }}>
-            <strong style={{ color: '#667eea', fontSize: '1.1rem' }}>💬 Community Forum</strong>
+            <strong style={{ color: 'var(--primary)', fontSize: '1.1rem' }}>💬 Community Forum</strong>
             <p style={{ margin: '0.5rem 0 0', color: '#666' }}>
               Where people share experiences and support each other
             </p>
@@ -188,30 +188,30 @@ export default function GoFundMeCampaignPage() {
           }}>
             <thead>
               <tr style={{ background: '#f9fafb' }}>
-                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>Category</th>
-                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>%</th>
-                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>What It Means</th>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>Category</th>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>%</th>
+                <th style={{ padding: '1rem', textAlign: 'left', borderBottom: '2px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>What It Means</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Development</strong></td>
-                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>40%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>40%</td>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Building accessible features</td>
               </tr>
               <tr>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Testing</strong></td>
-                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>25%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>25%</td>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Paying testers with disabilities</td>
               </tr>
               <tr>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}><strong>Safety</strong></td>
-                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#667eea', fontWeight: '600' }}>20%</td>
+                <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: 'var(--primary)', fontWeight: '600' }}>20%</td>
                 <td style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', color: '#666' }}>Moderation and user protection</td>
               </tr>
               <tr>
                 <td style={{ padding: '1rem' }}><strong>Mobile Apps</strong></td>
-                <td style={{ padding: '1rem', color: '#667eea', fontWeight: '600' }}>15%</td>
+                <td style={{ padding: '1rem', color: 'var(--primary)', fontWeight: '600' }}>15%</td>
                 <td style={{ padding: '1rem', color: '#666' }}>iOS and Android versions</td>
               </tr>
             </tbody>
@@ -240,9 +240,9 @@ export default function GoFundMeCampaignPage() {
           padding: '2rem',
           borderRadius: '12px',
           marginBottom: '2rem',
-          border: '2px solid #667eea'
+          border: '2px solid var(--primary)'
         }}>
-          <h3 style={{ color: '#667eea', marginBottom: '1rem', fontSize: '1.3rem' }}>
+          <h3 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.3rem' }}>
             💻 $18,000 — MVP Development + AI + Accessible UX/UI
           </h3>
           <ul style={{ marginLeft: '1.5rem', color: '#666', lineHeight: '1.8' }}>
@@ -302,7 +302,7 @@ export default function GoFundMeCampaignPage() {
           padding: '2rem',
           background: '#f9fafb',
           borderRadius: '12px',
-          borderLeft: '4px solid #667eea',
+          borderLeft: '4px solid var(--primary)',
           fontStyle: 'italic'
         }}>
           For over 25 years, I've led charitable projects and worked alongside people who face barriers 
@@ -329,7 +329,7 @@ export default function GoFundMeCampaignPage() {
         </ul>
 
         <div style={{ 
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
           padding: '2.5rem',
           borderRadius: '12px',
           textAlign: 'center',
@@ -356,7 +356,7 @@ export default function GoFundMeCampaignPage() {
               style={{
                 display: 'inline-block',
                 background: 'white',
-                color: '#667eea',
+                color: 'var(--primary)',
                 padding: '1rem 2.5rem',
                 borderRadius: '8px',
                 textDecoration: 'none',

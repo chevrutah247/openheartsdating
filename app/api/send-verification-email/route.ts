@@ -35,8 +35,8 @@ export async function POST(request: NextRequest) {
           </p>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://openheartsdating.com/platform-preview/dating" 
-               style="background: #667eea; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+            <a href="https://openheartsdating.com/browse" 
+               style="background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
               Start Connecting →
             </a>
           </div>
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
           
           <div style="text-align: center; margin: 30px 0;">
             <a href="https://openheartsdating.com/verify" 
-               style="background: #667eea; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+               style="background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
               Try Again →
             </a>
           </div>

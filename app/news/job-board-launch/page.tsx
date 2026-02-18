@@ -85,7 +85,7 @@ export default function JobBoardLaunchPage() {
               padding: '2rem', 
               background: 'rgba(102, 126, 234, 0.1)', 
               borderRadius: '12px',
-              borderLeft: '4px solid #667eea',
+              borderLeft: '4px solid var(--primary)',
               marginBottom: '2rem'
             }}>
               <p style={{ fontSize: '1.15rem', lineHeight: '1.8', margin: 0 }}>
@@ -109,7 +109,7 @@ export default function JobBoardLaunchPage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '1rem', fontSize: '1.4rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.4rem' }}>
                   🔍 For Job Seekers
                 </h3>
                 <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -134,7 +134,7 @@ export default function JobBoardLaunchPage() {
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '1rem', fontSize: '1.4rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.4rem' }}>
                   💼 For Employers
                 </h3>
                 <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -337,7 +337,7 @@ export default function JobBoardLaunchPage() {
             }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
                 <strong>Questions about the job board?</strong> Contact us at{' '}
-                <a href="mailto:jobs@openheartsdating.com" style={{ color: '#667eea' }}>jobs@openheartsdating.com</a>
+                <a href="mailto:jobs@openheartsdating.com" style={{ color: 'var(--primary)' }}>jobs@openheartsdating.com</a>
               </p>
             </div>
 
@@ -350,7 +350,7 @@ export default function JobBoardLaunchPage() {
         <div className="container" style={{ textAlign: 'center' }}>
           <a href="/news" style={{ 
             display: 'inline-block',
-            color: '#667eea', 
+            color: 'var(--primary)', 
             textDecoration: 'none',
             fontWeight: '600',
             fontSize: '1.1rem'

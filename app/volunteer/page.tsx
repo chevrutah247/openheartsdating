@@ -41,7 +41,7 @@ export default function VolunteerPage() {
             }}>
               <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>💙</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: '#667eea' }}>Make Real Impact</h3>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>Make Real Impact</h3>
                 <p style={{ lineHeight: '1.7', opacity: '0.9' }}>
                   Help 1.3 billion people with disabilities find love and connection
                 </p>
@@ -49,7 +49,7 @@ export default function VolunteerPage() {
 
               <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📈</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: '#667eea' }}>Grow Your Skills</h3>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>Grow Your Skills</h3>
                 <p style={{ lineHeight: '1.7', opacity: '0.9' }}>
                   Gain experience in nonprofit tech, accessibility, and community building
                 </p>
@@ -57,7 +57,7 @@ export default function VolunteerPage() {
 
               <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌟</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: '#667eea' }}>Join Something Special</h3>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>Join Something Special</h3>
                 <p style={{ lineHeight: '1.7', opacity: '0.9' }}>
                   Be part of a movement that believes everyone deserves love
                 </p>
@@ -65,7 +65,7 @@ export default function VolunteerPage() {
 
               <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>💼</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: '#667eea' }}>Path to Paid Role</h3>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>Path to Paid Role</h3>
                 <p style={{ lineHeight: '1.7', opacity: '0.9' }}>
                   Outstanding volunteers may join our core team as we grow
                 </p>
@@ -90,7 +90,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 💻 Platform Development
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -116,7 +116,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 📝 Grant Writing & Fundraising
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -142,7 +142,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 📱 Social Media & Content Creation
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -169,7 +169,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 📰 Press & Media Relations
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -196,7 +196,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 💬 Community Management
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -223,7 +223,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 🤝 Donor Relations & Outreach
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -250,7 +250,7 @@ export default function VolunteerPage() {
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }}>
-              <h3 style={{ color: '#667eea', fontSize: '1.5rem', marginBottom: '1rem' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '1rem' }}>
                 ♿ Accessibility Testing & Advocacy
               </h3>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1rem' }}>
@@ -481,7 +481,7 @@ export default function VolunteerPage() {
               marginTop: '2rem'
             }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                <strong>Questions?</strong> Email us at <a href="mailto:contact@openheartsdating.com" style={{ color: '#667eea' }}>contact@openheartsdating.com</a>
+                <strong>Questions?</strong> Email us at <a href="mailto:contact@openheartsdating.com" style={{ color: 'var(--primary)' }}>contact@openheartsdating.com</a>
                 <br/>
                 We're excited to have you on our team! 💙
               </p>

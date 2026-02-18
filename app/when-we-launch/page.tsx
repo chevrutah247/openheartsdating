@@ -56,11 +56,11 @@ export default function DatingPage() {
               background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
               borderRadius: '12px',
               marginBottom: '2rem',
-              border: '2px solid #667eea'
+              border: '2px solid var(--primary)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                 <div style={{ fontSize: '2.5rem' }}>🔄</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
+                <h2 style={{ color: 'var(--primary)', fontSize: '1.8rem', margin: 0 }}>
                   Right Now (Winter 2025/2026)
                 </h2>
               </div>
@@ -90,13 +90,13 @@ export default function DatingPage() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                 <div style={{ fontSize: '2.5rem' }}>🔧</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
+                <h2 style={{ color: 'var(--primary)', fontSize: '1.8rem', margin: 0 }}>
                   Spring 2026
                 </h2>
               </div>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
                 Beta testing with a small group. Fixing bugs. Improving accessibility based on real feedback. Ensuring 
-                safety systems work. Want to be a beta tester? <a href="/join" style={{ color: '#667eea', fontWeight: '600' }}>Let us know</a>.
+                safety systems work. Want to be a beta tester? <a href="/join" style={{ color: 'var(--primary)', fontWeight: '600' }}>Let us know</a>.
               </p>
               <div style={{ fontSize: '1rem', opacity: '0.9' }}>
                 <p style={{ marginBottom: '0.5rem' }}><strong>What happens:</strong></p>
@@ -120,7 +120,7 @@ export default function DatingPage() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                 <div style={{ fontSize: '2.5rem' }}>🎉</div>
-                <h2 style={{ color: '#667eea', fontSize: '1.8rem', margin: 0 }}>
+                <h2 style={{ color: 'var(--primary)', fontSize: '1.8rem', margin: 0 }}>
                   Summer 2026
                 </h2>
               </div>
@@ -164,7 +164,7 @@ export default function DatingPage() {
               background: 'rgba(102, 126, 234, 0.1)',
               borderRadius: '12px',
               marginTop: '2rem',
-              borderLeft: '4px solid #667eea'
+              borderLeft: '4px solid var(--primary)'
             }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
                 <strong>Our promise:</strong> We'll be honest about our progress. We'll tell you when things take longer than expected. 

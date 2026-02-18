@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function JobsPage() {
   return (
     <>
-      <section className="hero" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+      <section className="hero" style={{ background: 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)' }}>
         <div className="container">
           <h1 style={{ color: 'white' }}>Job Board</h1>
           <p style={{ fontSize: '1.25rem', color: 'white', opacity: 0.95, maxWidth: '800px', margin: '0 auto' }}>
@@ -41,7 +41,7 @@ export default function JobsPage() {
               with disability-friendly employers. Post jobs, find remote work,
               and discover companies that truly value accessibility.
             </p>
-            <p style={{ fontSize: '1.05rem', color: '#667eea', fontWeight: '600', marginBottom: '3rem' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--primary)', fontWeight: '600', marginBottom: '3rem' }}>
               Sign up to be notified when the job board goes live!
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>

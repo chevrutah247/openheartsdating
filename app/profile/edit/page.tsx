@@ -214,7 +214,7 @@ export default function EditProfilePage() {
               margin: '0 auto 1rem',
               background: photoPreview
                 ? `url(${photoPreview}) center/cover no-repeat`
-                : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                : 'linear-gradient(135deg, var(--primary) 0%, #764ba2 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -241,8 +241,8 @@ export default function EditProfilePage() {
             style={{
               padding: '0.5rem 1rem',
               background: 'transparent',
-              border: '1px solid #667eea',
-              color: '#667eea',
+              border: '1px solid var(--primary)',
+              color: 'var(--primary)',
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '0.9rem',
@@ -389,7 +389,7 @@ export default function EditProfilePage() {
               disabled={interests.length >= 10}
               style={{
                 padding: '0.75rem 1rem',
-                background: '#667eea',
+                background: 'var(--primary)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',
@@ -409,7 +409,7 @@ export default function EditProfilePage() {
                   gap: '0.3rem',
                   padding: '0.4rem 0.8rem',
                   background: '#f0f4ff',
-                  color: '#667eea',
+                  color: 'var(--primary)',
                   borderRadius: '20px',
                   fontSize: '0.9rem',
                 }}
@@ -421,7 +421,7 @@ export default function EditProfilePage() {
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#667eea',
+                    color: 'var(--primary)',
                     cursor: 'pointer',
                     fontSize: '1.1rem',
                     lineHeight: 1,
@@ -449,7 +449,7 @@ export default function EditProfilePage() {
                   alignItems: 'center',
                   gap: '0.5rem',
                   padding: '0.5rem 1rem',
-                  border: communicationPrefs.includes(opt.value) ? '2px solid #667eea' : '2px solid #e5e7eb',
+                  border: communicationPrefs.includes(opt.value) ? '2px solid var(--primary)' : '2px solid #e5e7eb',
                   borderRadius: '8px',
                   cursor: 'pointer',
                   background: communicationPrefs.includes(opt.value) ? '#f0f4ff' : 'white',
@@ -498,7 +498,7 @@ export default function EditProfilePage() {
 
         {/* Links */}
         <div style={{ marginTop: '1.5rem', textAlign: 'center', display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <Link href="/dashboard" style={{ color: '#667eea' }}>Dashboard</Link>
+          <Link href="/" style={{ color: 'var(--primary)' }}>Dashboard</Link>
           <Link href="/profile/blocked" style={{ color: '#666' }}>Blocked Users</Link>
         </div>
       </form>

@@ -93,9 +93,9 @@ export default function ForumLaunchPage() {
                 padding: '1.5rem', 
                 background: '#f9fafb', 
                 borderRadius: '12px',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
                   💑 Relationships & Dating
                 </h3>
                 <p style={{ margin: 0, lineHeight: '1.7' }}>
@@ -108,9 +108,9 @@ export default function ForumLaunchPage() {
                 padding: '1.5rem', 
                 background: '#f9fafb', 
                 borderRadius: '12px',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
                   🏥 Health & Medical
                 </h3>
                 <p style={{ margin: 0, lineHeight: '1.7' }}>
@@ -123,9 +123,9 @@ export default function ForumLaunchPage() {
                 padding: '1.5rem', 
                 background: '#f9fafb', 
                 borderRadius: '12px',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
                   🏙️ City Life & Accessibility
                 </h3>
                 <p style={{ margin: 0, lineHeight: '1.7' }}>
@@ -138,9 +138,9 @@ export default function ForumLaunchPage() {
                 padding: '1.5rem', 
                 background: '#f9fafb', 
                 borderRadius: '12px',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
                   👔 Career & Work
                 </h3>
                 <p style={{ margin: 0, lineHeight: '1.7' }}>
@@ -153,9 +153,9 @@ export default function ForumLaunchPage() {
                 padding: '1.5rem', 
                 background: '#f9fafb', 
                 borderRadius: '12px',
-                borderLeft: '4px solid #667eea'
+                borderLeft: '4px solid var(--primary)'
               }}>
-                <h3 style={{ color: '#667eea', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
+                <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.2rem' }}>
                   💪 Motivation & Support
                 </h3>
                 <p style={{ margin: 0, lineHeight: '1.7' }}>
@@ -246,8 +246,8 @@ export default function ForumLaunchPage() {
               borderRadius: '12px'
             }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                <strong>Questions about the forum?</strong> Check out our <a href="/forum" style={{ color: '#667eea' }}>Forum Guidelines</a> or 
-                contact us at <a href="mailto:support@openheartsdating.com" style={{ color: '#667eea' }}>support@openheartsdating.com</a>
+                <strong>Questions about the forum?</strong> Check out our <a href="/forum" style={{ color: 'var(--primary)' }}>Forum Guidelines</a> or 
+                contact us at <a href="mailto:support@openheartsdating.com" style={{ color: 'var(--primary)' }}>support@openheartsdating.com</a>
               </p>
             </div>
 
@@ -260,7 +260,7 @@ export default function ForumLaunchPage() {
         <div className="container" style={{ textAlign: 'center' }}>
           <a href="/news" style={{ 
             display: 'inline-block',
-            color: '#667eea', 
+            color: 'var(--primary)', 
             textDecoration: 'none',
             fontWeight: '600',
             fontSize: '1.1rem'
