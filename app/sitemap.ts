@@ -3,11 +3,10 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://openheartsdating.com'
 
-  // Main public pages
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' as const },
     { path: '/mission', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/news', priority: 0.8, changeFrequency: 'daily' as const },
+    { path: '/news', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/join', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/signup', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/donate', priority: 0.8, changeFrequency: 'monthly' as const },
@@ -19,10 +18,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/forum', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/jobs', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/contact', priority: 0.6, changeFrequency: 'monthly' as const },
-    { path: '/login', priority: 0.4, changeFrequency: 'monthly' as const },
+    { path: '/safety', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/ethics', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/why-verification', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/platform-preview', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/platform-preview/safety-architecture', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/platform-preview/why-verification', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/login', priority: 0.3, changeFrequency: 'monthly' as const },
   ]
 
-  // News articles (public content - high SEO value)
   const newsArticles = [
     { slug: 'gofundme-campaign', date: '2026-01-19' },
     { slug: 'job-board-launch', date: '2026-01-17' },
@@ -49,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/news/${article.slug}`,
     lastModified: new Date(article.date),
     changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    priority: 0.65,
   }))
 
   return [...mainPages, ...newsPages]
