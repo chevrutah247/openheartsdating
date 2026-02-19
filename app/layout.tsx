@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
 import StructuredData from './components/StructuredData'
+import AccessibilityWidget from './components/AccessibilityWidget'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -89,13 +90,16 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Navigation />
 
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           {children}
         </main>
 
-        <footer style={{
+        <AccessibilityWidget />
+
+        <footer role="contentinfo" style={{
           background: '#1f2937',
           color: 'white',
           padding: '2.5rem 0 1.5rem',

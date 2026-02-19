@@ -85,7 +85,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" aria-label="Primary navigation">
         <div className="container">
           <Link href="/" className="logo">
             Open Hearts
@@ -123,7 +123,7 @@ export default function Navigation() {
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                     className="avatar"
-                    aria-label="Account menu"
+                    aria-label="Account menu" aria-expanded={dropdownOpen}
                     style={{ cursor: 'pointer', border: dropdownOpen ? '2px solid var(--primary)' : '2px solid transparent' }}
                   >
                     {profile?.photo_url ? (
