@@ -27,14 +27,40 @@ const DEFAULT: Settings = {
 
 const FONT_LABELS = ['Normal', 'Large', 'Extra Large', 'Huge']
 
+function pickVoice(voices: SpeechSynthesisVoice[]) {
+  return (
+    voices.find((v) => v.lang.toLowerCase() === 'en-us') ||
+    voices.find((v) => v.lang.toLowerCase().startsWith('en')) ||
+    voices[0]
+  )
+}
+
 function speakDirect(synth: SpeechSynthesis, text: string) {
-  synth.getVoices()
-  synth.cancel()
+  const voices = synth.getVoices()
+  const selectedVoice = voices.length > 0 ? pickVoice(voices) : null
+
+  if (synth.speaking || synth.pending) synth.cancel()
   const utter = new SpeechSynthesisUtterance(text)
   utter.lang = 'en-US'
+  if (selectedVoice) utter.voice = selectedVoice
   utter.rate = 0.95
   utter.pitch = 1
   utter.volume = 1
+
+  utter.onerror = () => {
+    const retryVoices = synth.getVoices()
+    const retryVoice = retryVoices.length > 0 ? pickVoice(retryVoices) : null
+    const retry = new SpeechSynthesisUtterance(text)
+    retry.lang = 'en-US'
+    if (retryVoice) retry.voice = retryVoice
+    retry.rate = 0.95
+    retry.pitch = 1
+    retry.volume = 1
+    synth.cancel()
+    synth.speak(retry)
+    if (synth.paused) synth.resume()
+  }
+
   synth.speak(utter)
   if (synth.paused) synth.resume()
 }
