@@ -5,32 +5,131 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import NotificationBell from './NotificationBell'
+import { SiteLanguage, useSiteLanguage } from './useSiteLanguage'
 
 type NavItem = {
   href: string
   label: string
 }
 
-const GUEST_PRIMARY: NavItem[] = [
-  { href: '/mission', label: 'Mission' },
-  { href: '/platform-preview', label: 'Platform' },
-  { href: '/trust', label: 'Safety' },
-  { href: '/news', label: 'News' },
-  { href: '/contact', label: 'Contact' },
-]
+const TEXT = {
+  en: {
+    logo: 'Open Hearts',
+    explore: 'Explore',
+    openMenu: 'Open menu',
+    completeVerify: 'Complete Verify',
+    verified: 'Verified',
+    myProfile: 'My Profile',
+    editProfile: 'Edit Profile',
+    blockedUsers: 'Blocked Users',
+    verifyAccount: 'Verify Account',
+    adminPanel: 'Admin Panel',
+    logout: 'Log Out',
+    login: 'Log In',
+    join: 'Join Free',
+    main: 'Main',
+    account: 'Account menu',
+    mobileNav: 'Mobile navigation',
+  },
+  ru: {
+    logo: 'Open Hearts',
+    explore: 'Разделы',
+    openMenu: 'Открыть меню',
+    completeVerify: 'Завершить верификацию',
+    verified: 'Проверен',
+    myProfile: 'Мой профиль',
+    editProfile: 'Редактировать профиль',
+    blockedUsers: 'Заблокированные',
+    verifyAccount: 'Пройти верификацию',
+    adminPanel: 'Админ панель',
+    logout: 'Выйти',
+    login: 'Вход',
+    join: 'Регистрация',
+    main: 'Главное',
+    account: 'Меню аккаунта',
+    mobileNav: 'Мобильная навигация',
+  },
+} as const
 
-const EXPLORE_LINKS: NavItem[] = [
-  { href: '/forum', label: 'Forum' },
-  { href: '/jobs', label: 'Jobs' },
-  { href: '/volunteer', label: 'Volunteer' },
-  { href: '/newsletter', label: 'Newsletter' },
-  { href: '/donate', label: 'Donate' },
-  { href: '/support', label: 'Support' },
-]
+const NAV_TRANSLATIONS: Record<
+  SiteLanguage,
+  {
+    guestPrimary: NavItem[]
+    explore: NavItem[]
+    memberVerified: NavItem[]
+    memberUnverified: NavItem[]
+  }
+> = {
+  en: {
+    guestPrimary: [
+      { href: '/mission', label: 'Mission' },
+      { href: '/platform-preview', label: 'Platform' },
+      { href: '/trust', label: 'Safety' },
+      { href: '/news', label: 'News' },
+      { href: '/contact', label: 'Contact' },
+    ],
+    explore: [
+      { href: '/community', label: 'Community Hub' },
+      { href: '/resources', label: 'Help & Resources' },
+      { href: '/marketplace', label: 'Marketplace' },
+      { href: '/forum', label: 'Forum' },
+      { href: '/jobs', label: 'Jobs' },
+      { href: '/volunteer', label: 'Volunteer' },
+      { href: '/newsletter', label: 'Newsletter' },
+      { href: '/donate', label: 'Donate' },
+      { href: '/support', label: 'Support' },
+    ],
+    memberVerified: [
+      { href: '/', label: 'Home' },
+      { href: '/browse', label: 'Browse' },
+      { href: '/matches', label: 'Matches' },
+      { href: '/messages', label: 'Messages' },
+    ],
+    memberUnverified: [
+      { href: '/', label: 'Home' },
+      { href: '/verify', label: 'Verify' },
+      { href: '/trust', label: 'Safety' },
+      { href: '/support', label: 'Support' },
+    ],
+  },
+  ru: {
+    guestPrimary: [
+      { href: '/mission', label: 'Миссия' },
+      { href: '/platform-preview', label: 'Платформа' },
+      { href: '/trust', label: 'Безопасность' },
+      { href: '/news', label: 'Новости' },
+      { href: '/contact', label: 'Контакты' },
+    ],
+    explore: [
+      { href: '/community', label: 'Community Hub' },
+      { href: '/resources', label: 'Помощь и ресурсы' },
+      { href: '/marketplace', label: 'Маркетплейс' },
+      { href: '/forum', label: 'Форум' },
+      { href: '/jobs', label: 'Работа' },
+      { href: '/volunteer', label: 'Волонтерство' },
+      { href: '/newsletter', label: 'Рассылка' },
+      { href: '/donate', label: 'Донаты' },
+      { href: '/support', label: 'Поддержка' },
+    ],
+    memberVerified: [
+      { href: '/', label: 'Главная' },
+      { href: '/browse', label: 'Поиск' },
+      { href: '/matches', label: 'Матчи' },
+      { href: '/messages', label: 'Сообщения' },
+    ],
+    memberUnverified: [
+      { href: '/', label: 'Главная' },
+      { href: '/verify', label: 'Верификация' },
+      { href: '/trust', label: 'Безопасность' },
+      { href: '/support', label: 'Поддержка' },
+    ],
+  },
+}
 
 export default function Navigation() {
   const router = useRouter()
   const pathname = usePathname()
+  const { language, setLanguage } = useSiteLanguage()
   const [user, setUser] = useState<any>(null)
   const [profile, setProfile] = useState<any>(null)
   const [loading, setLoading] = useState(true)
@@ -40,6 +139,9 @@ export default function Navigation() {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const exploreRef = useRef<HTMLDivElement>(null)
+
+  const t = TEXT[language]
+  const navT = NAV_TRANSLATIONS[language]
 
   useEffect(() => {
     checkUser()
@@ -132,19 +234,7 @@ export default function Navigation() {
     return pathname === path
   }
 
-  const memberPrimary: NavItem[] = isVerified
-    ? [
-        { href: '/', label: 'Home' },
-        { href: '/browse', label: 'Browse' },
-        { href: '/matches', label: 'Matches' },
-        { href: '/messages', label: 'Messages' },
-      ]
-    : [
-        { href: '/', label: 'Home' },
-        { href: '/verify', label: 'Verify' },
-        { href: '/trust', label: 'Safety' },
-        { href: '/support', label: 'Support' },
-      ]
+  const memberPrimary: NavItem[] = isVerified ? navT.memberVerified : navT.memberUnverified
 
   const renderMainLinks = (links: NavItem[]) => (
     <div className="nav-primary">
@@ -166,7 +256,7 @@ export default function Navigation() {
       <nav className="navbar" aria-label="Primary navigation">
         <div className="container nav-shell">
           <Link href="/" className="logo" aria-label="Open Hearts home">
-            Open Hearts
+            {t.logo}
           </Link>
 
           {loading ? (
@@ -174,7 +264,7 @@ export default function Navigation() {
           ) : (
             <>
               <div className="nav-desktop desktop-nav">
-                {user ? renderMainLinks(memberPrimary) : renderMainLinks(GUEST_PRIMARY)}
+                {user ? renderMainLinks(memberPrimary) : renderMainLinks(navT.guestPrimary)}
 
                 <div className="nav-more" ref={exploreRef}>
                   <button
@@ -184,12 +274,12 @@ export default function Navigation() {
                     aria-haspopup="menu"
                     onClick={() => setExploreOpen((prev) => !prev)}
                   >
-                    Explore
+                    {t.explore}
                   </button>
 
                   {exploreOpen && (
                     <div className="nav-more-menu" role="menu" aria-label="Explore links">
-                      {EXPLORE_LINKS.map((item) => (
+                      {navT.explore.map((item) => (
                         <Link key={item.href} href={item.href} role="menuitem" className="nav-more-link">
                           {item.label}
                         </Link>
@@ -200,12 +290,31 @@ export default function Navigation() {
               </div>
 
               <div className="nav-right-actions" ref={mobileMenuRef}>
+                <div className="lang-switch" role="group" aria-label="Language switch">
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('en')}
+                    className={language === 'en' ? 'active' : ''}
+                    aria-pressed={language === 'en'}
+                  >
+                    EN
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('ru')}
+                    className={language === 'ru' ? 'active' : ''}
+                    aria-pressed={language === 'ru'}
+                  >
+                    RU
+                  </button>
+                </div>
+
                 <button
                   type="button"
                   className="mobile-menu-btn"
                   onClick={() => setMobileMenuOpen((prev) => !prev)}
                   aria-expanded={mobileMenuOpen}
-                  aria-label="Open menu"
+                  aria-label={t.openMenu}
                 >
                   <span />
                   <span />
@@ -216,7 +325,7 @@ export default function Navigation() {
                   <>
                     {!isVerified && (
                       <Link href="/verify" className="nav-verify-cta desktop-nav">
-                        Complete Verify
+                        {t.completeVerify}
                       </Link>
                     )}
                     <NotificationBell />
@@ -225,7 +334,7 @@ export default function Navigation() {
                       <button
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                         className="avatar"
-                        aria-label="Account menu"
+                        aria-label={t.account}
                         aria-expanded={dropdownOpen}
                         style={{
                           cursor: 'pointer',
@@ -239,33 +348,33 @@ export default function Navigation() {
                         <div className="nav-dropdown-menu">
                           <div style={{ padding: '0.75rem 1.25rem', borderBottom: '1px solid var(--gray-100)' }}>
                             <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>{profile?.display_name || 'User'}</div>
-                            {isVerified && <span style={{ fontSize: '0.8rem', color: 'var(--success)' }}>Verified</span>}
+                            {isVerified && <span style={{ fontSize: '0.8rem', color: 'var(--success)' }}>{t.verified}</span>}
                           </div>
 
                           <Link href={`/profile/${user.id}`} onClick={() => setDropdownOpen(false)}>
-                            My Profile
+                            {t.myProfile}
                           </Link>
                           <Link href="/profile/edit" onClick={() => setDropdownOpen(false)}>
-                            Edit Profile
+                            {t.editProfile}
                           </Link>
                           <Link href="/profile/blocked" onClick={() => setDropdownOpen(false)}>
-                            Blocked Users
+                            {t.blockedUsers}
                           </Link>
                           {!isVerified && (
                             <Link href="/verify" onClick={() => setDropdownOpen(false)}>
-                              Verify Account
+                              {t.verifyAccount}
                             </Link>
                           )}
                           {isAdmin && (
                             <>
                               <div className="divider" />
                               <Link href="/admin" onClick={() => setDropdownOpen(false)} style={{ color: 'var(--warning)' }}>
-                                Admin Panel
+                                {t.adminPanel}
                               </Link>
                             </>
                           )}
                           <div className="divider" />
-                          <button onClick={handleLogout}>Log Out</button>
+                          <button onClick={handleLogout}>{t.logout}</button>
                         </div>
                       )}
                     </div>
@@ -274,20 +383,20 @@ export default function Navigation() {
                   <>
                     <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                       <Link href="/login" className="nav-login-link">
-                        Log In
+                        {t.login}
                       </Link>
                       <Link href="/signup" className="button button-primary button-small nav-signup-btn">
-                        Join Free
+                        {t.join}
                       </Link>
                     </div>
                   </>
                 )}
 
                 {mobileMenuOpen && (
-                  <div className="mobile-nav-menu" role="menu" aria-label="Mobile navigation">
+                  <div className="mobile-nav-menu" role="menu" aria-label={t.mobileNav}>
                     <div className="mobile-nav-group">
-                      <p className="mobile-nav-title">Main</p>
-                      {(user ? memberPrimary : GUEST_PRIMARY).map((item) => (
+                      <p className="mobile-nav-title">{t.main}</p>
+                      {(user ? memberPrimary : navT.guestPrimary).map((item) => (
                         <Link key={item.href} href={item.href} role="menuitem" className="mobile-nav-link">
                           {item.label}
                         </Link>
@@ -295,8 +404,8 @@ export default function Navigation() {
                     </div>
 
                     <div className="mobile-nav-group">
-                      <p className="mobile-nav-title">Explore</p>
-                      {EXPLORE_LINKS.map((item) => (
+                      <p className="mobile-nav-title">{t.explore}</p>
+                      {navT.explore.map((item) => (
                         <Link key={item.href} href={item.href} role="menuitem" className="mobile-nav-link">
                           {item.label}
                         </Link>
@@ -306,22 +415,22 @@ export default function Navigation() {
                     {!user ? (
                       <div className="mobile-nav-auth">
                         <Link href="/login" className="mobile-nav-link">
-                          Log In
+                          {t.login}
                         </Link>
                         <Link href="/signup" className="button button-primary button-small" style={{ width: '100%' }}>
-                          Join Free
+                          {t.join}
                         </Link>
                       </div>
                     ) : (
                       <div className="mobile-nav-auth">
                         <Link href={`/profile/${user.id}`} className="mobile-nav-link">
-                          My Profile
+                          {t.myProfile}
                         </Link>
                         <Link href="/profile/edit" className="mobile-nav-link">
-                          Edit Profile
+                          {t.editProfile}
                         </Link>
                         <button className="mobile-logout-btn" onClick={handleLogout}>
-                          Log Out
+                          {t.logout}
                         </button>
                       </div>
                     )}
@@ -333,16 +442,31 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {user && profile && <BottomTabBar pathname={pathname} isVerified={isVerified} userId={user.id} />}
+      {user && profile && <BottomTabBar pathname={pathname} isVerified={isVerified} userId={user.id} language={language} />}
     </>
   )
 }
 
-function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVerified: boolean; userId: string }) {
+function BottomTabBar({
+  pathname,
+  isVerified,
+  userId,
+  language,
+}: {
+  pathname: string
+  isVerified: boolean
+  userId: string
+  language: SiteLanguage
+}) {
+  const labels =
+    language === 'ru'
+      ? { home: 'Главная', browse: 'Поиск', matches: 'Матчи', messages: 'Чат', verify: 'Проверка', profile: 'Профиль' }
+      : { home: 'Home', browse: 'Browse', matches: 'Matches', messages: 'Messages', verify: 'Verify', profile: 'Profile' }
+
   const tabs = [
     {
       href: '/',
-      label: 'Home',
+      label: labels.home,
       active: pathname === '/',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -355,7 +479,7 @@ function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVe
       ? [
           {
             href: '/browse',
-            label: 'Browse',
+            label: labels.browse,
             active: pathname === '/browse',
             icon: (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -366,7 +490,7 @@ function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVe
           },
           {
             href: '/matches',
-            label: 'Matches',
+            label: labels.matches,
             active: pathname === '/matches',
             icon: (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -376,7 +500,7 @@ function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVe
           },
           {
             href: '/messages',
-            label: 'Messages',
+            label: labels.messages,
             active: pathname === '/messages' || pathname.startsWith('/messages/'),
             icon: (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -388,7 +512,7 @@ function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVe
       : [
           {
             href: '/verify',
-            label: 'Verify',
+            label: labels.verify,
             active: pathname === '/verify',
             icon: (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -400,7 +524,7 @@ function BottomTabBar({ pathname, isVerified, userId }: { pathname: string; isVe
         ]),
     {
       href: `/profile/${userId}`,
-      label: 'Profile',
+      label: labels.profile,
       active: pathname === `/profile/${userId}` || pathname === '/profile/edit',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

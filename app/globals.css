@@ -510,6 +510,33 @@ label {
   position: relative;
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  overflow: hidden;
+  background: white;
+}
+
+.lang-switch button {
+  border: none;
+  background: transparent;
+  color: var(--gray-600);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  min-width: 38px;
+  height: 30px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.lang-switch button.active {
+  background: var(--primary);
+  color: white;
+}
+
 .nav-login-link {
   color: var(--gray-700);
   font-weight: 600;
@@ -661,6 +688,10 @@ label {
     display: none;
   }
 
+  .lang-switch {
+    margin-left: auto;
+  }
+
   .mobile-menu-btn {
     display: inline-flex;
   }
@@ -672,6 +703,24 @@ label {
   .logo {
     font-size: 1.3rem;
   }
+}
+
+/* Community Hub / Resources / Marketplace */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.community-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.6rem;
+}
+
+.form-shell {
+  border: 1px solid #f1e3e7;
 }
 
 /* ============================================
