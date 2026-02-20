@@ -35,20 +35,13 @@ export default function StructuredData() {
     publisher: {
       '@id': 'https://openheartsdating.com/#organization',
     },
-    inLanguage: 'en-US',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://openheartsdating.com/news?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    inLanguage: ['en-US', 'ru-RU'],
   }
 
   const webApplicationSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
+    '@id': 'https://openheartsdating.com/#webapp',
     name: 'Open Hearts Dating Platform',
     url: 'https://openheartsdating.com',
     description: 'The first truly accessible dating platform built for people with disabilities. Verified profiles, safe messaging, and inclusive community.',
