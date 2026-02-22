@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { isStrongPassword, PASSWORD_REQUIREMENTS_TEXT } from '@/lib/auth-password'
 import { getSiteUrl } from '@/lib/site-url'
 import { isExistingUserSignUpResult, toFriendlyAuthError } from '@/lib/auth-errors'
+import { hasPlusAliasInLocalPart } from '@/lib/email-validation'
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -29,6 +30,12 @@ export default function SignUpPage() {
     }
 
     const normalizedEmail = email.trim().toLowerCase()
+
+    if (hasPlusAliasInLocalPart(normalizedEmail)) {
+      setError('Email aliases with + are not allowed. Please use your main email address.')
+      setLoading(false)
+      return
+    }
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,

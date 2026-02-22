@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { isStrongPassword, PASSWORD_REQUIREMENTS_TEXT } from '@/lib/auth-password'
 import { getSiteUrl } from '@/lib/site-url'
 import { isExistingUserSignUpResult, toFriendlyAuthError } from '@/lib/auth-errors'
+import { hasPlusAliasInLocalPart } from '@/lib/email-validation'
 
 const SAMPLE_PROFILES = [
   { id: 1, name: 'Sarah', age: 28, location: 'New York', bio: 'Artist and coffee lover. I use a wheelchair and it has never stopped me from exploring the world.', looking_for: 'Dating', photo: '/images/samples/face-1.jpg' },
@@ -53,6 +54,12 @@ export default function GuestHero() {
     }
 
     const normalizedEmail = email.trim().toLowerCase()
+
+    if (hasPlusAliasInLocalPart(normalizedEmail)) {
+      setError('Email aliases with + are not allowed. Please use your main email address.')
+      setLoading(false)
+      return
+    }
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,
