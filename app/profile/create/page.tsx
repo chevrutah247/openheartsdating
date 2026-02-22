@@ -10,8 +10,19 @@ import {
   COMMUNICATION_OPTIONS,
   INTEREST_OPTIONS,
 } from '@/lib/constants'
+import { validateFirstAndLastName } from '@/lib/name-validation'
+import { ALLOWED_PROFILE_PHOTO_TYPES, MAX_PROFILE_PHOTO_SIZE, PROFILE_PHOTO_BUCKET } from '@/lib/profile-photo'
+import {
+  MIN_REGISTRATION_AGE,
+  MAX_REGISTRATION_AGE,
+  getBirthDateBounds,
+  getBirthYearOptions,
+  isValidBirthDate,
+} from '@/lib/age-policy'
 
 const STEPS = ['Basics', 'Photo', 'About', 'Preferences']
+
+const MONTH_OPTIONS = Array.from({ length: 12 }, (_, i) => i + 1)
 
 export default function CreateProfilePage() {
   const router = useRouter()
@@ -21,6 +32,13 @@ export default function CreateProfilePage() {
   const [error, setError] = useState('')
   const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
+  const birthDateBounds = getBirthDateBounds()
+  const yearOptions = getBirthYearOptions()
+  const [birthYear, setBirthYear] = useState('')
+  const [birthMonth, setBirthMonth] = useState('')
+  const [birthDay, setBirthDay] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
 
   const [formData, setFormData] = useState({
     display_name: '',
@@ -54,6 +72,42 @@ export default function CreateProfilePage() {
     })
   }
 
+  const getDaysInMonth = (year: string, month: string) => {
+    if (!year || !month) return 31
+    return new Date(Number(year), Number(month), 0).getDate()
+  }
+
+  const syncBirthDate = (year: string, month: string, day: string) => {
+    if (!year || !month || !day) {
+      setFormData((prev) => ({ ...prev, date_of_birth: '' }))
+      return
+    }
+
+    const date = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    setFormData((prev) => ({ ...prev, date_of_birth: date }))
+  }
+
+  const handleBirthYearChange = (value: string) => {
+    setBirthYear(value)
+    const maxDay = getDaysInMonth(value, birthMonth)
+    const nextDay = birthDay && Number(birthDay) > maxDay ? '' : birthDay
+    setBirthDay(nextDay)
+    syncBirthDate(value, birthMonth, nextDay)
+  }
+
+  const handleBirthMonthChange = (value: string) => {
+    setBirthMonth(value)
+    const maxDay = getDaysInMonth(birthYear, value)
+    const nextDay = birthDay && Number(birthDay) > maxDay ? '' : birthDay
+    setBirthDay(nextDay)
+    syncBirthDate(birthYear, value, nextDay)
+  }
+
+  const handleBirthDayChange = (value: string) => {
+    setBirthDay(value)
+    syncBirthDate(birthYear, birthMonth, value)
+  }
+
   const toggleInterest = (interest: string) => {
     setFormData(prev => ({
       ...prev,
@@ -75,13 +129,30 @@ export default function CreateProfilePage() {
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      if (!ALLOWED_PROFILE_PHOTO_TYPES.includes(file.type)) {
+        setError('Please upload a JPEG, PNG, or WebP image.')
+        return
+      }
+      if (file.size > MAX_PROFILE_PHOTO_SIZE) {
+        setError('Image must be under 5MB.')
+        return
+      }
+      setError('')
       setPhotoFile(file)
       setPhotoPreview(URL.createObjectURL(file))
     }
   }
 
   const canProceed = () => {
-    if (step === 0) return formData.display_name && formData.date_of_birth && formData.gender
+    const nameValidation = validateFirstAndLastName(firstName, lastName)
+    if (step === 0) {
+      return Boolean(
+        nameValidation.valid &&
+        formData.date_of_birth &&
+        formData.gender &&
+        isValidBirthDate(formData.date_of_birth)
+      )
+    }
     return true
   }
 
@@ -89,25 +160,46 @@ export default function CreateProfilePage() {
     setLoading(true)
     setError('')
 
-    if (!user) return
+    if (!user) {
+      setError('Session expired. Please sign in again.')
+      setLoading(false)
+      return
+    }
 
-    let photo_url = null
+    const nameValidation = validateFirstAndLastName(firstName, lastName)
+    if (!nameValidation.valid) {
+      setError(nameValidation.error || 'Enter a valid first and last name.')
+      setLoading(false)
+      return
+    }
+
+    if (!isValidBirthDate(formData.date_of_birth)) {
+      setError(`Date of birth is invalid. Age must be between ${MIN_REGISTRATION_AGE} and ${MAX_REGISTRATION_AGE}.`)
+      setLoading(false)
+      return
+    }
+
+    let photoUrl = null
 
     // Upload photo if provided
     if (photoFile) {
       const ext = photoFile.name.split('.').pop()
-      const path = `${user.id}/profile.${ext}`
+      const path = `${user.id}/avatar.${ext}`
 
       const { error: uploadError } = await supabase.storage
-        .from('photos')
+        .from(PROFILE_PHOTO_BUCKET)
         .upload(path, photoFile, { upsert: true })
 
-      if (!uploadError) {
-        const { data: urlData } = supabase.storage
-          .from('photos')
-          .getPublicUrl(path)
-        photo_url = urlData.publicUrl
+      if (uploadError) {
+        setError(`Failed to upload photo: ${uploadError.message}`)
+        setLoading(false)
+        return
       }
+
+      const { data: urlData } = supabase.storage
+        .from(PROFILE_PHOTO_BUCKET)
+        .getPublicUrl(path)
+      photoUrl = urlData.publicUrl
     }
 
     const { error } = await supabase
@@ -117,7 +209,8 @@ export default function CreateProfilePage() {
           id: user.id,
           email: user.email,
           ...formData,
-          photo_url,
+          display_name: nameValidation.fullName,
+          profile_photo: photoUrl,
         },
       ])
 
@@ -160,26 +253,61 @@ export default function CreateProfilePage() {
       {step === 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div>
-            <label>Display Name *</label>
+            <label>First Name *</label>
             <input
               type="text"
-              name="display_name"
-              value={formData.display_name}
-              onChange={handleChange}
-              placeholder="How should others see your name?"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="First name"
+              autoComplete="given-name"
               required
             />
           </div>
           <div>
-            <label>Date of Birth *</label>
+            <label>Last Name *</label>
             <input
-              type="date"
-              name="date_of_birth"
-              value={formData.date_of_birth}
-              onChange={handleChange}
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Last name"
+              autoComplete="family-name"
               required
-              max={new Date().toISOString().split('T')[0]}
             />
+            <small style={{ display: 'block', marginTop: '0.5rem', color: 'var(--gray-500)' }}>
+              Use letters only (hyphen and apostrophe are allowed).
+            </small>
+          </div>
+          <div>
+            <label>Date of Birth *</label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr', gap: '0.5rem' }}>
+              <select value={birthYear} onChange={(e) => handleBirthYearChange(e.target.value)} required>
+                <option value="">Year</option>
+                {yearOptions.map((year) => (
+                  <option key={year} value={String(year)}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+              <select value={birthMonth} onChange={(e) => handleBirthMonthChange(e.target.value)} required disabled={!birthYear}>
+                <option value="">Month</option>
+                {MONTH_OPTIONS.map((month) => (
+                  <option key={month} value={String(month)}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select value={birthDay} onChange={(e) => handleBirthDayChange(e.target.value)} required disabled={!birthYear || !birthMonth}>
+                <option value="">Day</option>
+                {Array.from({ length: getDaysInMonth(birthYear, birthMonth) }, (_, i) => i + 1).map((day) => (
+                  <option key={day} value={String(day)}>
+                    {day}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <small style={{ display: 'block', marginTop: '0.5rem', color: 'var(--gray-500)' }}>
+              Age must be between {MIN_REGISTRATION_AGE} and {MAX_REGISTRATION_AGE}. Allowed birth date range: {birthDateBounds.min} to {birthDateBounds.max}.
+            </small>
           </div>
           <div>
             <label>Gender *</label>
