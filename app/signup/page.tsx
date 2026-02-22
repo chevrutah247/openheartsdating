@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { isStrongPassword, PASSWORD_REQUIREMENTS_TEXT } from '@/lib/auth-password'
+import { getSiteUrl } from '@/lib/site-url'
+import { isExistingUserSignUpResult, toFriendlyAuthError } from '@/lib/auth-errors'
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -19,18 +22,35 @@ export default function SignUpPage() {
     setError('')
     setMessage('')
 
-    const { error } = await supabase.auth.signUp({
-      email,
+    if (!isStrongPassword(password)) {
+      setError(PASSWORD_REQUIREMENTS_TEXT)
+      setLoading(false)
+      return
+    }
+
+    const normalizedEmail = email.trim().toLowerCase()
+    const { data, error } = await supabase.auth.signUp({
+      email: normalizedEmail,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/profile/create`,
+        emailRedirectTo: `${getSiteUrl()}/auth/callback?next=${encodeURIComponent('/profile/create')}`,
       },
     })
 
     if (error) {
-      setError(error.message)
+      setError(toFriendlyAuthError(error.message))
     } else {
-      router.push('/profile/create')
+      if (isExistingUserSignUpResult(data.user, data.session)) {
+        setError('This email is already registered. Please sign in on the login page.')
+        setLoading(false)
+        return
+      }
+
+      if (data.session) {
+        router.push('/profile/create')
+      } else {
+        setMessage('Check your email, confirm your account, then sign in on the login page.')
+      }
     }
 
     setLoading(false)
@@ -70,9 +90,12 @@ export default function SignUpPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              minLength={6}
-              placeholder="Min 6 characters"
+              minLength={8}
+              placeholder="Min 8 chars, A-Z, 0-9, special"
             />
+            <small style={{ display: 'block', marginTop: '0.5rem', color: 'var(--gray-500)', lineHeight: 1.4 }}>
+              {PASSWORD_REQUIREMENTS_TEXT}
+            </small>
           </div>
 
           {error && (
