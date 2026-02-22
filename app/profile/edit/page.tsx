@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { splitDisplayName, validateFirstAndLastName } from '@/lib/name-validation'
+import { ALLOWED_PROFILE_PHOTO_TYPES, MAX_PROFILE_PHOTO_SIZE, PROFILE_PHOTO_BUCKET } from '@/lib/profile-photo'
+import { GENDER_OPTIONS } from '@/lib/constants'
 
 const LOOKING_FOR_OPTIONS = [
   { value: 'dating', label: 'Dating' },
@@ -11,6 +14,8 @@ const LOOKING_FOR_OPTIONS = [
   { value: 'experience_exchange', label: 'Experience Exchange' },
   { value: 'volunteering', label: 'Volunteering' },
 ]
+
+const ALLOWED_GENDERS = new Set(GENDER_OPTIONS.map((o) => o.value))
 
 const COMMUNICATION_OPTIONS = [
   { value: 'text', label: 'Text Chat' },
@@ -29,6 +34,8 @@ export default function EditProfilePage() {
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error'>('error')
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
 
   const [formData, setFormData] = useState({
     display_name: '',
@@ -71,7 +78,7 @@ export default function EditProfilePage() {
     setFormData({
       display_name: profile.display_name || '',
       date_of_birth: profile.date_of_birth || '',
-      gender: profile.gender || '',
+      gender: ALLOWED_GENDERS.has(profile.gender || '') ? profile.gender : '',
       bio: profile.bio || '',
       location: profile.location || '',
       disability_type: profile.disability_type || '',
@@ -81,6 +88,9 @@ export default function EditProfilePage() {
     setInterests(profile.interests || [])
     setCommunicationPrefs(profile.communication_preferences || [])
     setPhotoPreview(profile.profile_photo || null)
+    const parsed = splitDisplayName(profile.display_name || '')
+    setFirstName(parsed.firstName)
+    setLastName(parsed.lastName)
     setLoading(false)
   }
 
@@ -93,12 +103,12 @@ export default function EditProfilePage() {
     if (!file || !user) return
 
     // Validate
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+    if (!ALLOWED_PROFILE_PHOTO_TYPES.includes(file.type)) {
       setMessage('Please upload a JPEG, PNG, or WebP image.')
       setMessageType('error')
       return
     }
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > MAX_PROFILE_PHOTO_SIZE) {
       setMessage('Image must be under 5MB.')
       setMessageType('error')
       return
@@ -111,7 +121,7 @@ export default function EditProfilePage() {
     const filePath = `${user.id}/avatar.${ext}`
 
     const { error: uploadError } = await supabase.storage
-      .from('profile-photos')
+      .from(PROFILE_PHOTO_BUCKET)
       .upload(filePath, file, { upsert: true, cacheControl: '3600' })
 
     if (uploadError) {
@@ -122,7 +132,7 @@ export default function EditProfilePage() {
     }
 
     const { data: { publicUrl } } = supabase.storage
-      .from('profile-photos')
+      .from(PROFILE_PHOTO_BUCKET)
       .getPublicUrl(filePath)
 
     // Add cache-bust to force refresh
@@ -130,6 +140,13 @@ export default function EditProfilePage() {
     setFormData(prev => ({ ...prev, profile_photo: photoUrl }))
     setPhotoPreview(photoUrl)
     setUploadingPhoto(false)
+  }
+
+  const handleRemovePhoto = () => {
+    setFormData((prev) => ({ ...prev, profile_photo: null }))
+    setPhotoPreview(null)
+    setMessage('Photo removed. Click "Save Changes" to apply.')
+    setMessageType('success')
   }
 
   const addInterest = () => {
@@ -156,11 +173,25 @@ export default function EditProfilePage() {
 
     setSaving(true)
     setMessage('')
+    const nameValidation = validateFirstAndLastName(firstName, lastName)
+    if (!nameValidation.valid) {
+      setMessage(nameValidation.error || 'Enter a valid first and last name.')
+      setMessageType('error')
+      setSaving(false)
+      return
+    }
+
+    if (!ALLOWED_GENDERS.has(formData.gender)) {
+      setMessage('Please choose Male or Female.')
+      setMessageType('error')
+      setSaving(false)
+      return
+    }
 
     const { error } = await supabase
       .from('profiles')
       .update({
-        display_name: formData.display_name,
+        display_name: nameValidation.fullName,
         gender: formData.gender,
         bio: formData.bio,
         location: formData.location,
@@ -225,7 +256,7 @@ export default function EditProfilePage() {
               fontWeight: 'bold',
             }}
           >
-            {!photoPreview && (formData.display_name?.charAt(0).toUpperCase() || '?')}
+            {!photoPreview && ((firstName || formData.display_name)?.charAt(0).toUpperCase() || '?')}
           </div>
           <input
             ref={fileInputRef}
@@ -250,23 +281,60 @@ export default function EditProfilePage() {
           >
             {uploadingPhoto ? 'Uploading...' : 'Change Photo'}
           </button>
+          {photoPreview && (
+            <button
+              type="button"
+              onClick={handleRemovePhoto}
+              style={{
+                marginLeft: '0.5rem',
+                padding: '0.5rem 1rem',
+                background: '#fff',
+                border: '1px solid #ef4444',
+                color: '#ef4444',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+              }}
+            >
+              Remove Photo
+            </button>
+          )}
         </div>
 
-        {/* Display Name */}
+        {/* First + Last Name */}
         <div style={{ marginBottom: '1.5rem' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
-            Display Name *
+            First Name *
           </label>
           <input
             type="text"
-            name="display_name"
-            value={formData.display_name}
-            onChange={handleChange}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
             maxLength={50}
-            placeholder="How should others see your name?"
+            placeholder="First name"
+            autoComplete="given-name"
             style={inputStyle}
           />
+        </div>
+
+        <div style={{ marginBottom: '1.5rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '600' }}>
+            Last Name *
+          </label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+            maxLength={50}
+            placeholder="Last name"
+            autoComplete="family-name"
+            style={inputStyle}
+          />
+          <small style={{ color: '#666', fontSize: '0.85rem' }}>
+            Use letters only (hyphen and apostrophe are allowed).
+          </small>
         </div>
 
         {/* Date of Birth (read-only) */}
@@ -292,11 +360,11 @@ export default function EditProfilePage() {
           </label>
           <select name="gender" value={formData.gender} onChange={handleChange} required style={inputStyle}>
             <option value="">Select gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="non-binary">Non-binary</option>
-            <option value="other">Other</option>
-            <option value="prefer-not-to-say">Prefer not to say</option>
+            {GENDER_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 

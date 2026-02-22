@@ -23,6 +23,7 @@ import {
 const STEPS = ['Basics', 'Photo', 'About', 'Preferences']
 
 const MONTH_OPTIONS = Array.from({ length: 12 }, (_, i) => i + 1)
+const ALLOWED_GENDERS = new Set(GENDER_OPTIONS.map((o) => o.value))
 
 export default function CreateProfilePage() {
   const router = useRouter()
@@ -175,6 +176,12 @@ export default function CreateProfilePage() {
 
     if (!isValidBirthDate(formData.date_of_birth)) {
       setError(`Date of birth is invalid. Age must be between ${MIN_REGISTRATION_AGE} and ${MAX_REGISTRATION_AGE}.`)
+      setLoading(false)
+      return
+    }
+
+    if (!ALLOWED_GENDERS.has(formData.gender)) {
+      setError('Please choose Male or Female.')
       setLoading(false)
       return
     }
