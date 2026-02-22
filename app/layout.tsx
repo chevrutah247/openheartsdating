@@ -1,9 +1,9 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
-import Link from 'next/link'
 import Navigation from './components/Navigation'
 import StructuredData from './components/StructuredData'
 import AccessibilityWidget from './components/AccessibilityWidget'
+import SiteFooter from './components/SiteFooter'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -85,8 +85,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" translate="no" className="notranslate">
       <head>
+        <meta name="google" content="notranslate" />
         <StructuredData />
       </head>
       <body>
@@ -98,67 +99,7 @@ export default function RootLayout({
         </main>
 
         <AccessibilityWidget />
-
-        <footer role="contentinfo" style={{
-          background: '#1f2937',
-          color: 'white',
-          padding: '2.5rem 0 1.5rem',
-          marginTop: '3rem'
-        }}>
-          <div className="container">
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '2rem',
-              marginBottom: '2rem'
-            }}>
-              <div>
-                <h4 style={{ marginBottom: '0.75rem', fontSize: '1rem', color: 'white' }}>Open Hearts Dating</h4>
-                <p style={{ color: '#9ca3af', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
-                  Accessible dating for everyone.
-                </p>
-              </div>
-
-              <nav aria-label="Platform links">
-                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>Platform</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <Link href="/browse" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Browse</Link>
-                  <Link href="/matches" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Matches</Link>
-                  <Link href="/messages" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Messages</Link>
-                </div>
-              </nav>
-
-              <nav aria-label="Info links">
-                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>About</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <Link href="/mission" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Mission</Link>
-                  <Link href="/news" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>News</Link>
-                  <Link href="/contact" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Contact</Link>
-                  <Link href="/trust" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Safety</Link>
-                </div>
-              </nav>
-
-              <nav aria-label="Support links">
-                <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: '#d1d5db' }}>Support</h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <Link href="/donate" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Donate</Link>
-                  <Link href="/volunteer" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Volunteer</Link>
-                  <Link href="/support" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.9rem' }}>Help</Link>
-                </div>
-              </nav>
-            </div>
-
-            <div style={{
-              paddingTop: '1.5rem',
-              borderTop: '1px solid #374151',
-              textAlign: 'center',
-              color: '#6b7280',
-              fontSize: '0.85rem'
-            }}>
-              <p style={{ margin: 0 }}>&copy; 2026 Open Hearts Dating. Free, safe, accessible.</p>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   )
